@@ -1,0 +1,5 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'>
+<rect width='1200' height='700' fill='#eef2ff'/><rect x='180' y='130' width='840' height='440' rx='24' fill='#fff'/>
+<rect x='280' y='220' width='640' height='250' rx='18' fill='#1f2937'/><circle cx='420' cy='345' r='40' fill='#fbbf24'/><circle cx='600' cy='345' r='40' fill='#34d399'/><circle cx='780' cy='345' r='40' fill='#60a5fa'/>
+<text x='600' y='620' text-anchor='middle' font-family='Arial' font-size='52' fill='#1f2937'>ELECTRICAL PANEL</text>
+</svg>

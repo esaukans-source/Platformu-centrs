@@ -1,0 +1,5 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'>
+<rect width='1200' height='700' fill='#e8f4f7'/><rect x='160' y='140' width='880' height='420' rx='24' fill='#ffffff'/>
+<path d='M300 220h180v90h90v90h-90v90h-180v-90h-90v-90h90z' fill='#0f766e'/>
+<text x='600' y='620' text-anchor='middle' font-family='Arial' font-size='52' fill='#0f766e'>PLUMBING</text>
+</svg>

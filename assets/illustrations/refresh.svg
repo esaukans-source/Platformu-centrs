@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'>
+<rect width='1200' height='700' fill='#ecfdf5'/><rect x='150' y='130' width='900' height='440' rx='24' fill='#fff'/>
+<circle cx='480' cy='350' r='120' fill='#34d399'/><path d='M430 350h100M530 350l-40-30M530 350l-40 30' stroke='#065f46' stroke-width='14' fill='none' stroke-linecap='round'/>
+<rect x='620' y='260' width='220' height='180' rx='12' fill='#a7f3d0'/>
+<text x='600' y='620' text-anchor='middle' font-family='Arial' font-size='52' fill='#065f46'>24H REFRESH</text>
+</svg>
