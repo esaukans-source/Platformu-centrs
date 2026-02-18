@@ -147,6 +147,18 @@ section.block {
   color: #fff;
 }
 
+.nav a.lang-switch {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 0.36rem 0.62rem;
+  font-weight: 600;
+  background: #f7faf7;
+}
+
+.nav a.lang-switch:hover {
+  background: #eef5ef;
+}
+
 .cta-row {
   display: flex;
   gap: 0.75rem;
