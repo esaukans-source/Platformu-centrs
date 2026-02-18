@@ -279,6 +279,12 @@ section.block {
   font-size: 0.95rem;
 }
 
+.contact-micro {
+  color: var(--muted);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
 @media (max-width: 760px) {
   .hero,
   section.block,
