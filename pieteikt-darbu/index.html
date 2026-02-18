@@ -1,5 +1,69 @@
 <!doctype html>
 <html lang="lv">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Pieteikt Darbu | Platforma</title><meta name="description" content="Pieteikuma forma meistara piesaistei." /><link rel="stylesheet" href="/assets/styles.css" /></head>
-<body><main class="container"><h1>Pieteikt darbu</h1><p>Šeit var pieslēgt esošo pieteikuma formu vai integrēt to ar jūsu lietotnes maršrutu.</p></main></body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pieteikt Darbu | 30Sek</title>
+  <meta name="description" content="Iesniedz darba pieteikumu un saņem meistaru piedāvājumus." />
+  <link rel="canonical" href="https://www.30sek24.com/pieteikt-darbu" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo"><img src="/assets/logo-30sek.png" alt="30Sek logo" class="logo-img" /><span class="logo-text">30Sek</span></a>
+      <nav class="nav">
+        <a href="/cenas">Cenas</a>
+        <a href="/maksajumi">Maksājumi</a>
+        <a href="/noteikumi">Noteikumi</a>
+        <a href="/privatums">Privātums</a>
+        <a href="/en/pieteikt-darbu" class="lang-switch">EN</a>
+        <a href="/ru/pieteikt-darbu" class="lang-switch">RU</a>
+        <a href="/de/pieteikt-darbu" class="lang-switch">DE</a>
+      </nav>
+    </div>
+  </header>
+  <nav aria-label="Breadcrumb" class="breadcrumbs"><div class="container"><a href="/">Sākums</a> / <span>Pieteikt darbu</span></div></nav>
+  <main>
+    <section class="hero">
+      <h1>Pieteikt darbu</h1>
+      <p>Aizpildi formu, un mēs nodosim pieteikumu pieejamajiem meistariem.</p>
+    </section>
+    <section class="block">
+      <form class="lead-form" name="work-request-lv" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/paldies">
+        <input type="hidden" name="form-name" value="work-request-lv" />
+        <input type="hidden" name="bot-field" />
+        <label>Vārds un uzvārds
+          <input type="text" name="name" required />
+        </label>
+        <label>Tālrunis
+          <input type="tel" name="phone" required />
+        </label>
+        <label>E-pasts
+          <input type="email" name="email" required />
+        </label>
+        <label>Pakalpojums
+          <select name="service" required>
+            <option value="">Izvēlies pakalpojumu</option>
+            <option>Santehniķis</option>
+            <option>Elektriķis</option>
+            <option>Apkure</option>
+            <option>Iekšējā apdare</option>
+            <option>Namdari / galdnieki</option>
+            <option>Bruģētāji</option>
+            <option>Pamatu būvniecība / betonēšana</option>
+            <option>Avārijas darbi 24/7</option>
+          </select>
+        </label>
+        <label>Adrese vai pilsēta
+          <input type="text" name="location" required />
+        </label>
+        <label>Apraksts
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn">Iesniegt pieteikumu</button>
+      </form>
+    </section>
+  </main>
+</body>
 </html>
