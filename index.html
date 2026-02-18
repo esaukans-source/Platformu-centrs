@@ -26,5 +26,20 @@
   </section>
 </main>
 <footer class="site-footer"><div class="container"><p>&copy; 2026 Platforma</p><p><a href="/noteikumi">Noteikumi</a> | <a href="/privatums">Privātums</a> | <a href="/cenas">Cenas</a></p></div></footer>
+<script>
+  (function () {
+    try {
+      if (location.pathname !== "/" && location.pathname !== "/index.html") return;
+      var lang = (navigator.language || navigator.userLanguage || "").toLowerCase();
+      if (lang.indexOf("en") === 0) {
+        location.replace("/en/");
+        return;
+      }
+      if (lang.indexOf("ru") === 0) {
+        location.replace("/ru/");
+      }
+    } catch (e) {}
+  })();
+</script>
 </body>
 </html>
