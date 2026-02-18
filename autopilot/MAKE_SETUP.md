@@ -187,3 +187,13 @@ Ja 2 nedēļas pēc kārtas KPI neuzlabojas, maini:
 1. pieteikuma formas tekstu,
 2. auto-atbildes pirmo teikumu,
 3. reklāmas auditoriju un UTM avotus.
+
+---
+
+## 11. Palīgfaili šim setupam
+
+1. Filtru loģika: `autopilot/SCENARIO_FILTERS.md`
+2. Tabulu struktūra: `autopilot/GOOGLE_SHEETS_SCHEMA.md`
+3. Gatavās UTM saites: `autopilot/UTM_LINKS.md`
+4. 5 maksājošo klientu modeļi: `autopilot/PAID_CLIENT_AUTOPILOTS.md`
+5. Kopsavilkuma rezultāts: `autopilot/IMPLEMENTATION_RESULTS.md`
