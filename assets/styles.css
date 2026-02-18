@@ -181,8 +181,10 @@ section.block {
 .nav a.lang-switch {
   border: 1px solid var(--line);
   border-radius: 9px;
-  padding: 0.36rem 0.62rem;
+  padding: 0.2rem 0.45rem;
   font-weight: 600;
+  font-size: 0.78rem;
+  line-height: 1;
   background: #f7faf7;
 }
 
@@ -286,5 +288,16 @@ section.block {
 
   .logo-img {
     height: 36px;
+  }
+
+  .nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .nav a {
+    white-space: nowrap;
   }
 }
