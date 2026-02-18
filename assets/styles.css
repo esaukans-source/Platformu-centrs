@@ -68,8 +68,14 @@ a:hover {
 
 .logo-img {
   display: block;
-  height: 86px;
+  height: 118px;
   width: auto;
+}
+
+@media (max-width: 700px) {
+  .logo-img {
+    height: 84px;
+  }
 }
 
 .logo-text {
