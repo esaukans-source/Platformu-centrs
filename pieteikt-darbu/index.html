@@ -64,10 +64,13 @@
         <label>Bildes (JPG/PNG)
           <input type="file" name="photos" accept="image/*" multiple id="photos-lv" />
         </label>
+        <div id="photos-preview-lv" class="media-preview"></div>
         <label>Video (MP4/MOV)
           <input type="file" name="video" accept="video/*" id="video-lv" />
         </label>
+        <div id="video-preview-lv" class="media-preview"></div>
         <p class="note">Ja izvēlies "Avārijas darbi 24/7", bilde un video ir obligāti.</p>
+        <p class="note">Pievienotie faili tiks nosūtīti kopā ar pieteikumu meistariem.</p>
         <button type="submit" class="btn">Iesniegt pieteikumu</button>
       </form>
     </section>
@@ -77,13 +80,37 @@
       var service = document.getElementById("service-lv");
       var photos = document.getElementById("photos-lv");
       var video = document.getElementById("video-lv");
-      if (!service || !photos || !video) return;
+      var photosPreview = document.getElementById("photos-preview-lv");
+      var videoPreview = document.getElementById("video-preview-lv");
+      if (!service || !photos || !video || !photosPreview || !videoPreview) return;
       function toggleRequired() {
         var emergency = (service.value || "").indexOf("24/7") !== -1;
         photos.required = emergency;
         video.required = emergency;
       }
+      function renderPhotos() {
+        photosPreview.innerHTML = "";
+        if (!photos.files || photos.files.length === 0) return;
+        Array.prototype.slice.call(photos.files, 0, 6).forEach(function (file) {
+          var img = document.createElement("img");
+          img.src = URL.createObjectURL(file);
+          img.alt = file.name;
+          img.className = "preview-thumb";
+          photosPreview.appendChild(img);
+        });
+      }
+      function renderVideo() {
+        videoPreview.innerHTML = "";
+        if (!video.files || video.files.length === 0) return;
+        var v = document.createElement("video");
+        v.controls = true;
+        v.className = "preview-video";
+        v.src = URL.createObjectURL(video.files[0]);
+        videoPreview.appendChild(v);
+      }
       service.addEventListener("change", toggleRequired);
+      photos.addEventListener("change", renderPhotos);
+      video.addEventListener("change", renderVideo);
       toggleRequired();
     })();
   </script>

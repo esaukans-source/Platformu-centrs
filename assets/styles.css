@@ -193,6 +193,26 @@ section.block {
   resize: vertical;
 }
 
+.media-preview {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.preview-thumb {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.preview-video {
+  width: min(100%, 360px);
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
 .list-tight li {
   margin-bottom: 0.42rem;
 }
