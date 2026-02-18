@@ -121,3 +121,69 @@ Katru dienu 10-15 min:
 4. Pārbaudi Netlify deploy un 404 kļūdas.
 5. Ja redzi biežu jautājumu, pielabo tekstu lapā tajā pašā dienā.
 
+---
+
+## 7. Scenārijs: Lead scoring (kurš ir "karsts" klients)
+
+Mērķis: prioritizēt tos pieteikumus, kuri visdrīzāk samaksās.
+
+1. Izveido scenario `30Sek - Lead scoring`.
+2. Trigger: pēc `Leads` rindas pievienošanas.
+3. `Tools -> Set variable` `lead_score` ar punktiem:
+- +35, ja pakalpojums satur `24/7` vai `Avārijas`.
+- +20, ja ir aizpildīts detalizēts apraksts (`message` > 120 simboli).
+- +15, ja pievienots video.
+- +10, ja pievienotas 2+ bildes.
+- +10, ja ir telefons + email abi aizpildīti.
+- +10, ja lokācija ir lielpilsēta.
+4. `Google Sheets -> Update row` pievieno `lead_score`.
+5. Router:
+- `80+` -> Telegram "HOT LEAD" (reaģē 10 min laikā).
+- `50-79` -> Telegram "WARM LEAD".
+- `<50` -> automātiska follow-up email secība.
+
+---
+
+## 8. Scenārijs: Neapmaksāta pieteikuma atgūšana (recovery)
+
+Mērķis: atgūt tos, kas apskatīja cenas, bet nenopirka.
+
+1. UTM saites uz `cenas` un `maksajumi` (`source`, `campaign`, `adset`).
+2. Stripe scenārijā saglabā `checkout.session.completed`.
+3. Ja `Leads` ir ieraksts, bet 24h nav atbilstoša maksājuma:
+- sūti email #1: "Vai palīdzēt izvēlēties plānu?"
+4. Ja 48h joprojām nav pirkuma:
+- sūti email #2 ar īsu salīdzinājumu (`Basic/Pro/24-7`).
+5. Ja 72h joprojām nav pirkuma:
+- Telegram ziņa tev ar kontaktu manuālai sazvanīšanai.
+
+---
+
+## 9. Scenārijs: SLA kontrole un eskalācija
+
+Mērķis: lai neviens karstais pieteikums "nepazūd".
+
+1. Katram `HOT LEAD` ieliec `deadline_at = now + 10 min`.
+2. Scheduler ik 5 min pārbauda `HOT LEAD` bez statusa `contacted`.
+3. Ja nokavēts:
+- Telegram alert: `SLA breach`.
+- atzīmē tabulā `sla_breach = yes`.
+4. Dienas beigās reportā atsevišķi rādi:
+- cik `HOT LEAD`,
+- cik `SLA breach`,
+- vidējais pirmās atbildes laiks.
+
+---
+
+## 10. KPI, ko skatīties katru nedēļu
+
+1. `Lead -> Payment conversion %`
+2. `HOT LEAD conversion %`
+3. `Avg response time` (minūtēs)
+4. `Cost per paid client` pa kanāliem (pēc UTM)
+5. `No-show / nekvalitatīvi lead %`
+
+Ja 2 nedēļas pēc kārtas KPI neuzlabojas, maini:
+1. pieteikuma formas tekstu,
+2. auto-atbildes pirmo teikumu,
+3. reklāmas auditoriju un UTM avotus.
