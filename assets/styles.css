@@ -213,6 +213,11 @@ section.block {
   border: 1px solid var(--line);
 }
 
+.form-error {
+  color: #b42318;
+  font-weight: 600;
+}
+
 .list-tight li {
   margin-bottom: 0.42rem;
 }
