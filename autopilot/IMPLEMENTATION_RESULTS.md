@@ -20,6 +20,9 @@
 5. 5 maksājošo klientu autopilotu playbook jau ir:
 - `autopilot/PAID_CLIENT_AUTOPILOTS.md`
 
+6. Pievienots valstu reklāmas komplekts (PL/NO/SE):
+- `autopilot/COUNTRY_CAMPAIGNS_PL_NO_SE.md`
+
 ## Ko vari sākt darīt šodien
 
 1. Izveido Sheets ar kolonnām no `GOOGLE_SHEETS_SCHEMA.md`.

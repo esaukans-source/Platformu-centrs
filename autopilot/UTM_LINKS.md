@@ -27,3 +27,24 @@
 
 ## E-pasta paraksts
 `https://30sek24.com/?utm_source=email&utm_medium=signature&utm_campaign=always_on&utm_content=owner_signature`
+
+## Polija (PL) kampaņas
+Klienti:
+`https://30sek24.com/pl/?utm_source=facebook&utm_medium=group&utm_campaign=pl_clients_launch&utm_content=pl_group_post_1`
+
+Meistari:
+`https://30sek24.com/pl/meistariem?utm_source=facebook&utm_medium=group&utm_campaign=pl_contractors_launch&utm_content=pl_group_post_1`
+
+## Norvēģija (NO) kampaņas
+Klienti (EN):
+`https://30sek24.com/en/?utm_source=facebook&utm_medium=group&utm_campaign=no_clients_launch&utm_content=no_group_post_1`
+
+Meistari (EN):
+`https://30sek24.com/en/maksajumi?utm_source=facebook&utm_medium=group&utm_campaign=no_contractors_launch&utm_content=no_group_post_1`
+
+## Zviedrija (SE) kampaņas
+Klienti (EN):
+`https://30sek24.com/en/?utm_source=facebook&utm_medium=group&utm_campaign=se_clients_launch&utm_content=se_group_post_1`
+
+Meistari (EN):
+`https://30sek24.com/en/maksajumi?utm_source=facebook&utm_medium=group&utm_campaign=se_contractors_launch&utm_content=se_group_post_1`
