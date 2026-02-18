@@ -51,8 +51,11 @@
             <option>Apkure</option>
             <option>Iekšējā apdare</option>
             <option>Namdari / galdnieki</option>
-            <option>Bruģētāji</option>
             <option>Pamatu būvniecība / betonēšana</option>
+            <option>Jumiķi</option>
+            <option>Ārdarbi (ieskaitot bruģēšanu)</option>
+            <option>Celtniecības traktortehnika</option>
+            <option>Demontāžas darbi</option>
             <option>Avārijas darbi 24/7</option>
           </select>
         </label>
@@ -97,6 +100,34 @@
           <input type="url" name="portfolio_link" />
         </label>
         <button type="submit" class="btn">Iesniegt profilu</button>
+      </form>
+    </section>
+
+    <section class="block" id="darbs-arvalstis">
+      <h2>Tiešā saziņa ar ārvalstu celtniecības firmu vadītājiem</h2>
+      <p>Vēlies strādāt ārvalstīs? Piesakies bez starpniekiem un saņem tiešus darba piedāvājumus no uzņēmumu vadītājiem.</p>
+      <div class="cta-row">
+        <a class="btn" href="/arvalstis">Atvērt sadaļu “Darbs ārzemēs”</a>
+      </div>
+      <form class="lead-form" name="foreign-direct-short-lv" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/paldies">
+        <input type="hidden" name="form-name" value="foreign-direct-short-lv" />
+        <input type="hidden" name="bot-field" />
+        <label>Vārds un uzvārds
+          <input type="text" name="name" required />
+        </label>
+        <label>Tālrunis
+          <input type="tel" name="phone" required />
+        </label>
+        <label>E-pasts
+          <input type="email" name="email" required />
+        </label>
+        <label>Specializācija
+          <input type="text" name="specialization" required />
+        </label>
+        <label>Valstis, kur vēlies strādāt
+          <input type="text" name="countries" required />
+        </label>
+        <button type="submit" class="btn">Pieteikties darbam ārzemēs</button>
       </form>
     </section>
   </main>
