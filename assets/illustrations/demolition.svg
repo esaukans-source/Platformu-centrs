@@ -1,34 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Demolition works">
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#dfe7ef"/>
-      <stop offset="1" stop-color="#f4f6f8"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101317"/>
+      <stop offset="1" stop-color="#222831"/>
     </linearGradient>
-    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f6d27a"/>
-      <stop offset="1" stop-color="#c8942a"/>
+    <linearGradient id="ground" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4b4035"/>
+      <stop offset="1" stop-color="#635445"/>
     </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7d78a"/>
+      <stop offset="1" stop-color="#b8862f"/>
+    </linearGradient>
+    <radialGradient id="dust" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#d6c5a5" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#d6c5a5" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="1200" height="700" fill="url(#sky)"/>
-  <rect x="0" y="520" width="1200" height="180" fill="#c7b8a2"/>
-  <rect x="120" y="170" width="300" height="320" fill="#8f939a"/>
-  <rect x="450" y="210" width="220" height="280" fill="#9ea3aa"/>
-  <rect x="700" y="260" width="170" height="230" fill="#aab0b6"/>
-  <polygon points="240,300 430,470 120,470" fill="#6e737b"/>
-  <polygon points="560,340 690,490 430,490" fill="#777c84"/>
-  <polygon points="790,380 900,490 670,490" fill="#848a92"/>
-  <rect x="790" y="330" width="260" height="36" rx="10" fill="url(#steel)"/>
-  <rect x="1010" y="230" width="44" height="110" rx="10" fill="url(#steel)"/>
-  <rect x="1024" y="170" width="16" height="70" fill="#565b63"/>
-  <circle cx="950" cy="510" r="54" fill="#3f444b"/>
-  <circle cx="950" cy="510" r="26" fill="#5e646c"/>
-  <rect x="890" y="420" width="170" height="36" rx="12" fill="#f0b93f"/>
-  <rect x="820" y="396" width="100" height="30" rx="10" fill="#f0b93f"/>
-  <rect x="848" y="352" width="40" height="56" rx="8" fill="#d7dde4"/>
-  <circle cx="1040" cy="514" r="44" fill="#4a4f57"/>
-  <circle cx="1040" cy="514" r="20" fill="#656b73"/>
-  <circle cx="1032" cy="286" r="38" fill="#5d6168"/>
-  <polygon points="240,490 320,520 190,520" fill="#757b83"/>
-  <polygon points="570,490 660,520 510,520" fill="#80868e"/>
-  <polygon points="790,490 860,520 740,520" fill="#8c9299"/>
+
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <rect y="520" width="1200" height="180" fill="url(#ground)"/>
+
+  <circle cx="360" cy="250" r="170" fill="url(#dust)"/>
+  <circle cx="450" cy="220" r="140" fill="url(#dust)"/>
+
+  <rect x="80" y="180" width="120" height="340" fill="#3b434c"/>
+  <rect x="210" y="210" width="95" height="310" fill="#4a535d"/>
+  <rect x="315" y="250" width="80" height="270" fill="#59636d"/>
+
+  <polygon points="120,355 182,520 78,520" fill="#606a74"/>
+  <polygon points="225,390 288,520 190,520" fill="#6a7480"/>
+  <polygon points="322,415 372,520 286,520" fill="#77818d"/>
+
+  <rect x="640" y="430" width="290" height="42" rx="12" fill="#d39a2d"/>
+  <rect x="680" y="360" width="90" height="80" rx="12" fill="#dfe5ec"/>
+  <rect x="755" y="315" width="155" height="28" rx="10" fill="url(#gold)"/>
+  <rect x="892" y="235" width="34" height="88" rx="8" fill="url(#gold)"/>
+  <rect x="902" y="188" width="14" height="56" fill="#5d6570"/>
+  <circle cx="878" cy="507" r="62" fill="#30363d"/>
+  <circle cx="878" cy="507" r="27" fill="#4c535b"/>
+  <circle cx="742" cy="511" r="48" fill="#2a3038"/>
+  <circle cx="742" cy="511" r="21" fill="#49515a"/>
+
+  <rect x="505" y="285" width="210" height="26" rx="10" fill="url(#gold)"/>
+  <rect x="468" y="265" width="54" height="20" rx="6" fill="#d2a14b"/>
+  <polygon points="450,275 488,292 450,309 414,292" fill="#f0c469"/>
+
+  <polygon points="397,300 456,332 392,364 335,333" fill="#8a949f"/>
+  <polygon points="360,335 405,359 355,385 314,361" fill="#7f8994"/>
+  <polygon points="332,368 374,390 326,414 286,392" fill="#757f8a"/>
+
+  <text x="52" y="78" font-family="Arial, sans-serif" font-size="52" fill="#f0d39a">Demontāžas darbi</text>
 </svg>
