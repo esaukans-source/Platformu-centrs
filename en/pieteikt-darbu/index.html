@@ -14,7 +14,7 @@
   <main>
     <section class="hero"><h1>Submit a request</h1><p>Fill out the form and we will route your request to available contractors.</p></section>
     <section class="block">
-      <form class="lead-form" name="work-request-en" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/en/thank-you">
+      <form class="lead-form" name="work-request-en" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/en/thank-you">
         <input type="hidden" name="form-name" value="work-request-en" />
         <input type="hidden" name="bot-field" />
         <label>Full name
@@ -27,7 +27,7 @@
           <input type="email" name="email" required />
         </label>
         <label>Service
-          <select name="service" required>
+          <select name="service" required id="service-en">
             <option value="">Choose a service</option>
             <option>Plumber</option>
             <option>Electrician</option>
@@ -45,9 +45,31 @@
         <label>Description
           <textarea name="message" rows="5" required></textarea>
         </label>
+        <label>Photos (JPG/PNG)
+          <input type="file" name="photos" accept="image/*" multiple id="photos-en" />
+        </label>
+        <label>Video (MP4/MOV)
+          <input type="file" name="video" accept="video/*" id="video-en" />
+        </label>
+        <p class="note">If "Emergency work 24/7" is selected, photo and video are required.</p>
         <button type="submit" class="btn">Submit request</button>
       </form>
     </section>
   </main>
+  <script>
+    (function () {
+      var service = document.getElementById("service-en");
+      var photos = document.getElementById("photos-en");
+      var video = document.getElementById("video-en");
+      if (!service || !photos || !video) return;
+      function toggleRequired() {
+        var emergency = (service.value || "").indexOf("24/7") !== -1;
+        photos.required = emergency;
+        video.required = emergency;
+      }
+      service.addEventListener("change", toggleRequired);
+      toggleRequired();
+    })();
+  </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <main>
   <section class="hero"><h1>Anfrage senden</h1><p>Formular ausfuellen und wir leiten Ihre Anfrage an passende Handwerker weiter.</p></section>
   <section class="block">
-    <form class="lead-form" name="work-request-de" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/de/danke">
+    <form class="lead-form" name="work-request-de" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/de/danke">
       <input type="hidden" name="form-name" value="work-request-de" />
       <input type="hidden" name="bot-field" />
       <label>Vor- und Nachname
@@ -20,7 +20,7 @@
         <input type="email" name="email" required />
       </label>
       <label>Leistung
-        <select name="service" required>
+        <select name="service" required id="service-de">
           <option value="">Leistung waehlen</option>
           <option>Klempner</option>
           <option>Elektriker</option>
@@ -38,8 +38,30 @@
       <label>Beschreibung
         <textarea name="message" rows="5" required></textarea>
       </label>
+      <label>Fotos (JPG/PNG)
+        <input type="file" name="photos" accept="image/*" multiple id="photos-de" />
+      </label>
+      <label>Video (MP4/MOV)
+        <input type="file" name="video" accept="video/*" id="video-de" />
+      </label>
+      <p class="note">Wenn "Notdienst 24/7" gewaehlt ist, sind Foto und Video Pflicht.</p>
       <button type="submit" class="btn">Anfrage senden</button>
     </form>
   </section>
 </main>
+<script>
+  (function () {
+    var service = document.getElementById("service-de");
+    var photos = document.getElementById("photos-de");
+    var video = document.getElementById("video-de");
+    if (!service || !photos || !video) return;
+    function toggleRequired() {
+      var emergency = (service.value || "").indexOf("24/7") !== -1;
+      photos.required = emergency;
+      video.required = emergency;
+    }
+    service.addEventListener("change", toggleRequired);
+    toggleRequired();
+  })();
+</script>
 </body></html>
