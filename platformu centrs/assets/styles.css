@@ -57,10 +57,23 @@ a:hover {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   text-decoration: none;
   font-family: "Merriweather", Georgia, serif;
   font-weight: 700;
   color: var(--text);
+}
+
+.logo-img {
+  display: block;
+  height: 44px;
+  width: auto;
+}
+
+.logo-text {
+  letter-spacing: 0.01em;
 }
 
 .nav {
@@ -155,5 +168,9 @@ section.block {
   section.block,
   .card {
     padding: 1rem;
+  }
+
+  .logo-img {
+    height: 36px;
   }
 }
