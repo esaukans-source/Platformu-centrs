@@ -1,0 +1,949 @@
+openapi: 3.0.3
+info:
+  title: Construction CRM API
+  version: 1.0.0
+  description: >
+    MVP API celtniecības projektu vadībai: tāmes pa istabām, čeki/OCR,
+    dienas žurnāls, PDF dokumenti un paraksti.
+servers:
+  - url: /api
+security:
+  - bearerAuth: []
+tags:
+  - name: Projects
+  - name: Rooms
+  - name: Estimate
+  - name: Receipts
+  - name: Timeline
+  - name: Documents
+  - name: Exports
+paths:
+  /projects:
+    get:
+      tags: [Projects]
+      summary: Projektu saraksts
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+    post:
+      tags: [Projects]
+      summary: Izveidot projektu
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectCreateRequest"
+      responses:
+        "201":
+          description: Izveidots
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /projects/{projectId}:
+    get:
+      tags: [Projects]
+      summary: Projekta detaļas
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /projects/{projectId}/rooms:
+    post:
+      tags: [Rooms]
+      summary: Pievienot istabu projektam
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoomUpsertRequest"
+      responses:
+        "201":
+          description: Istaba izveidota
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoomResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /rooms/{roomId}:
+    patch:
+      tags: [Rooms]
+      summary: Labot istabu
+      parameters:
+        - $ref: "#/components/parameters/RoomId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoomUpsertRequest"
+      responses:
+        "200":
+          description: Istaba atjaunota
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoomResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /projects/{projectId}/estimate/recalculate:
+    post:
+      tags: [Estimate]
+      summary: Pārrēķināt tāmi un materiālus
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      responses:
+        "200":
+          description: Pārrēķins gatavs
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EstimateRecalculateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /projects/{projectId}/material-variance:
+    get:
+      tags: [Estimate]
+      summary: Plānots vs pirkts vs izlietots
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MaterialVarianceResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /projects/{projectId}/receipts/upload:
+    post:
+      tags: [Receipts]
+      summary: Augšupielādēt čeku
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                vendor:
+                  type: string
+                receiptDate:
+                  type: string
+                  format: date
+      responses:
+        "201":
+          description: Čeks pievienots
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReceiptUploadResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /receipts/{receiptId}/ocr:
+    post:
+      tags: [Receipts]
+      summary: OCR parsēšana čekam
+      parameters:
+        - $ref: "#/components/parameters/ReceiptId"
+      responses:
+        "200":
+          description: OCR rezultāts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReceiptOCRResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /receipt-lines/{lineId}/match:
+    patch:
+      tags: [Receipts]
+      summary: Piesaistīt čeka rindu materiālam
+      parameters:
+        - $ref: "#/components/parameters/LineId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReceiptLineMatchRequest"
+      responses:
+        "200":
+          description: Rinda atjaunota
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReceiptLineResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /projects/{projectId}/timeline:
+    get:
+      tags: [Timeline]
+      summary: Timeline saraksts ar filtriem
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+        - in: query
+          name: dateFrom
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: dateTo
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: type
+          schema:
+            $ref: "#/components/schemas/TimelineType"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TimelineListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      tags: [Timeline]
+      summary: Izveidot timeline notikumu
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TimelineCreateRequest"
+      responses:
+        "201":
+          description: Izveidots
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TimelineEntryResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /projects/{projectId}/documents/generate:
+    post:
+      tags: [Documents]
+      summary: Ģenerēt dokumentu PDF no šablona
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentGenerateRequest"
+      responses:
+        "201":
+          description: Dokuments izveidots
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /documents/{documentId}/sign/draw:
+    post:
+      tags: [Documents]
+      summary: Paraksts ar pirkstu/ekrāna zīmējumu
+      parameters:
+        - $ref: "#/components/parameters/DocumentId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DrawSignatureRequest"
+      responses:
+        "200":
+          description: Parakstīts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /documents/{documentId}/sign/qualified/start:
+    post:
+      tags: [Documents]
+      summary: Sākt kvalificēta paraksta plūsmu
+      parameters:
+        - $ref: "#/components/parameters/DocumentId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QualifiedSignStartRequest"
+      responses:
+        "200":
+          description: Plūsma sākta
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QualifiedSignStartResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /documents/{documentId}/sign/qualified/callback:
+    post:
+      tags: [Documents]
+      summary: Callback no Smart-ID/eParaksts
+      parameters:
+        - $ref: "#/components/parameters/DocumentId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QualifiedSignCallbackRequest"
+      responses:
+        "200":
+          description: Callback apstrādāts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /projects/{projectId}/exports/dispute-package:
+    get:
+      tags: [Exports]
+      summary: Eksportēt strīda paketi (ZIP/PDF)
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+        - in: query
+          name: dateFrom
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: dateTo
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        "200":
+          description: Eksports gatavs
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DisputeExportResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    ProjectId:
+      in: path
+      name: projectId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    RoomId:
+      in: path
+      name: roomId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    ReceiptId:
+      in: path
+      name: receiptId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    LineId:
+      in: path
+      name: lineId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    DocumentId:
+      in: path
+      name: documentId
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  responses:
+    BadRequest:
+      description: Nederīga ievade
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Unauthorized:
+      description: Nav autentificēts
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    NotFound:
+      description: Nav atrasts
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+  schemas:
+    ProjectStatus:
+      type: string
+      enum: [draft, active, done, archived]
+
+    TimelineType:
+      type: string
+      enum: [checkin, checkout, note, voice, photo, issue, delivery]
+
+    DocumentType:
+      type: string
+      enum: [handover, extra_work, defect, payment, material_approval]
+
+    SignRole:
+      type: string
+      enum: [client, contractor]
+
+    ProjectSummary:
+      type: object
+      required: [id, name, status, updatedAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          $ref: "#/components/schemas/ProjectStatus"
+        customerName:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+        totalEstimate:
+          type: number
+          format: double
+
+    ProjectListResponse:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProjectSummary"
+
+    ProjectCreateRequest:
+      type: object
+      required: [name, customerId]
+      properties:
+        name:
+          type: string
+        customerId:
+          type: string
+          format: uuid
+        address:
+          type: string
+        status:
+          $ref: "#/components/schemas/ProjectStatus"
+        vatRate:
+          type: number
+          format: double
+
+    ProjectResponse:
+      type: object
+      required: [id, name, customerId, status, createdAt, updatedAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        customerId:
+          type: string
+          format: uuid
+        address:
+          type: string
+        status:
+          $ref: "#/components/schemas/ProjectStatus"
+        vatRate:
+          type: number
+          format: double
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    RoomUpsertRequest:
+      type: object
+      required: [name, floorAreaM2, heightM, shapeType]
+      properties:
+        name:
+          type: string
+        floorAreaM2:
+          type: number
+          format: double
+        heightM:
+          type: number
+          format: double
+        shapeType:
+          type: string
+          enum: [square, rect_1_1_5, rect_1_2, custom]
+        perimeterM:
+          type: number
+          format: double
+        openingsAreaM2:
+          type: number
+          format: double
+        doorCount:
+          type: integer
+        notes:
+          type: string
+
+    RoomResponse:
+      allOf:
+        - $ref: "#/components/schemas/RoomUpsertRequest"
+        - type: object
+          required: [id, projectId]
+          properties:
+            id:
+              type: string
+              format: uuid
+            projectId:
+              type: string
+              format: uuid
+
+    EstimateItemSummary:
+      type: object
+      required: [id, templateId, quantity, unit, total]
+      properties:
+        id:
+          type: string
+          format: uuid
+        templateId:
+          type: string
+        quantity:
+          type: number
+          format: double
+        unit:
+          type: string
+        totalLabor:
+          type: number
+          format: double
+        totalMaterial:
+          type: number
+          format: double
+        total:
+          type: number
+          format: double
+
+    MaterialPlan:
+      type: object
+      required: [materialCode, name, unit, plannedQty, purchasedQty, usedQty, leftoverQty]
+      properties:
+        materialCode:
+          type: string
+        name:
+          type: string
+        unit:
+          type: string
+        plannedQty:
+          type: number
+          format: double
+        purchasedQty:
+          type: number
+          format: double
+        usedQty:
+          type: number
+          format: double
+        leftoverQty:
+          type: number
+          format: double
+
+    EstimateRecalculateResponse:
+      type: object
+      required: [projectId, totalLabor, totalMaterial, total, items, materials]
+      properties:
+        projectId:
+          type: string
+          format: uuid
+        totalLabor:
+          type: number
+          format: double
+        totalMaterial:
+          type: number
+          format: double
+        total:
+          type: number
+          format: double
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/EstimateItemSummary"
+        materials:
+          type: array
+          items:
+            $ref: "#/components/schemas/MaterialPlan"
+
+    MaterialVarianceItem:
+      allOf:
+        - $ref: "#/components/schemas/MaterialPlan"
+        - type: object
+          required: [purchaseDelta, usageDelta]
+          properties:
+            purchaseDelta:
+              type: number
+              format: double
+            usageDelta:
+              type: number
+              format: double
+
+    MaterialVarianceResponse:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/MaterialVarianceItem"
+
+    ReceiptResponse:
+      type: object
+      required: [id, projectId, imageUrl, ocrStatus]
+      properties:
+        id:
+          type: string
+          format: uuid
+        projectId:
+          type: string
+          format: uuid
+        vendor:
+          type: string
+        receiptDate:
+          type: string
+          format: date
+        total:
+          type: number
+          format: double
+        vat:
+          type: number
+          format: double
+        imageUrl:
+          type: string
+        ocrStatus:
+          type: string
+          enum: [new, parsed, verified]
+
+    ReceiptUploadResponse:
+      type: object
+      required: [receipt]
+      properties:
+        receipt:
+          $ref: "#/components/schemas/ReceiptResponse"
+
+    ReceiptLineResponse:
+      type: object
+      required: [id, rawText, qty, lineTotal]
+      properties:
+        id:
+          type: string
+          format: uuid
+        rawText:
+          type: string
+        qty:
+          type: number
+          format: double
+        unit:
+          type: string
+        unitPrice:
+          type: number
+          format: double
+        lineTotal:
+          type: number
+          format: double
+        matchedMaterialCode:
+          type: string
+          nullable: true
+        confidence:
+          type: number
+          format: double
+
+    ReceiptOCRResponse:
+      type: object
+      required: [receipt, lines]
+      properties:
+        receipt:
+          $ref: "#/components/schemas/ReceiptResponse"
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReceiptLineResponse"
+
+    ReceiptLineMatchRequest:
+      type: object
+      required: [materialCode]
+      properties:
+        materialCode:
+          type: string
+
+    TimelineCreateRequest:
+      type: object
+      required: [type]
+      properties:
+        roomId:
+          type: string
+          format: uuid
+          nullable: true
+        type:
+          $ref: "#/components/schemas/TimelineType"
+        text:
+          type: string
+        eventAt:
+          type: string
+          format: date-time
+        geoLat:
+          type: number
+          format: double
+        geoLng:
+          type: number
+          format: double
+
+    TimelineEntryResponse:
+      allOf:
+        - $ref: "#/components/schemas/TimelineCreateRequest"
+        - type: object
+          required: [id, projectId]
+          properties:
+            id:
+              type: string
+              format: uuid
+            projectId:
+              type: string
+              format: uuid
+
+    TimelineListResponse:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/TimelineEntryResponse"
+
+    DocumentGenerateRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          $ref: "#/components/schemas/DocumentType"
+        payload:
+          type: object
+          additionalProperties: true
+
+    DocumentResponse:
+      type: object
+      required: [id, projectId, type, version, status]
+      properties:
+        id:
+          type: string
+          format: uuid
+        projectId:
+          type: string
+          format: uuid
+        type:
+          $ref: "#/components/schemas/DocumentType"
+        version:
+          type: integer
+        status:
+          type: string
+          enum: [draft, sent, signed]
+        pdfUrl:
+          type: string
+          nullable: true
+        signedPdfUrl:
+          type: string
+          nullable: true
+
+    DrawSignatureRequest:
+      type: object
+      required: [signerName, signerRole, signatureImageBase64]
+      properties:
+        signerName:
+          type: string
+        signerRole:
+          $ref: "#/components/schemas/SignRole"
+        signatureImageBase64:
+          type: string
+          description: PNG/JPEG base64 saturs
+
+    QualifiedSignStartRequest:
+      type: object
+      required: [provider, signerName, signerRole, returnUrl]
+      properties:
+        provider:
+          type: string
+          enum: [smartid, eparaksts]
+        signerName:
+          type: string
+        signerRole:
+          $ref: "#/components/schemas/SignRole"
+        returnUrl:
+          type: string
+          format: uri
+
+    QualifiedSignStartResponse:
+      type: object
+      required: [transactionId, redirectUrl]
+      properties:
+        transactionId:
+          type: string
+        redirectUrl:
+          type: string
+          format: uri
+
+    QualifiedSignCallbackRequest:
+      type: object
+      required: [provider, transactionId, status]
+      properties:
+        provider:
+          type: string
+          enum: [smartid, eparaksts]
+        transactionId:
+          type: string
+        status:
+          type: string
+          enum: [success, failed, cancelled]
+        signedPdfUrl:
+          type: string
+          format: uri
+          nullable: true
+
+    DisputeExportResponse:
+      type: object
+      required: [downloadUrl, expiresAt]
+      properties:
+        downloadUrl:
+          type: string
+          format: uri
+        expiresAt:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
