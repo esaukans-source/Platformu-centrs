@@ -1,0 +1,6 @@
+{
+  "provider": "smartid",
+  "signerName": "Janis Berzins",
+  "signerRole": "client",
+  "returnUrl": "https://example.com/sign-return"
+}

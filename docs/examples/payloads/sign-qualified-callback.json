@@ -1,0 +1,6 @@
+{
+  "provider": "smartid",
+  "transactionId": "txn_123456789",
+  "status": "success",
+  "signedPdfUrl": "https://cdn.example.com/docs/signed-doc.pdf"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "handover",
+  "payload": {
+    "title": "Darbu posma pienemsanas akts",
+    "scope": "Sienu un griestu spaktele + krasosana",
+    "amount": 1450,
+    "currency": "EUR"
+  }
+}
