@@ -493,6 +493,34 @@ section.block {
   font-weight: 600;
 }
 
+.label-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.field-help {
+  width: 1.08rem;
+  height: 1.08rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid #b8c9be;
+  color: #315845;
+  background: #f2f8f4;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: help;
+  line-height: 1;
+}
+
+.field-help:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.2);
+}
+
 .room-grid input,
 .room-grid select {
   border: 1px solid var(--line);
@@ -523,7 +551,7 @@ section.block {
 .result-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 720px;
+  min-width: 980px;
 }
 
 .result-table th,
@@ -549,6 +577,91 @@ section.block {
 .sys-grid p,
 .totals p {
   margin: 0.16rem 0;
+}
+
+.status-panel {
+  margin-bottom: 0.8rem;
+}
+
+.status-panel h4,
+.missing-data-box h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.98rem;
+}
+
+.status-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.55rem;
+}
+
+.status-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.48rem 0.55rem;
+}
+
+.status-item-title {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #3b4a42;
+}
+
+.status-item-state {
+  margin: 0.13rem 0;
+  font-weight: 700;
+  font-size: 0.93rem;
+}
+
+.status-item-note {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #4f5d55;
+}
+
+.status-ok {
+  background: #edf9f1;
+  border-color: #a7d9b4;
+}
+
+.status-range {
+  background: #fff8eb;
+  border-color: #e5c98d;
+}
+
+.status-review {
+  background: #fff0f0;
+  border-color: #e5a5a5;
+}
+
+.missing-data-box {
+  margin-top: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e7c6c6;
+  background: #fff7f7;
+}
+
+.missing-data-box p {
+  margin: 0 0 0.42rem;
+}
+
+.missing-list {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.missing-list li {
+  margin: 0.15rem 0;
+}
+
+.missing-critical {
+  color: #9b1c1c;
+  font-weight: 600;
+}
+
+.missing-warning {
+  color: #8a5300;
 }
 
 .totals {
