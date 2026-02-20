@@ -3,3 +3,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+/maintenance.html
+  Cache-Control: no-store, max-age=0
+  X-Robots-Tag: noindex, nofollow
