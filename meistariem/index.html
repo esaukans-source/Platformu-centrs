@@ -1,137 +1,19 @@
 <!doctype html>
 <html lang="lv">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meistariem | Reģistrācija un abonements</title>
-  <meta name="description" content="Reģistrējies kā meistars un uzreiz aktivizē abonementu ar Stripe." />
-  <link rel="canonical" href="https://www.30sek24.com/meistariem" />
-  <link rel="stylesheet" href="/assets/styles.css" />
+<head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Meistariem | Reģistrācija</title> <meta name="description" content="Reģistrējies kā meistars un saņem piekļuvi platformai bez piekļuves līmeņiem." /> <link rel="canonical" href="https://www.30sek24.com/meistariem" /> <link rel="stylesheet" href="/assets/styles.css" />
 </head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <a href="/" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a>
-      <nav class="nav">
-        <a href="/cenas">Cenas</a>
-        <a href="/maksajumi">Maksājumi</a>
-        <a href="/meistariem">Meistariem</a>
-        <a href="/noteikumi">Noteikumi</a>
-        <a href="/privatums">Privātums</a>
-      </nav>
-    </div>
-  </header>
-
-  <nav aria-label="Breadcrumb" class="breadcrumbs"><div class="container"><a href="/">Sākums</a> / <span>Meistariem</span></div></nav>
-
-  <main>
-    <section class="hero">
-      <h1>Reģistrācija meistariem</h1>
-      <p>Aizpildi pamatinformāciju un uzreiz aktivizē savu plānu. Saite nav jāsūta manuāli.</p>
-    </section>
-
-    <section class="block">
-      <form class="lead-form" name="contractor-signup-lv" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/paldies">
-        <input type="hidden" name="form-name" value="contractor-signup-lv" />
-        <input type="hidden" name="bot-field" />
-        <label>Vārds un uzvārds
-          <input type="text" name="name" required />
-        </label>
-        <label>Tālrunis
-          <input type="tel" name="phone" required />
-        </label>
-        <label>E-pasts
-          <input type="email" name="email" required />
-        </label>
-        <label>Pakalpojuma kategorija
-          <select name="category" required>
-            <option value="">Izvēlies kategoriju</option>
-            <option>Santehniķis</option>
-            <option>Elektriķis</option>
-            <option>Apkure</option>
-            <option>Iekšējā apdare</option>
-            <option>Namdari</option>
-            <option>Galdnieki</option>
-            <option>Koka māju būvniecība</option>
-            <option>Pamatu būvniecība / betonēšana</option>
-            <option>Jumiķi</option>
-            <option>Ārdarbi (ieskaitot bruģēšanu)</option>
-            <option>Celtniecības traktortehnika</option>
-            <option>Demontāžas darbi</option>
-            <option>Avārijas darbi 24/7</option>
-          </select>
-        </label>
-        <label>Darbības zona
-          <input type="text" name="work_zone" required />
-        </label>
-        <p class="note">Pēc formas iesniegšanas izvēlies savu plānu un apmaksā tiešsaistē:</p>
-        <div class="cta-row">
-          <a class="btn" href="https://buy.stripe.com/14A5kFbbwb2E0RxaQc8og03" target="_blank" rel="noopener">Aktivizēt Basic (29 €)</a>
-          <a class="btn" href="https://buy.stripe.com/eVqfZjdjE7Qs57NbUg8og02" target="_blank" rel="noopener">Aktivizēt Pro (79 €)</a>
-          <a class="btn" href="https://buy.stripe.com/7sY8wR93ofiU1VB7E08og01" target="_blank" rel="noopener">Aktivizēt 24/7 (149 €)</a>
-          <a class="btn" href="#profils-galerija">Tikai profils + galerija</a>
-        </div>
-      </form>
-    </section>
-
-    <section class="block" id="profils-galerija">
-      <h2>Meistara profils ar galeriju (bez abonementa)</h2>
-      <p>Ja vēlies tikai prezentēt sevi platformā, vari iesniegt profilu ar darbu bildēm un aprakstu.</p>
-      <form class="lead-form" name="contractor-profile-lv" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/paldies">
-        <input type="hidden" name="form-name" value="contractor-profile-lv" />
-        <input type="hidden" name="bot-field" />
-        <label>Vārds un uzvārds
-          <input type="text" name="name" required />
-        </label>
-        <label>Tālrunis
-          <input type="tel" name="phone" required />
-        </label>
-        <label>E-pasts
-          <input type="email" name="email" required />
-        </label>
-        <label>Specializācija
-          <input type="text" name="specialization" required />
-        </label>
-        <label>Par sevi / pieredze
-          <textarea name="about" rows="5" required></textarea>
-        </label>
-        <label>Darbu bildes (JPG/PNG)
-          <input type="file" name="portfolio_photos" accept="image/*" multiple required />
-        </label>
-        <label>Instagram/Facebook vai mājaslapas saite (nav obligāti)
-          <input type="url" name="portfolio_link" />
-        </label>
-        <button type="submit" class="btn">Iesniegt profilu</button>
-      </form>
-    </section>
-
-    <section class="block" id="darbs-arvalstis">
-      <h2>Tiešā saziņa ar ārvalstu celtniecības firmu vadītājiem</h2>
-      <p>Vēlies strādāt ārvalstīs? Piesakies bez starpniekiem un saņem tiešus darba piedāvājumus no uzņēmumu vadītājiem.</p>
-      <div class="cta-row">
-        <a class="btn" href="/arvalstis">Atvērt sadaļu “Darbs ārzemēs”</a>
-      </div>
-      <form class="lead-form" name="foreign-direct-short-lv" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/paldies">
-        <input type="hidden" name="form-name" value="foreign-direct-short-lv" />
-        <input type="hidden" name="bot-field" />
-        <label>Vārds un uzvārds
-          <input type="text" name="name" required />
-        </label>
-        <label>Tālrunis
-          <input type="tel" name="phone" required />
-        </label>
-        <label>E-pasts
-          <input type="email" name="email" required />
-        </label>
-        <label>Specializācija
-          <input type="text" name="specialization" required />
-        </label>
-        <label>Valstis, kur vēlies strādāt
-          <input type="text" name="countries" required />
-        </label>
-        <button type="submit" class="btn">Pieteikties darbam ārzemēs</button>
-      </form>
-    </section>
-  </main>
+<body> <header class="site-header"> <div class="container"> <a href="/" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a> <nav class="nav"> <a href="/meistariem">Meistariem</a> <a href="/noteikumi">Noteikumi</a> <a href="/privatums">Privātums</a> </nav> </div> </header> <nav aria-label="Breadcrumb" class="breadcrumbs"><div class="container"><a href="/">Sākums</a> / <span>Meistariem</span></div></nav> <main> <section class="hero"> <h1>Reģistrācija meistariem</h1> <p>Aizpildi pamatinformāciju un saņem pilnu piekļuvi platformai bez plānu aktivizācijas.</p> </section> <section class="block"> <form class="lead-form" name="contractor-signup-lv" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/paldies"> <input type="hidden" name="form-name" value="contractor-signup-lv" /> <input type="hidden" name="bot-field" /> <label>Vārds un uzvārds
+          <input type="text" name="name" required /> </label> <label>Tālrunis
+          <input type="tel" name="phone" required /> </label> <label>E-pasts
+          <input type="email" name="email" required /> </label> <label>Pakalpojuma kategorija
+          <select name="category" required> <option value="">Izvēlies kategoriju</option> <option>Santehniķis</option> <option>Elektriķis</option> <option>Apkure</option> <option>Iekšējā apdare</option> <option>Namdari</option> <option>Galdnieki</option> <option>Koka māju būvniecība</option> <option>Pamatu būvniecība / betonēšana</option> <option>Jumiķi</option> <option>Ārdarbi (ieskaitot bruģēšanu)</option> <option>Celtniecības traktortehnika</option> <option>Demontāžas darbi</option> <option>Avārijas darbi 24/7</option> </select> </label> <label>Darbības zona
+          <input type="text" name="work_zone" required /> </label> <p class="note">Pēc formas iesniegšanas profils tiek pārskatīts un aktivizēts bez papildu aktivizācijas soļiem.</p> </form> </section> <section class="block" id="profils-galerija"> <h2>Meistara profils ar galeriju</h2> <p>Ja vēlies tikai prezentēt sevi platformā, vari iesniegt profilu ar darbu bildēm un aprakstu.</p> <form class="lead-form" name="contractor-profile-lv" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/paldies"> <input type="hidden" name="form-name" value="contractor-profile-lv" /> <input type="hidden" name="bot-field" /> <label>Vārds un uzvārds
+          <input type="text" name="name" required /> </label> <label>Tālrunis
+          <input type="tel" name="phone" required /> </label> <label>E-pasts
+          <input type="email" name="email" required /> </label> <label>Specializācija
+          <input type="text" name="specialization" required /> </label> <label>Par sevi / pieredze
+          <textarea name="about" rows="5" required></textarea> </label> <label>Darbu bildes (JPG/PNG)
+          <input type="file" name="portfolio_photos" accept="image/*" multiple required /> </label> <label>Instagram/Facebook vai mājaslapas saite (nav obligāti)
+          <input type="url" name="portfolio_link" /> </label> <button type="submit" class="btn">Iesniegt profilu</button> </form> </section> </main>
 </body>
 </html>

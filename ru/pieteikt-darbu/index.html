@@ -1,125 +1,19 @@
 <!doctype html>
 <html lang="ru">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Оставить заявку | 30Sek</title><meta name="description" content="Оставьте заявку и получите предложения от доступных мастеров." /><link rel="canonical" href="https://www.30sek24.com/ru/pieteikt-darbu" /><link rel="stylesheet" href="/assets/styles.css" /></head>
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Оставить заявку || 30Sek</title><meta name="description" content="Оставьте заявку и получите предложения от доступных мастеров." /><link rel="canonical" href="https://www.30sek24.com/ru/pieteikt-darbu" /><link rel="stylesheet" href="/assets/styles.css" /></head>
 <body>
-<header class="site-header"><div class="container"><a href="/ru" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a><nav class="nav"><a href="/ru/cenas">Тарифы</a><a href="/ru/maksajumi">Оплата</a><a href="/ru/noteikumi">Правила</a><a href="/ru/privatums">Конфиденциальность</a><a href="/pieteikt-darbu" class="lang-switch">LV</a><a href="/en/pieteikt-darbu" class="lang-switch">EN</a><a href="/de/pieteikt-darbu" class="lang-switch">DE</a><a href="/pl" class="lang-switch">PL</a></nav></div></header>
+<header class="site-header"><div class="container"><a href="/ru" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a><nav class="nav"><a href="/ru/noteikumi">Правила</a><a href="/ru/privatums">Конфиденциальность</a><label class="lang-picker" aria-label="Language"><select aria-label="Language picker"><option value="/pieteikt-darbu?lang=lv" data-lang="lv">LV</option><option value="/en/pieteikt-darbu?lang=en" data-lang="en">EN</option><option value="/ru/pieteikt-darbu?lang=ru" data-lang="ru" selected>RU</option><option value="/de/pieteikt-darbu?lang=de" data-lang="de">DE</option><option value="/pl/pieteikt-darbu?lang=pl" data-lang="pl">PL</option></select></label></nav></div></header>
 <nav aria-label="Breadcrumb" class="breadcrumbs"><div class="container"><a href="/ru">Главная</a> / <span>Оставить заявку</span></div></nav>
-<main>
-  <section class="hero"><h1>Оставить заявку</h1><p>Заполните форму, и мы передадим заявку подходящим мастерам.</p></section>
-  <section class="block">
-    <form class="lead-form" id="form-ru" name="work-request-ru" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/ru/spasibo">
-      <input type="hidden" name="form-name" value="work-request-ru" />
-      <input type="hidden" name="bot-field" />
-      <label>Имя и фамилия
-        <input type="text" name="name" required />
-      </label>
-      <label>Телефон
-        <input type="tel" name="phone" required />
-      </label>
-      <label>Email
-        <input type="email" name="email" required />
-      </label>
-      <label>Услуга
-        <select name="service" required id="service-ru">
-          <option value="">Выберите услугу</option>
-          <option>Сантехник</option>
-          <option>Электрик</option>
-          <option>Отопление</option>
-          <option>Внутренняя отделка</option>
-          <option>Плотники</option>
-          <option>Столяры</option>
-          <option>Фундаменты / бетонные работы</option>
-          <option>Кровельщики</option>
-          <option>Наружные работы</option>
-          <option>Строительная спецтехника</option>
-          <option>Снабжение и доставка</option>
-          <option>Переезд и перевозка</option>
-          <option>Специалисты по уборке после ремонта</option>
-          <option>Услуги дизайнера и консультация</option>
-          <option>Агент по продаже после ремонта</option>
-          <option>Демонтажные работы</option>
-          <option>Аварийные работы 24/7</option>
-        </select>
-      </label>
-      <label>Адрес или город
-        <input type="text" name="location" required />
-      </label>
-      <label>Описание
-        <textarea name="message" rows="5" required></textarea>
-      </label>
-      <label>Фото (JPG/PNG)
-        <input type="file" name="photos" accept="image/*" multiple id="photos-ru" />
-      </label>
-      <div id="photos-preview-ru" class="media-preview"></div>
-      <label>Видео (MP4/MOV)
-        <input type="file" name="video" accept="video/*" id="video-ru" />
-      </label>
-      <div id="video-preview-ru" class="media-preview"></div>
-      <p class="note">Если выбраны "Аварийные работы 24/7", фото и видео обязательны.</p>
-      <p class="note">Файлы отправляются вместе с заявкой, чтобы мастера могли оценить ситуацию.</p>
-      <p class="note">Лимиты файлов: фото до 10MB (каждое), видео до 50MB.</p>
-      <p id="error-ru" class="form-error"></p>
-      <button type="submit" class="btn">Отправить заявку</button>
-    </form>
-  </section>
+<main> <section class="hero"><h1>Оставить заявку</h1><p>Заполните форму, и мы передадим заявку подходящим мастерам.</p></section> <section class="block"> <form class="lead-form" id="form-ru" name="work-request-ru" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/ru/spasibo"> <input type="hidden" name="form-name" value="work-request-ru" /> <input type="hidden" name="bot-field" /> <label>Имя и фамилия
+        <input type="text" name="name" required /> </label> <label>Телефон
+        <input type="tel" name="phone" required /> </label> <label>Email
+        <input type="email" name="email" required /> </label> <label>Услуга
+        <select name="service" required id="service-ru"> <option value="">Выберите услугу</option> <option>Сантехник</option> <option>Электрик</option> <option>Отопление</option> <option>Внутренняя отделка</option> <option>Плотники</option> <option>Столяры</option> <option>Фундаменты / бетонные работы</option> <option>Кровельщики</option> <option>Наружные работы</option> <option>Строительная спецтехника</option> <option>Снабжение и доставка</option> <option>Переезд и перевозка</option> <option>Специалисты по уборке после ремонта</option> <option>Услуги дизайнера и консультация</option> <option>Агент по продаже после ремонта</option> <option>Демонтажные работы</option> <option>Аварийные работы 24/7</option> </select> </label> <label>Адрес или город
+        <input type="text" name="location" required /> </label> <label>Описание
+        <textarea name="message" rows="5" required></textarea> </label> <label>Фото (JPG/PNG)
+        <input type="file" name="photos" accept="image/*" multiple id="photos-ru" /> </label> <div id="photos-preview-ru" class="media-preview"></div> <label>Видео (MP4/MOV)
+        <input type="file" name="video" accept="video/*" id="video-ru" /> </label> <div id="video-preview-ru" class="media-preview"></div> <p class="note">Если выбраны "Аварийные работы 24/7", фото и видео обязательны.</p> <p class="note">Файлы отправляются вместе с заявкой, чтобы мастера могли оценить ситуацию.</p> <p class="note">Лимиты файлов: фото до 10MB (каждое), видео до 50MB.</p> <p id="error-ru" class="form-error"></p> <button type="submit" class="btn">Отправить заявку</button> </form> </section>
 </main>
-<script>
-  (function () {
-    var service = document.getElementById("service-ru");
-    var photos = document.getElementById("photos-ru");
-    var video = document.getElementById("video-ru");
-    var photosPreview = document.getElementById("photos-preview-ru");
-    var videoPreview = document.getElementById("video-preview-ru");
-    var form = document.getElementById("form-ru");
-    var error = document.getElementById("error-ru");
-    if (!service || !photos || !video || !photosPreview || !videoPreview || !form || !error) return;
-    var MAX_IMAGE_BYTES = 10 * 1024 * 1024;
-    var MAX_VIDEO_BYTES = 50 * 1024 * 1024;
-    function toggleRequired() {
-      var emergency = (service.value || "").indexOf("24/7") !== -1;
-      photos.required = emergency;
-      video.required = emergency;
-    }
-    function renderPhotos() {
-      photosPreview.innerHTML = "";
-      if (!photos.files || photos.files.length === 0) return;
-      Array.prototype.slice.call(photos.files, 0, 6).forEach(function (file) {
-        var img = document.createElement("img");
-        img.src = URL.createObjectURL(file);
-        img.alt = file.name;
-        img.className = "preview-thumb";
-        photosPreview.appendChild(img);
-      });
-    }
-    function renderVideo() {
-      videoPreview.innerHTML = "";
-      if (!video.files || video.files.length === 0) return;
-      var v = document.createElement("video");
-      v.controls = true;
-      v.className = "preview-video";
-      v.src = URL.createObjectURL(video.files[0]);
-      videoPreview.appendChild(v);
-    }
-    service.addEventListener("change", toggleRequired);
-    photos.addEventListener("change", renderPhotos);
-    video.addEventListener("change", renderVideo);
-    form.addEventListener("submit", function (e) {
-      error.textContent = "";
-      if (photos.files && photos.files.length) {
-        for (var i = 0; i < photos.files.length; i++) {
-          if (photos.files[i].size > MAX_IMAGE_BYTES) {
-            e.preventDefault();
-            error.textContent = "Каждое фото должно быть не больше 10MB.";
-            return;
-          }
-        }
-      }
-      if (video.files && video.files[0] && video.files[0].size > MAX_VIDEO_BYTES) {
-        e.preventDefault();
-        error.textContent = "Видео должно быть не больше 50MB.";
-      }
-    });
-    toggleRequired();
-  })();
-</script>
+<script src="/assets/request-form.js"></script>
+<script src="/assets/language-switcher.js"></script>
 </body></html>
