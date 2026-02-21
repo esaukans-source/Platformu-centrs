@@ -10,14 +10,16 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <a href="/" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a>
-      <nav class="nav">
-        <a href="/">Sākums</a>
-        <a href="/pakalpojumi">Nozares</a>
-        <a href="/noteikumi">Noteikumi</a>
-        <a href="/privatums">Privātums</a>
-        <a href="/pieteikt-darbu" class="btn">Iesniegt pieteikumu</a>
+    <div class="container site-header-main">
+      <a href="/" class="logo brand-lockup"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /><span class="logo-wordmark">30Sek</span></a>
+      <nav class="nav nav-primary">
+        <a href="/pakalpojumi">Pakalpojumi</a>
+        <a href="/kalkulators">Kalkulatori</a>
+        <a href="/#ka-tas-strada">Kā tas strādā</a>
+        <a href="/meistariem">Meistariem</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/pieteikt-darbu" class="btn btn-nav">Iesniegt pieteikumu</a>
         <label class="lang-picker" aria-label="Valoda">
           <select aria-label="Valodas izvēle">
             <option value="/kalkulators?lang=lv" data-lang="lv" selected>LV</option>
@@ -27,7 +29,7 @@
             <option value="/pl/kalkulators?lang=pl" data-lang="pl">PL</option>
           </select>
         </label>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -36,9 +38,12 @@
   </nav>
 
   <main id="heat-calculator-root">
-    <section class="hero calc-hero">
+    <section class="hero calc-hero hero-premium">
       <h1>Siltuma tāmes kalkulators</h1>
       <p>Aprēķini jauktās sistēmas (radiatori + ūdens siltās grīdas), ģenerē BOM un eksportē PDF.</p>
+      <div class="cta-row">
+        <a class="btn btn-soft" href="/kalkulators/apdare">Atvērt iekšējās apdares kalkulatoru</a>
+      </div>
       <div class="mode-switch" role="tablist" aria-label="Aprēķina režīms">
         <button type="button" class="btn btn-soft active" data-mode="quick">Quick</button>
         <button type="button" class="btn btn-soft" data-mode="engineer">Engineer</button>

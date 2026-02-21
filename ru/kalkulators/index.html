@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Калькулятор тепловой сметы | 30Sek</title>
-  <meta name="description" content="Профессиональный калькулятор тепловой сметы: режимы Quick и Engineer, смешанные системы, BOM и экспорт PDF." />
+  <title>Строительные калькуляторы | 30Sek</title>
+  <meta name="description" content="Единая страница калькуляторов по категориям: отопление, сантехника, внутренняя отделка, оценка недвижимости, конструкции крыши и водосточные системы." />
   <link rel="canonical" href="https://www.30sek24.com/ru/kalkulators" />
   <link rel="stylesheet" href="/assets/styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <a href="/ru" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a>
-      <nav class="nav">
-        <a href="/ru">Главная</a>
-        <a href="/ru/pakalpojumi">Отрасли</a>
-        <a href="/ru/noteikumi">Правила</a>
-        <a href="/ru/privatums">Конфиденциальность</a>
-        <a href="/ru/pieteikt-darbu" class="btn">Оставить заявку</a>
+    <div class="container site-header-main">
+      <a href="/ru" class="logo brand-lockup"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /><span class="logo-wordmark">30Sek</span></a>
+      <nav class="nav nav-primary">
+        <a href="/ru/pakalpojumi">Услуги</a>
+        <a href="/ru/kalkulators">Калькуляторы</a>
+        <a href="/ru/#how-it-works">Как это работает</a>
+        <a href="/meistariem">Для мастеров</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/ru/pieteikt-darbu" class="btn btn-nav">Оставить заявку</a>
         <label class="lang-picker" aria-label="Язык">
           <select aria-label="Выбор языка">
             <option value="/kalkulators?lang=lv" data-lang="lv">LV</option>
@@ -27,120 +29,176 @@
             <option value="/pl/kalkulators?lang=pl" data-lang="pl">PL</option>
           </select>
         </label>
-      </nav>
+      </div>
     </div>
   </header>
 
   <nav aria-label="Breadcrumb" class="breadcrumbs">
-    <div class="container"><a href="/ru">Главная</a> / <span>Калькулятор тепловой сметы</span></div>
+    <div class="container"><a href="/ru">Главная</a> / <span>Строительные калькуляторы</span></div>
   </nav>
 
   <main id="heat-calculator-root">
-    <section class="hero calc-hero">
-      <h1>Калькулятор тепловой сметы</h1>
-      <p>Расчет смешанных систем (радиаторы + водяной теплый пол), генерация BOM и экспорт PDF.</p>
-      <div class="mode-switch" role="tablist" aria-label="Режим расчета">
-        <button type="button" class="btn btn-soft active" data-mode="quick">Quick</button>
-        <button type="button" class="btn btn-soft" data-mode="engineer">Engineer</button>
+    <section class="hero calc-hero hero-premium">
+      <h1>Строительные калькуляторы</h1>
+      <p>Одна страница с калькуляторами по категориям: отопление, сантехника, внутренняя отделка и другие разделы.</p>
+    </section>
+
+    <section class="block calc-categories-block">
+      <h2>Категории калькуляторов</h2>
+      <p class="note">Выберите категорию одним кликом.</p>
+      <div class="calc-category-tabs" role="tablist" aria-label="Категории калькуляторов">
+        <button type="button" class="btn btn-soft active" data-calc-category-btn="heating">Отопление</button>
+        <button type="button" class="btn btn-soft" data-calc-category-btn="plumbing">Сантехника</button>
+        <button type="button" class="btn btn-soft" data-calc-category-btn="interior">Внутренняя отделка</button>
+        <button type="button" class="btn btn-soft" data-calc-category-btn="property">Оценка недвижимости</button>
+        <button type="button" class="btn btn-soft" data-calc-category-btn="roof">Конструкции крыши</button>
+        <button type="button" class="btn btn-soft" data-calc-category-btn="drainage">Водосточные системы</button>
       </div>
-      <p class="note" id="mode-label">Режим Quick</p>
     </section>
 
-    <section class="block">
-      <h2>1) Параметры проекта</h2>
-      <form class="lead-form calc-grid" id="project-form" onsubmit="return false;">
-        <label>Название проекта
-          <input id="project-name" type="text" placeholder="Например: Частный дом, Рига" />
-        </label>
-        <label>Тип объекта
-          <select id="project-object-type">
-            <option value="apartment">Квартира</option>
-            <option value="private_house">Частный дом</option>
-          </select>
-        </label>
-        <label>Источник тепла
-          <select id="project-heat-source">
-            <option value="gas_boiler">Газовый котел</option>
-            <option value="pellet_boiler">Пеллетный котел</option>
-            <option value="heat_pump">Тепловой насос</option>
-            <option value="district">Центральное теплоснабжение</option>
-          </select>
-        </label>
-        <label>Схема системы
-          <select id="project-scheme">
-            <option value="mixed">Радиаторы + UFH со смешением</option>
-          </select>
-        </label>
+    <section class="calc-module is-active" data-calc-category="heating">
+      <section class="block">
+        <header class="calc-section-head">
+          <h2>Калькулятор отопления</h2>
+          <div class="mode-switch" role="tablist" aria-label="Режим расчета">
+            <button type="button" class="btn btn-soft active" data-mode="quick">Quick</button>
+            <button type="button" class="btn btn-soft" data-mode="engineer">Engineer</button>
+          </div>
+        </header>
+        <p class="note" id="mode-label">Режим Quick</p>
+      </section>
 
-        <label>Внутренняя температура θint (°C)
-          <input id="project-theta-int" type="number" step="0.1" min="15" max="26" />
-        </label>
-        <label>Наружная температура θe (°C)
-          <input id="project-theta-ext" type="number" step="0.1" min="-40" max="10" />
-        </label>
+      <section class="block">
+        <h2>1) Параметры проекта</h2>
+        <form class="lead-form calc-grid" id="project-form" onsubmit="return false;">
+          <label>Название проекта
+            <input id="project-name" type="text" placeholder="Например: Частный дом, Рига" />
+          </label>
+          <label>Тип объекта
+            <select id="project-object-type">
+              <option value="apartment">Квартира</option>
+              <option value="private_house">Частный дом</option>
+            </select>
+          </label>
+          <label>Источник тепла
+            <select id="project-heat-source">
+              <option value="gas_boiler">Газовый котел</option>
+              <option value="pellet_boiler">Пеллетный котел</option>
+              <option value="heat_pump">Тепловой насос</option>
+              <option value="district">Центральное теплоснабжение</option>
+            </select>
+          </label>
+          <label>Схема системы
+            <select id="project-scheme">
+              <option value="mixed">Радиаторы + UFH со смешением</option>
+            </select>
+          </label>
 
-        <label>Профиль радиаторов
-          <select id="project-radiator-profile">
-            <option value="70/55">70/55</option>
-            <option value="60/45">60/45</option>
-            <option value="55/45">55/45</option>
-            <option value="50/40">50/40</option>
-          </select>
-        </label>
-        <label>Профиль UFH
-          <select id="project-ufh-profile">
-            <option value="35/28">35/28</option>
-            <option value="40/32">40/32</option>
-            <option value="45/35">45/35</option>
-          </select>
-        </label>
+          <label>Внутренняя температура θint (°C)
+            <input id="project-theta-int" type="number" step="0.1" min="15" max="26" />
+          </label>
+          <label>Наружная температура θe (°C)
+            <input id="project-theta-ext" type="number" step="0.1" min="-40" max="10" />
+          </label>
 
-        <label>ΔT радиаторы (K)
-          <input id="project-radiator-delta" type="number" min="5" step="1" />
-        </label>
-        <label>ΔT UFH (K)
-          <input id="project-ufh-delta" type="number" min="3" step="1" />
-        </label>
+          <label>Профиль радиаторов
+            <select id="project-radiator-profile">
+              <option value="70/55">70/55</option>
+              <option value="60/45">60/45</option>
+              <option value="55/45">55/45</option>
+              <option value="50/40">50/40</option>
+            </select>
+          </label>
+          <label>Профиль UFH
+            <select id="project-ufh-profile">
+              <option value="35/28">35/28</option>
+              <option value="40/32">40/32</option>
+              <option value="45/35">45/35</option>
+            </select>
+          </label>
 
-        <label>Количество людей (DHW)
-          <input id="project-occupants" type="number" min="1" step="1" />
-        </label>
-        <label>Резерв (%)
-          <input id="project-reserve" type="number" min="0" max="40" step="1" />
-        </label>
-        <label>Накладные (%)
-          <input id="project-overhead" type="number" min="0" max="40" step="1" />
-        </label>
-        <label>Запас материалов (%)
-          <input id="project-waste" type="number" min="0" max="25" step="1" />
-        </label>
-        <label>Коэффициент работ
-          <input id="project-labor-factor" type="number" min="0.2" max="3" step="0.05" />
-        </label>
-        <label>Коэффициент материалов
-          <input id="project-material-factor" type="number" min="0.2" max="3" step="0.05" />
-        </label>
-      </form>
+          <label>ΔT радиаторы (K)
+            <input id="project-radiator-delta" type="number" min="5" step="1" />
+          </label>
+          <label>ΔT UFH (K)
+            <input id="project-ufh-delta" type="number" min="3" step="1" />
+          </label>
+
+          <label>Количество людей (DHW)
+            <input id="project-occupants" type="number" min="1" step="1" />
+          </label>
+          <label>Резерв (%)
+            <input id="project-reserve" type="number" min="0" max="40" step="1" />
+          </label>
+          <label>Накладные (%)
+            <input id="project-overhead" type="number" min="0" max="40" step="1" />
+          </label>
+          <label>Запас материалов (%)
+            <input id="project-waste" type="number" min="0" max="25" step="1" />
+          </label>
+          <label>Коэффициент работ
+            <input id="project-labor-factor" type="number" min="0.2" max="3" step="0.05" />
+          </label>
+          <label>Коэффициент материалов
+            <input id="project-material-factor" type="number" min="0.2" max="3" step="0.05" />
+          </label>
+        </form>
+      </section>
+
+      <section class="block">
+        <header class="calc-section-head">
+          <h2>2) Помещения и эмиттеры</h2>
+          <button type="button" id="add-room" class="btn btn-soft">+ Добавить комнату</button>
+        </header>
+        <div id="rooms-list" class="rooms-stack"></div>
+      </section>
+
+      <section class="block">
+        <header class="calc-section-head">
+          <h2>3) Расчет и результат</h2>
+          <div class="cta-row">
+            <button type="button" id="calculate-btn" class="btn">Рассчитать</button>
+            <button type="button" id="pdf-export" class="btn btn-soft" disabled>Экспорт PDF</button>
+          </div>
+        </header>
+        <p id="calc-error" class="form-error"></p>
+        <div id="calc-results" class="results-stack"></div>
+      </section>
     </section>
 
-    <section class="block">
-      <header class="calc-section-head">
-        <h2>2) Помещения и эмиттеры</h2>
-        <button type="button" id="add-room" class="btn btn-soft">+ Добавить комнату</button>
-      </header>
-      <div id="rooms-list" class="rooms-stack"></div>
+    <section class="calc-module" data-calc-category="plumbing" hidden>
+      <section class="block calc-coming-block">
+        <h2>Калькулятор сантехники</h2>
+        <p class="note">Скоро: расчеты трубопроводов, сантехнических узлов и материалов по помещениям.</p>
+      </section>
     </section>
 
-    <section class="block">
-      <header class="calc-section-head">
-        <h2>3) Расчет и результат</h2>
-        <div class="cta-row">
-          <button type="button" id="calculate-btn" class="btn">Рассчитать</button>
-          <button type="button" id="pdf-export" class="btn btn-soft" disabled>Экспорт PDF</button>
-        </div>
-      </header>
-      <p id="calc-error" class="form-error"></p>
-      <div id="calc-results" class="results-stack"></div>
+    <section class="calc-module" data-calc-category="interior" hidden>
+      <section class="block calc-coming-block">
+        <h2>Калькулятор внутренней отделки</h2>
+        <p class="note">Скоро: расчеты стен, потолков и полов с нормами расхода и сравнением затрат.</p>
+      </section>
+    </section>
+
+    <section class="calc-module" data-calc-category="property" hidden>
+      <section class="block calc-coming-block">
+        <h2>Оценка недвижимости</h2>
+        <p class="note">Скоро: техническая и рыночная оценка объекта с отчетом.</p>
+      </section>
+    </section>
+
+    <section class="calc-module" data-calc-category="roof" hidden>
+      <section class="block calc-coming-block">
+        <h2>Калькулятор конструкций крыши</h2>
+        <p class="note">Скоро: расчет площади крыши, конструкции и кровельных материалов с запасом.</p>
+      </section>
+    </section>
+
+    <section class="calc-module" data-calc-category="drainage" hidden>
+      <section class="block calc-coming-block">
+        <h2>Калькулятор водосточных систем</h2>
+        <p class="note">Скоро: расчет водостоков и отвода воды по геометрии крыши.</p>
+      </section>
     </section>
   </main>
 
@@ -156,6 +214,8 @@
   <script src="/assets/heat-calculator.js"></script>
   <script src="/assets/heat-calculator-pdf.js"></script>
   <script src="/assets/heat-calculator-ui.js"></script>
+  <script src="/assets/calculator-categories.js"></script>
+  <script src="/assets/multi-calculator-ui.js"></script>
   <script src="/assets/language-switcher.js"></script>
 </body>
 </html>

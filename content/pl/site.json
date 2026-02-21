@@ -1,0 +1,407 @@
+{
+  "lang": "pl",
+  "siteName": "30Sek",
+  "siteUrl": "https://www.30sek24.com",
+  "basePath": "/pl",
+  "title": "Platforma fachowcow w Europie | 30Sek",
+  "description": "Sprawdzeni fachowcy w Europie: ogrzewanie, elektryka, wykonczenie, dachy, fundamenty i awarie 24/7.",
+  "nav": [
+    {
+      "label": "Uslugi",
+      "href": "/pl/pakalpojumi"
+    },
+    {
+      "label": "Kalkulatory",
+      "href": "/pl/kalkulators"
+    },
+    {
+      "label": "Jak to dziala",
+      "href": "/pl/#how-it-works"
+    },
+    {
+      "label": "Dla fachowcow",
+      "href": "/meistariem"
+    }
+  ],
+  "navCta": {
+    "label": "Wyslij zgloszenie",
+    "href": "/pl/pieteikt-darbu"
+  },
+  "footer": {
+    "copyright": "© 2026 30Sek",
+    "contact": "Contact: e.saukans@gmail.com",
+    "links": [
+      {
+        "label": "Regulamin",
+        "href": "/pl/noteikumi"
+      },
+      {
+        "label": "Prywatnosc",
+        "href": "/pl/privatums"
+      }
+    ]
+  },
+  "home": {
+    "kicker": "Siec fachowcow w calej Europie",
+    "title": "Logiczna droga od zgloszenia do realizacji",
+    "lead": "Od pilnych napraw po pelne remonty: uporzadkowane zgloszenie i szybka odpowiedz.",
+    "primaryCta": {
+      "label": "Wyslij zgloszenie",
+      "href": "/pl/pieteikt-darbu"
+    },
+    "secondaryCta": {
+      "label": "Zobacz uslugi",
+      "href": "/pl/pakalpojumi"
+    },
+    "stats": [
+      {
+        "value": "24/7",
+        "label": "tryb awaryjny"
+      },
+      {
+        "value": "5",
+        "label": "jezyki wsparcia"
+      },
+      {
+        "value": "< 30 min",
+        "label": "cel pierwszej odpowiedzi"
+      }
+    ],
+    "trustPoints": [
+      "Przejrzysty proces od zgloszenia do realizacji",
+      "Wiele specjalizacji na jednej platformie",
+      "Kalkulatory do planowania zakresu i budzetu"
+    ],
+    "howItWorks": [
+      {
+        "title": "1) Opisz prace",
+        "text": "Wybierz usluge, dodaj foto/wideo i dane obiektu."
+      },
+      {
+        "title": "2) Otrzymaj odpowiedzi",
+        "text": "Przekazujemy zgloszenie fachowcom wedlug specjalizacji i dostepnosci."
+      },
+      {
+        "title": "3) Rozpocznij realizacje",
+        "text": "Uzgodnij termin i cene, potem przejdz do wykonania."
+      }
+    ]
+  },
+  "categories": [
+    {
+      "slug": "inzeniertikli",
+      "name": "Systemy techniczne",
+      "description": "Ogrzewanie, hydraulika i elektryka z naciskiem na niezawodnosc i bezpieczenstwo.",
+      "serviceSlugs": [
+        "santehnikis",
+        "elektrikis",
+        "apkure"
+      ]
+    },
+    {
+      "slug": "buvnieciba-konstrukcijas",
+      "name": "Budowa i konstrukcje",
+      "description": "Fundamenty, dachy, konstrukcje, demontaz i sprzet budowlany.",
+      "serviceSlugs": [
+        "pamati",
+        "jumiki",
+        "namdari",
+        "galdnieki",
+        "koka-maju-buvnieciba",
+        "demontaza",
+        "traktortehnika",
+        "sagade"
+      ]
+    },
+    {
+      "slug": "apdare-interjers",
+      "name": "Wykonczenie i wnętrza",
+      "description": "Jakosc wnetrz: wykonczenie, design, sprzatanie i przygotowanie do sprzedazy.",
+      "serviceSlugs": [
+        "apdare",
+        "dizaineri",
+        "uzkopsana-pec-remonta",
+        "uzfrisinasana-24h",
+        "agenti"
+      ]
+    },
+    {
+      "slug": "arejie-steidzamie",
+      "name": "Prace zewnetrzne i pilne",
+      "description": "Teren, przeprowadzki i interwencje awaryjne 24/7.",
+      "serviceSlugs": [
+        "ardarbi",
+        "parvaksanas",
+        "avarijas-darbi-24-7"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "slug": "santehnikis",
+      "name": "Plumber",
+      "categorySlug": "inzeniertikli",
+      "image": "https://images.pexels.com/photos/13939331/pexels-photo-13939331.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Book installation, repair, or emergency support for plumbing and drainage systems.",
+      "bullets": [
+        "Leak diagnostics",
+        "Fixture replacement",
+        "New line installation",
+        "Urgent callouts"
+      ],
+      "cta": "Request plumbing service"
+    },
+    {
+      "slug": "elektrikis",
+      "name": "Electrician",
+      "categorySlug": "inzeniertikli",
+      "image": "https://images.pexels.com/photos/35573433/pexels-photo-35573433.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Safe electrical works for apartments, houses, and commercial facilities.",
+      "bullets": [
+        "Network checks",
+        "New circuits",
+        "Distribution boards",
+        "Lighting solutions"
+      ],
+      "cta": "Request electrical service"
+    },
+    {
+      "slug": "apkure",
+      "name": "Heating",
+      "categorySlug": "inzeniertikli",
+      "image": "https://images.pexels.com/photos/8951846/pexels-photo-8951846.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Heating system installation, balancing, and upgrades with transparent cost planning.",
+      "bullets": [
+        "Boiler and heat-pump setups",
+        "Radiator and UFH loops",
+        "System balancing",
+        "Estimate calculators"
+      ],
+      "cta": "Request heating service"
+    },
+    {
+      "slug": "apdare",
+      "name": "Interior Finishing",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/11125354/pexels-photo-11125354.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Full-cycle interior works for residential and commercial spaces.",
+      "bullets": [
+        "Walls and ceilings",
+        "Tiling",
+        "Painting",
+        "Final handover finishing"
+      ],
+      "cta": "Request finishing service"
+    },
+    {
+      "slug": "namdari",
+      "name": "Carpenters",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/9180354/pexels-photo-9180354.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Structural woodwork and construction carpentry with precise execution.",
+      "bullets": [
+        "Frame structures",
+        "Load-bearing nodes",
+        "Terraces",
+        "Facade wood elements"
+      ],
+      "cta": "Request carpentry service"
+    },
+    {
+      "slug": "galdnieki",
+      "name": "Joiners",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/5974326/pexels-photo-5974326.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "High-quality joinery solutions for interior and structure-related needs.",
+      "bullets": [
+        "Custom pieces",
+        "Repair works",
+        "On-site installation",
+        "Material adaptation"
+      ],
+      "cta": "Request joinery service"
+    },
+    {
+      "slug": "koka-maju-buvnieciba",
+      "name": "Wood House Construction",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/803975/pexels-photo-803975.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Timber house projects from base structure to ready-for-handover stage.",
+      "bullets": [
+        "Frame projects",
+        "Assembly works",
+        "Insulation nodes",
+        "Exterior prep"
+      ],
+      "cta": "Request wood house project"
+    },
+    {
+      "slug": "pamati",
+      "name": "Foundations",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/36162728/pexels-photo-36162728.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Foundation construction, concreting, and structural base preparation.",
+      "bullets": [
+        "Ground preparation",
+        "Rebar and formwork",
+        "Slab and strip foundations",
+        "Concrete finishing"
+      ],
+      "cta": "Request foundation works"
+    },
+    {
+      "slug": "jumiki",
+      "name": "Roofers",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Roof repairs, replacements, and preventive works for private and commercial buildings.",
+      "bullets": [
+        "Cover replacement",
+        "Leak control",
+        "Rainwater systems",
+        "Waterproof node works"
+      ],
+      "cta": "Request roofing service"
+    },
+    {
+      "slug": "ardarbi",
+      "name": "Exterior Works",
+      "categorySlug": "arejie-steidzamie",
+      "image": "https://images.pexels.com/photos/17503520/pexels-photo-17503520.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Facades, fencing, and outdoor upgrades delivered in one coordinated flow.",
+      "bullets": [
+        "Facade works",
+        "Fences and gates",
+        "Outdoor area upgrades",
+        "Paving works"
+      ],
+      "cta": "Request exterior works"
+    },
+    {
+      "slug": "traktortehnika",
+      "name": "Construction Machinery",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/2138126/pexels-photo-2138126.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Machinery support for excavation, demolition prep, and site setup phases.",
+      "bullets": [
+        "Excavation",
+        "Leveling",
+        "Material movement",
+        "Site preparation"
+      ],
+      "cta": "Request machinery works"
+    },
+    {
+      "slug": "sagade",
+      "name": "Procurement and Delivery",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Material planning, sourcing, and delivery coordination aligned to project timelines.",
+      "bullets": [
+        "Estimate comparison",
+        "Delivery scheduling",
+        "Batch planning",
+        "Storage optimization"
+      ],
+      "cta": "Request procurement support"
+    },
+    {
+      "slug": "parvaksanas",
+      "name": "Moving Services",
+      "categorySlug": "arejie-steidzamie",
+      "image": "https://images.pexels.com/photos/7464707/pexels-photo-7464707.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Residential and office moving with safe packing and route coordination.",
+      "bullets": [
+        "Packing support",
+        "Transport",
+        "Heavy item handling",
+        "Route delivery"
+      ],
+      "cta": "Request moving service"
+    },
+    {
+      "slug": "uzkopsana-pec-remonta",
+      "name": "Post-Renovation Cleaning",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/4239116/pexels-photo-4239116.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Detailed post-renovation cleanup to prepare a site for handover or move-in.",
+      "bullets": [
+        "Dust and debris cleanup",
+        "Surface and sanitary cleaning",
+        "Window detailing",
+        "Final handover prep"
+      ],
+      "cta": "Request cleaning service"
+    },
+    {
+      "slug": "dizaineri",
+      "name": "Design Services",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Interior planning, style direction, and practical decisions aligned with execution.",
+      "bullets": [
+        "Layout recommendations",
+        "Material choices",
+        "Furniture and lighting guidance",
+        "Budget alignment"
+      ],
+      "cta": "Request design consultation"
+    },
+    {
+      "slug": "agenti",
+      "name": "Agent Services",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/7578988/pexels-photo-7578988.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Support for property positioning, preparation, and sale communication.",
+      "bullets": [
+        "Site valuation",
+        "Sales strategy",
+        "Presentation prep",
+        "Buyer communication"
+      ],
+      "cta": "Request agent consultation"
+    },
+    {
+      "slug": "demontaza",
+      "name": "Demolition",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://cdn.pixabay.com/photo/2024/02/08/22/47/excavator-8561968_1280.jpg",
+      "overview": "Controlled demolition for renovation starts and structural preparation.",
+      "bullets": [
+        "Wall and slab removal",
+        "Waste sorting",
+        "Site safety control",
+        "Preparation for next phase"
+      ],
+      "cta": "Request demolition works"
+    },
+    {
+      "slug": "uzfrisinasana-24h",
+      "name": "24h Property Refresh",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/8997941/pexels-photo-8997941.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Fast visual property refresh before sale, listing, or handover.",
+      "bullets": [
+        "Cosmetic fixes",
+        "Space staging",
+        "Presentation upgrades",
+        "24h delivery window"
+      ],
+      "cta": "Request 24h refresh"
+    },
+    {
+      "slug": "avarijas-darbi-24-7",
+      "name": "Emergency Work 24/7",
+      "categorySlug": "arejie-steidzamie",
+      "image": "https://images.pexels.com/photos/5052053/pexels-photo-5052053.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Rapid response for urgent water, electrical, heating, and structural incidents.",
+      "bullets": [
+        "Any-time callouts",
+        "Immediate stabilization",
+        "First safety actions",
+        "Follow-up repair planning"
+      ],
+      "cta": "Request emergency response"
+    }
+  ]
+}

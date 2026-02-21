@@ -1,16 +1,121 @@
 <!doctype html>
 <html lang="lv">
-<head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Pieteikt Darbu || 30Sek</title> <meta name="description" content="Iesniedz darba pieteikumu un saņem meistaru piedāvājumus." /> <link rel="canonical" href="https://www.30sek24.com/pieteikt-darbu" /> <link rel="stylesheet" href="/assets/styles.css" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pieteikt darbu | 30Sek</title>
+  <meta name="description" content="Iesniedz pieteikumu un saņem atbildes no pieejamiem meistariem." />
+  <meta name="lead-webhook-url" content="" />
+  <meta name="lead-webhook-mode" content="no-cors" />
+  <link rel="canonical" href="https://www.30sek24.com/pieteikt-darbu" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
-<body> <header class="site-header"> <div class="container"> <a href="/" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a> <nav class="nav"> <a href="/noteikumi">Noteikumi</a> <a href="/privatums">Privātums</a> <label class="lang-picker" aria-label="Language"><select aria-label="Language picker"><option value="/pieteikt-darbu?lang=lv" data-lang="lv" selected>LV</option><option value="/en/pieteikt-darbu?lang=en" data-lang="en">EN</option><option value="/ru/pieteikt-darbu?lang=ru" data-lang="ru">RU</option><option value="/de/pieteikt-darbu?lang=de" data-lang="de">DE</option><option value="/pl/pieteikt-darbu?lang=pl" data-lang="pl">PL</option></select></label> </nav> </div> </header> <nav aria-label="Breadcrumb" class="breadcrumbs"><div class="container"><a href="/">Sākums</a> / <span>Pieteikt darbu</span></div></nav> <main> <section class="hero"> <h1>Pieteikt darbu</h1> <p>Aizpildi formu, un mēs nodosim pieteikumu pieejamajiem meistariem.</p> </section> <section class="block"> <form class="lead-form" id="form-lv" name="work-request-lv" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/paldies"> <input type="hidden" name="form-name" value="work-request-lv" /> <input type="hidden" name="bot-field" /> <label>Vārds un uzvārds
-          <input type="text" name="name" required /> </label> <label>Tālrunis
-          <input type="tel" name="phone" required /> </label> <label>E-pasts
-          <input type="email" name="email" required /> </label> <label>Pakalpojums
-          <select name="service" required id="service-lv"> <option value="">Izvēlies pakalpojumu</option> <option>Santehniķis</option> <option>Elektriķis</option> <option>Apkure</option> <option>Iekšējā apdare</option> <option>Namdari</option> <option>Galdnieki</option> <option>Koka māju būvniecība</option> <option>Pamatu būvniecība / betonēšana</option> <option>Jumiķi</option> <option>Ārdarbi</option> <option>Celtniecības traktortehnika</option> <option>Sagāde un piegāde</option> <option>Pārvākšanās</option> <option>Apkopes speciālisti pēc remonta uzkopšanai</option> <option>Dizaineru pakalpojumi un saziņa</option> <option>Aģentu pakalpojumi īpašuma pārdošanai</option> <option>Demontāžas darbi</option> <option>Avārijas darbi 24/7</option> </select> </label> <label>Adrese vai pilsēta
-          <input type="text" name="location" required /> </label> <label>Apraksts
-          <textarea name="message" rows="5" required></textarea> </label> <label>Bildes (JPG/PNG)
-          <input type="file" name="photos" accept="image/*" multiple id="photos-lv" /> </label> <div id="photos-preview-lv" class="media-preview"></div> <label>Video (MP4/MOV)
-          <input type="file" name="video" accept="video/*" id="video-lv" /> </label> <div id="video-preview-lv" class="media-preview"></div> <p class="note">Ja izvēlies "Avārijas darbi 24/7", bilde un video ir obligāti.</p> <p class="note">Pievienotie faili tiks nosūtīti kopā ar pieteikumu meistariem.</p> <p class="note">Failu limiti: bilde līdz 10MB (katra), video līdz 50MB.</p> <p id="error-lv" class="form-error"></p> <button type="submit" class="btn">Iesniegt pieteikumu</button> </form> </section> </main> <script src="/assets/request-form.js"></script>
-<script src="/assets/language-switcher.js"></script>
+<body>
+  <header class="site-header">
+    <div class="container site-header-main">
+      <a href="/" class="logo brand-lockup"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /><span class="logo-wordmark">30Sek</span></a>
+      <nav class="nav nav-primary">
+        <a href="/pakalpojumi">Pakalpojumi</a>
+        <a href="/kalkulators">Kalkulatori</a>
+        <a href="/#ka-tas-strada">Kā tas strādā</a>
+        <a href="/meistariem">Meistariem</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-nav" href="/pieteikt-darbu">Iesniegt pieteikumu</a>
+        <label class="lang-picker" aria-label="Language">
+          <select aria-label="Language picker">
+            <option value="/pieteikt-darbu?lang=lv" data-lang="lv" selected>LV</option>
+            <option value="/en/pieteikt-darbu?lang=en" data-lang="en">EN</option>
+            <option value="/ru/pieteikt-darbu?lang=ru" data-lang="ru">RU</option>
+            <option value="/de/pieteikt-darbu?lang=de" data-lang="de">DE</option>
+            <option value="/pl/pieteikt-darbu?lang=pl" data-lang="pl">PL</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Breadcrumb" class="breadcrumbs">
+    <div class="container"><a href="/">Sākums</a> / <span>Pieteikt darbu</span></div>
+  </nav>
+
+  <main>
+    <section class="hero hero-premium compact-hero">
+      <p class="hero-kicker">Konversijas forma</p>
+      <h1>Pieteikt darbu</h1>
+      <p class="hero-lead">Aizpildi formu, pievieno foto/video un mēs pieteikumu nodosim atbilstošiem meistariem.</p>
+    </section>
+
+    <section class="block">
+      <form class="lead-form" id="form-lv" name="work-request-lv" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/paldies">
+        <input type="hidden" name="form-name" value="work-request-lv" />
+        <input type="hidden" name="bot-field" />
+
+        <label>Vārds un uzvārds
+          <input type="text" name="name" required />
+        </label>
+
+        <label>Tālrunis
+          <input type="tel" name="phone" required />
+        </label>
+
+        <label>E-pasts
+          <input type="email" name="email" required />
+        </label>
+
+        <label>Pakalpojums
+          <select name="service" required id="service-lv">
+            <option value="">Izvēlies pakalpojumu</option>
+            <option>Santehniķis</option>
+            <option>Elektriķis</option>
+            <option>Apkure</option>
+            <option>Iekšējā apdare</option>
+            <option>Namdari</option>
+            <option>Galdnieki</option>
+            <option>Koka māju būvniecība</option>
+            <option>Pamatu būvniecība / betonēšana</option>
+            <option>Jumiķi</option>
+            <option>Ārdarbi</option>
+            <option>Celtniecības traktortehnika</option>
+            <option>Sagāde un piegāde</option>
+            <option>Pārvākšanās</option>
+            <option>Apkopes speciālisti pēc remonta uzkopšanai</option>
+            <option>Dizaineru pakalpojumi un saziņa</option>
+            <option>Aģentu pakalpojumi īpašuma pārdošanai</option>
+            <option>Demontāžas darbi</option>
+            <option>Avārijas darbi 24/7</option>
+          </select>
+        </label>
+
+        <label>Adrese vai pilsēta
+          <input type="text" name="location" required />
+        </label>
+
+        <label>Apraksts
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+
+        <label>Bildes (JPG/PNG)
+          <input type="file" name="photos" accept="image/*" multiple id="photos-lv" />
+        </label>
+        <div id="photos-preview-lv" class="media-preview"></div>
+
+        <label>Video (MP4/MOV)
+          <input type="file" name="video" accept="video/*" id="video-lv" />
+        </label>
+        <div id="video-preview-lv" class="media-preview"></div>
+
+        <p class="note">Ja izvēlies "Avārijas darbi 24/7", bilde un video ir obligāti.</p>
+        <p class="note">Pievienotie faili tiks nosūtīti kopā ar pieteikumu meistariem.</p>
+        <p class="note">Failu limiti: bilde līdz 10MB (katra), video līdz 50MB.</p>
+
+        <p id="error-lv" class="form-error"></p>
+        <button type="submit" class="btn">Iesniegt pieteikumu</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/assets/request-form.js"></script>
+  <script src="/assets/language-switcher.js"></script>
 </body>
 </html>
