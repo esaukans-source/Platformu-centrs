@@ -14,8 +14,8 @@
   var lang = ((document.documentElement.lang || "lv") + "").toLowerCase().slice(0, 2);
   var messages = {
     lv: {
-      image: "Katra bilde drikst but lidz 10MB.",
-      video: "Video drikst but lidz 50MB."
+      image: "Katra bilde drīkst būt līdz 10MB.",
+      video: "Video drīkst būt līdz 50MB."
     },
     en: {
       image: "Each image must be 10MB or smaller.",

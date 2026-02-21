@@ -6,30 +6,66 @@
   "title": "Meistaru platforma Eiropā | 30Sek",
   "description": "Atrodi pārbaudītus meistarus Eiropā: apkure, elektrība, apdare, jumti, pamati un avārijas darbi 24/7.",
   "nav": [
-    { "label": "Pakalpojumi", "href": "/pakalpojumi" },
-    { "label": "Kalkulatori", "href": "/kalkulators" },
-    { "label": "Kā tas strādā", "href": "/#ka-tas-strada" },
-    { "label": "Meistariem", "href": "/meistariem" }
+    {
+      "label": "Pakalpojumi",
+      "href": "/pakalpojumi"
+    },
+    {
+      "label": "Kalkulatori",
+      "href": "/kalkulators"
+    },
+    {
+      "label": "Kā tas strādā",
+      "href": "/#ka-tas-strada"
+    },
+    {
+      "label": "Meistariem",
+      "href": "/meistariem"
+    }
   ],
-  "navCta": { "label": "Iesniegt pieteikumu", "href": "/pieteikt-darbu" },
+  "navCta": {
+    "label": "Iesniegt pieteikumu",
+    "href": "/pieteikt-darbu"
+  },
   "footer": {
     "copyright": "© 2026 30Sek",
     "contact": "Saziņai: e.saukans@gmail.com",
     "links": [
-      { "label": "Noteikumi", "href": "/noteikumi" },
-      { "label": "Privātums", "href": "/privatums" }
+      {
+        "label": "Noteikumi",
+        "href": "/noteikumi"
+      },
+      {
+        "label": "Privātums",
+        "href": "/privatums"
+      }
     ]
   },
   "home": {
     "kicker": "Eiropas mēroga meistaru tīkls",
     "title": "Meistari, kurus klienti uzticīgi iesaka tālāk",
     "lead": "No steidzama remonta līdz pilnai renovācijai: strukturēts pieteikums, pārskatāmi soļi un ātras atbildes.",
-    "primaryCta": { "label": "Iesniegt pieteikumu", "href": "/pieteikt-darbu" },
-    "secondaryCta": { "label": "Skatīt pakalpojumus", "href": "/pakalpojumi" },
+    "primaryCta": {
+      "label": "Iesniegt pieteikumu",
+      "href": "/pieteikt-darbu"
+    },
+    "secondaryCta": {
+      "label": "Skatīt pakalpojumus",
+      "href": "/pakalpojumi"
+    },
     "stats": [
-      { "value": "24/7", "label": "steidzamo darbu plūsma" },
-      { "value": "5", "label": "valodas klientu atbalstam" },
-      { "value": "< 30 min", "label": "pirmās atbildes mērķis" }
+      {
+        "value": "24/7",
+        "label": "steidzamo darbu plūsma"
+      },
+      {
+        "value": "5",
+        "label": "valodas klientu atbalstam"
+      },
+      {
+        "value": "< 30 min",
+        "label": "pirmās atbildes mērķis"
+      }
     ],
     "trustPoints": [
       "Skaidrs process no pieteikuma līdz izpildei",
@@ -56,25 +92,53 @@
       "slug": "inzeniertikli",
       "name": "Inženiertīkli",
       "description": "Apkure, santehnika un elektrība ar fokusu uz drošību un ilgtspēju.",
-      "serviceSlugs": ["santehnikis", "elektrikis", "apkure"]
+      "serviceSlugs": [
+        "santehnikis",
+        "elektrikis",
+        "apkure"
+      ]
     },
     {
       "slug": "buvnieciba-konstrukcijas",
       "name": "Būvniecība un konstrukcijas",
       "description": "Pamati, jumti, karkasa darbi, demontāža un tehnika.",
-      "serviceSlugs": ["pamati", "jumiki", "namdari", "galdnieki", "koka-maju-buvnieciba", "demontaza", "traktortehnika", "sagade"]
+      "serviceSlugs": [
+        "pamati",
+        "jumiki",
+        "namdari",
+        "galdnieki",
+        "koka-maju-buvnieciba",
+        "demontaza",
+        "traktortehnika",
+        "sagade",
+        "durvju-darbi",
+        "maju-darbi",
+        "smilsstruklas-darbi"
+      ]
     },
     {
       "slug": "apdare-interjers",
       "name": "Apdare un interjers",
       "description": "Iekštelpu kvalitāte: apdare, dizains, uzkopšana un īpašuma sagatavošana pārdošanai.",
-      "serviceSlugs": ["apdare", "dizaineri", "uzkopsana-pec-remonta", "uzfrisinasana-24h", "agenti"]
+      "serviceSlugs": [
+        "apdare",
+        "dizaineri",
+        "uzkopsana-pec-remonta",
+        "uzfrisinasana-24h",
+        "agenti",
+        "restauracija",
+        "mebelu-darbi"
+      ]
     },
     {
       "slug": "arejie-steidzamie",
       "name": "Ārējie un steidzamie darbi",
       "description": "Teritorijas, pārvākšanās un avārijas situāciju risināšana 24/7.",
-      "serviceSlugs": ["ardarbi", "parvaksanas", "avarijas-darbi-24-7"]
+      "serviceSlugs": [
+        "ardarbi",
+        "parvaksanas",
+        "avarijas-darbi-24-7"
+      ]
     }
   ],
   "services": [
@@ -84,7 +148,12 @@
       "categorySlug": "inzeniertikli",
       "image": "https://images.pexels.com/photos/13939331/pexels-photo-13939331.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Piesaki montāžu, remontu vai avārijas izsaukumu ūdens un kanalizācijas sistēmām.",
-      "bullets": ["Noplūžu diagnostika", "Mezgla nomaiņa", "Jaunu līniju izbūve", "Steidzamie izsaukumi"],
+      "bullets": [
+        "Noplūžu diagnostika",
+        "Mezgla nomaiņa",
+        "Jaunu līniju izbūve",
+        "Steidzamie izsaukumi"
+      ],
       "cta": "Pieteikt santehnikas darbu"
     },
     {
@@ -93,7 +162,12 @@
       "categorySlug": "inzeniertikli",
       "image": "https://images.pexels.com/photos/35573433/pexels-photo-35573433.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Droši elektrodarbi dzīvokļiem, mājām un komerctelpām.",
-      "bullets": ["Tīkla pārbaude", "Jaunas līnijas", "Sadales skapji", "Apgaismojuma risinājumi"],
+      "bullets": [
+        "Tīkla pārbaude",
+        "Jaunas līnijas",
+        "Sadales skapji",
+        "Apgaismojuma risinājumi"
+      ],
       "cta": "Pieteikt elektrības darbu"
     },
     {
@@ -102,7 +176,12 @@
       "categorySlug": "inzeniertikli",
       "image": "https://images.pexels.com/photos/8951846/pexels-photo-8951846.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Apkures sistēmu montāža, balansēšana un modernizācija ar izmaksu pārskatāmību.",
-      "bullets": ["Katlu un siltumsūkņu mezgli", "Radiatoru un UFH kontūras", "Sistēmas balansēšana", "Tāmes ar kalkulatoru"],
+      "bullets": [
+        "Katlu un siltumsūkņu mezgli",
+        "Radiatoru un UFH kontūras",
+        "Sistēmas balansēšana",
+        "Tāmes ar kalkulatoru"
+      ],
       "cta": "Pieteikt apkures darbu"
     },
     {
@@ -111,7 +190,12 @@
       "categorySlug": "apdare-interjers",
       "image": "https://images.pexels.com/photos/11125354/pexels-photo-11125354.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Pilna cikla iekšdarbi dzīvojamām un komerctelpām.",
-      "bullets": ["Sienu un griestu darbi", "Flīzēšana", "Krāsošana", "Nodošanas apdare"],
+      "bullets": [
+        "Sienu un griestu darbi",
+        "Flīzēšana",
+        "Krāsošana",
+        "Nodošanas apdare"
+      ],
       "cta": "Pieteikt apdares darbu"
     },
     {
@@ -120,7 +204,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://images.pexels.com/photos/9180354/pexels-photo-9180354.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Koka konstrukciju un būvniecības darbi ar precīzu izpildi.",
-      "bullets": ["Karkasa konstrukcijas", "Nesošie mezgli", "Terases", "Koka fasādes elementi"],
+      "bullets": [
+        "Karkasa konstrukcijas",
+        "Nesošie mezgli",
+        "Terases",
+        "Koka fasādes elementi"
+      ],
       "cta": "Pieteikt namdaru darbu"
     },
     {
@@ -129,7 +218,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://images.pexels.com/photos/5974326/pexels-photo-5974326.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Kvalitatīvi galdniecības risinājumi interjeram un konstrukcijām.",
-      "bullets": ["Individuāli izstrādājumi", "Remonta darbi", "Montāža objektā", "Materiālu pielāgošana"],
+      "bullets": [
+        "Individuāli izstrādājumi",
+        "Remonta darbi",
+        "Montāža objektā",
+        "Materiālu pielāgošana"
+      ],
       "cta": "Pieteikt galdniecības darbu"
     },
     {
@@ -138,7 +232,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://images.pexels.com/photos/803975/pexels-photo-803975.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Koka māju projekti no pamatiem līdz nodošanai.",
-      "bullets": ["Karkasa projekti", "Montāžas darbi", "Siltināšanas mezgli", "Ārējās apdares sagatavošana"],
+      "bullets": [
+        "Karkasa projekti",
+        "Montāžas darbi",
+        "Siltināšanas mezgli",
+        "Ārējās apdares sagatavošana"
+      ],
       "cta": "Pieteikt koka mājas projektu"
     },
     {
@@ -147,7 +246,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://images.pexels.com/photos/36162728/pexels-photo-36162728.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Pamatu izbūve, betonēšana un strukturālie sagatavošanas darbi.",
-      "bullets": ["Grunts sagatavošana", "Armatūra un veidņi", "Plātņu un lentveida pamati", "Betona pēcapstrāde"],
+      "bullets": [
+        "Grunts sagatavošana",
+        "Armatūra un veidņi",
+        "Plātņu un lentveida pamati",
+        "Betona pēcapstrāde"
+      ],
       "cta": "Pieteikt pamatu darbu"
     },
     {
@@ -156,7 +260,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Jumta remonts, nomaiņa un profilakses darbi privātām un komerciālām ēkām.",
-      "bullets": ["Seguma nomaiņa", "Noplūžu novēršana", "Lietus sistēmas", "Mezglu hidroizolācija"],
+      "bullets": [
+        "Seguma nomaiņa",
+        "Noplūžu novēršana",
+        "Lietus sistēmas",
+        "Mezglu hidroizolācija"
+      ],
       "cta": "Pieteikt jumta darbu"
     },
     {
@@ -165,7 +274,12 @@
       "categorySlug": "arejie-steidzamie",
       "image": "https://images.pexels.com/photos/17503520/pexels-photo-17503520.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Fasādes, žogi un teritorijas uzlabošanas darbi vienotā plūsmā.",
-      "bullets": ["Fasādes darbi", "Žogi un vārti", "Pagalmu labiekārtošana", "Bruģēšanas darbi"],
+      "bullets": [
+        "Fasādes darbi",
+        "Žogi un vārti",
+        "Pagalmu labiekārtošana",
+        "Bruģēšanas darbi"
+      ],
       "cta": "Pieteikt ārdarbu projektu"
     },
     {
@@ -174,7 +288,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://images.pexels.com/photos/2138126/pexels-photo-2138126.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Celtniecības tehnikas darbi zemes, demontāžas un sagatavošanas posmiem.",
-      "bullets": ["Rakšanas darbi", "Līdzināšana", "Materiālu pārvietošana", "Objekta sagatavošana"],
+      "bullets": [
+        "Rakšanas darbi",
+        "Līdzināšana",
+        "Materiālu pārvietošana",
+        "Objekta sagatavošana"
+      ],
       "cta": "Pieteikt tehnikas darbu"
     },
     {
@@ -183,7 +302,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Materiālu plānošana, iepirkums un piegādes koordinācija pēc darba grafika.",
-      "bullets": ["Tāmju salīdzināšana", "Piegāžu grafiki", "Partiju sadale", "Noliktavu optimizācija"],
+      "bullets": [
+        "Tāmju salīdzināšana",
+        "Piegāžu grafiki",
+        "Partiju sadale",
+        "Noliktavu optimizācija"
+      ],
       "cta": "Pieteikt sagādes atbalstu"
     },
     {
@@ -192,7 +316,12 @@
       "categorySlug": "arejie-steidzamie",
       "image": "https://images.pexels.com/photos/7464707/pexels-photo-7464707.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Dzīvojamo un biroja pārvākšanās pakalpojumi ar drošu iepakošanu.",
-      "bullets": ["Mantu iepakošana", "Transportēšana", "Smago priekšmetu pārnese", "Piegāde pa maršrutu"],
+      "bullets": [
+        "Mantu iepakošana",
+        "Transportēšana",
+        "Smago priekšmetu pārnese",
+        "Piegāde pa maršrutu"
+      ],
       "cta": "Pieteikt pārvākšanās darbu"
     },
     {
@@ -201,7 +330,12 @@
       "categorySlug": "apdare-interjers",
       "image": "https://images.pexels.com/photos/4239116/pexels-photo-4239116.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Pēc remonta tīrīšana, lai objektu varētu droši nodot lietošanai.",
-      "bullets": ["Putekļu un gružu savākšana", "Virsmu un sanitāro zonu tīrīšana", "Logu pēcapstrāde", "Nodošanas sagatavošana"],
+      "bullets": [
+        "Putekļu un gružu savākšana",
+        "Virsmu un sanitāro zonu tīrīšana",
+        "Logu pēcapstrāde",
+        "Nodošanas sagatavošana"
+      ],
       "cta": "Pieteikt uzkopšanas darbu"
     },
     {
@@ -210,7 +344,12 @@
       "categorySlug": "apdare-interjers",
       "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Interjera plānošana, stila izvēle un praktiski risinājumi būvdarbiem.",
-      "bullets": ["Plānojuma ieteikumi", "Materiālu izvēle", "Mēbeļu un gaismas koncepts", "Budžeta saskaņošana"],
+      "bullets": [
+        "Plānojuma ieteikumi",
+        "Materiālu izvēle",
+        "Mēbeļu un gaismas koncepts",
+        "Budžeta saskaņošana"
+      ],
       "cta": "Pieteikt dizaina konsultāciju"
     },
     {
@@ -219,7 +358,12 @@
       "categorySlug": "apdare-interjers",
       "image": "https://images.pexels.com/photos/7578988/pexels-photo-7578988.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Atbalsts īpašuma pozicionēšanai un pārdošanas sagatavošanai.",
-      "bullets": ["Objekta novērtējums", "Pārdošanas stratēģija", "Prezentācijas sagatavošana", "Komunikācija ar pircējiem"],
+      "bullets": [
+        "Objekta novērtējums",
+        "Pārdošanas stratēģija",
+        "Prezentācijas sagatavošana",
+        "Komunikācija ar pircējiem"
+      ],
       "cta": "Pieteikt aģenta konsultāciju"
     },
     {
@@ -228,7 +372,12 @@
       "categorySlug": "buvnieciba-konstrukcijas",
       "image": "https://cdn.pixabay.com/photo/2024/02/08/22/47/excavator-8561968_1280.jpg",
       "overview": "Kontrolēta demontāža renovācijai vai būvniecības sagatavošanai.",
-      "bullets": ["Sienu un pārsegumu noņemšana", "Atkritumu šķirošana", "Objekta drošības kontrole", "Sagatavošana nākamajam etapam"],
+      "bullets": [
+        "Sienu un pārsegumu noņemšana",
+        "Atkritumu šķirošana",
+        "Objekta drošības kontrole",
+        "Sagatavošana nākamajam etapam"
+      ],
       "cta": "Pieteikt demontāžas darbu"
     },
     {
@@ -237,7 +386,12 @@
       "categorySlug": "apdare-interjers",
       "image": "https://images.pexels.com/photos/8997941/pexels-photo-8997941.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Ātrs īpašuma vizuālais uzlabojums pirms pārdošanas vai izīrēšanas.",
-      "bullets": ["Kosmētiskie labojumi", "Telpu sakārtošana", "Vizuālās prezentācijas uzlabošana", "24h izpildes logs"],
+      "bullets": [
+        "Kosmētiskie labojumi",
+        "Telpu sakārtošana",
+        "Vizuālās prezentācijas uzlabošana",
+        "24h izpildes logs"
+      ],
       "cta": "Pieteikt uzfrišināšanu"
     },
     {
@@ -246,8 +400,83 @@
       "categorySlug": "arejie-steidzamie",
       "image": "https://images.pexels.com/photos/5052053/pexels-photo-5052053.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "overview": "Steidzama reaģēšana uz ūdens, elektrības, apkures un konstrukciju bojājumiem.",
-      "bullets": ["Izsaukumi jebkurā laikā", "Situācijas stabilizācija", "Pirmie drošības soļi", "Tālākais remonta plāns"],
+      "bullets": [
+        "Izsaukumi jebkurā laikā",
+        "Situācijas stabilizācija",
+        "Pirmie drošības soļi",
+        "Tālākais remonta plāns"
+      ],
       "cta": "Pieteikt avārijas izsaukumu"
+    },
+    {
+      "slug": "restauracija",
+      "name": "Restaurācija",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/11125354/pexels-photo-11125354.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Mēbeļu, koka un interjera elementu restaurācija ar fokusētu kvalitātes atjaunošanu.",
+      "bullets": [
+        "Virsmas atjaunošana un slīpēšana",
+        "Krāsas un lakas noņemšana",
+        "Bojājumu remonts un nostiprināšana",
+        "Apdares un aizsargslāņa uzklāšana"
+      ],
+      "cta": "Pieteikt restaurācijas darbu"
+    },
+    {
+      "slug": "durvju-darbi",
+      "name": "Durvju darbi",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/5974326/pexels-photo-5974326.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Durvju montāža, regulēšana un remonts dzīvokļiem, mājām un komerctelpām.",
+      "bullets": [
+        "Jaunu durvju montāža",
+        "Eņģu un slēdzeņu regulēšana",
+        "Ailu sagatavošana un apdare",
+        "Durvju furnitūras nomaiņa"
+      ],
+      "cta": "Pieteikt durvju darbu"
+    },
+    {
+      "slug": "mebelu-darbi",
+      "name": "Mēbeļu darbi",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Mēbeļu izgatavošana, pielāgošana un remonts pēc telpas un funkcijas.",
+      "bullets": [
+        "Individuālu mēbeļu risinājumi",
+        "Korpusa un fasāžu atjaunošana",
+        "Montāža objektā",
+        "Mēbeļu pielāgošana esošam interjeram"
+      ],
+      "cta": "Pieteikt mēbeļu darbu"
+    },
+    {
+      "slug": "maju-darbi",
+      "name": "Māju darbi",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/803975/pexels-photo-803975.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Dažāda profila māju remonta un uzturēšanas darbi iekštelpās un ārpusē.",
+      "bullets": [
+        "Sīkie un vidējie remontdarbi",
+        "Konstrukciju un mezglu sakārtošana",
+        "Sezonas uzturēšanas darbi",
+        "Darbu plānošana un izpildes koordinācija"
+      ],
+      "cta": "Pieteikt māju darbus"
+    },
+    {
+      "slug": "smilsstruklas-darbi",
+      "name": "Smilšstrūklas darbi",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/2138126/pexels-photo-2138126.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Smilšstrūklas darbi metālam, kokam un citām virsmām pirms apdares vai atjaunošanas.",
+      "bullets": [
+        "Rūsas un vecās krāsas noņemšana",
+        "Virsmas attīrīšana pirms krāsošanas",
+        "Fasāžu un konstrukciju apstrāde",
+        "Darbi objektā vai darbnīcā"
+      ],
+      "cta": "Pieteikt smilšstrūklas darbu"
     }
   ]
 }

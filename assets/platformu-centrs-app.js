@@ -91,7 +91,7 @@
       return user.email === email;
     });
     if (exists) {
-      return { ok: false, error: "Lietotajs ar so e-pastu jau eksiste." };
+      return { ok: false, error: "Lietotājs ar šo e-pastu jau eksistē." };
     }
 
     var user = {
@@ -131,7 +131,7 @@
 
   function createPlatform(user, payload) {
     if (!user) {
-      return { ok: false, error: "Nav aktivs lietotajs." };
+      return { ok: false, error: "Nav aktīvs lietotājs." };
     }
 
     var name = String(payload.name || "").trim();
@@ -140,7 +140,7 @@
     var plan = String(payload.plan || "starter").trim();
 
     if (!name || !niche || !region) {
-      return { ok: false, error: "Nosaukums, nisa un regions ir obligati." };
+      return { ok: false, error: "Nosaukums, niša un reģions ir obligāti." };
     }
 
     var platform = {
@@ -156,15 +156,15 @@
       layout: randOf(LAYOUTS),
       calculatorUrl: "/kalkulators",
       structure: [
-        "Nisas piedavajums un merka klienta profils",
-        "Lead uztversana un kvalifikacija",
-        "Tames sagatavosana ar kalkulatoru",
+        "Nišas piedāvājums un mērķa klienta profils",
+        "Lead uztveršana un kvalifikācija",
+        "Tāmes sagatavošana ar kalkulatoru",
         "Izpildes komandas piesaiste",
-        "Darijuma aizversana un atkartotie klienti",
+        "Darījuma aizvēršana un atkārtotie klienti",
       ],
       revenueModel: {
-        partner: "Peln a no klienta pasutijumiem sava regiona",
-        center: "Platforma pelna no plana maksas un komisijas par pabeigtiem darbiem",
+        partner: "Pelna no klienta pasūtījumiem savā reģionā",
+        center: "Platforma pelna no plāna maksas un komisijas par pabeigtiem darbiem",
       },
       createdAt: nowIso(),
       status: "active",
@@ -206,10 +206,10 @@
       '<article class="card pc-platform-card pc-theme-' + platform.theme + '">' +
       '<p class="category-card-kicker">' + platform.niche + " / " + platform.region + "</p>" +
       "<h3>" + platform.name + "</h3>" +
-      '<p class="note">Plans: ' + platform.plan.toUpperCase() + "</p>" +
+      '<p class="note">Plāns: ' + platform.plan.toUpperCase() + "</p>" +
       '<p class="note">Dizains: ' + platform.theme + " | Layout: " + platform.layout + "</p>" +
       '<div class="cta-row">' +
-      '<a class="btn" href="' + publicUrl + '">Atvert platformu</a>' +
+      '<a class="btn" href="' + publicUrl + '">Atvērt platformu</a>' +
       '<a class="btn btn-soft" href="' + platform.calculatorUrl + '">Siltuma kalkulators</a>' +
       "</div>" +
       "</article>"
@@ -236,7 +236,7 @@
       var items = byUser(user.id);
       listNode.innerHTML = items.length
         ? items.map(renderCard).join("")
-        : '<article class="card"><h3>Vel nav platformu</h3><p>Sak ar pirmas platformas izveidi zemak.</p></article>';
+        : '<article class="card"><h3>Vēl nav platformu</h3><p>Sāc ar pirmās platformas izveidi zemāk.</p></article>';
     }
   }
 
@@ -267,7 +267,7 @@
           password: qs('[name="password"]', registerForm).value,
         };
         var result = register(payload);
-        showAuthMsg(result.ok ? "Registracija izdevusies." : result.error);
+        showAuthMsg(result.ok ? "Reģistrācija izdevusies." : result.error);
         renderCabinet(currentUser());
       });
     }
@@ -280,7 +280,7 @@
           password: qs('[name="password"]', loginForm).value,
         };
         var result = login(payload);
-        showAuthMsg(result.ok ? "Ielogosanas izdevusies." : result.error);
+        showAuthMsg(result.ok ? "Ielogošanās izdevusies." : result.error);
         renderCabinet(currentUser());
       });
     }

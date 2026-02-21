@@ -1,50 +1,50 @@
-# Cenu Modelis (Starter / Growth / Scale)
+# Cenu modelis (Starter / Growth / Scale)
 
 ## 1) Starter
-- Setup maksa: 490 EUR (vienreizeji)
-- Menesha maksa: 79 EUR
+- Iestatīšanas maksa: 490 EUR (vienreizēji)
+- Mēneša maksa: 79 EUR
 - Platformas komisija no pabeigta darba: 12%
 
 Ietilpst:
-- Gatava mini-lapa ar partnera kontaktu
-- CRM pamatplasma (lead -> tami -> darijums)
-- 1 nisas business playbook
-- 2 online apmacibas sesijas menesi
+- Gatava mini lapa ar partnera kontaktu
+- CRM pamatplūsma (lead -> tāme -> darījums)
+- 1 nišas biznesa playbook
+- 2 tiešsaistes apmācības sesijas mēnesī
 
-Paredzets:
-- 0-5 pasutijumi menesi
+Paredzēts:
+- 0-5 pasūtījumi mēnesī
 
 ## 2) Growth
-- Setup maksa: 890 EUR
-- Menesha maksa: 149 EUR
+- Iestatīšanas maksa: 890 EUR
+- Mēneša maksa: 149 EUR
 - Platformas komisija: 9%
 
 Ietilpst:
 - Viss no Starter
-- Lidz 3 nisam viena regiona
-- Skriptu un piedavajuma templeiti
-- KPI panelis (konversijas, atk artotie klienti)
-- Prioritars support
+- Līdz 3 nišām vienā reģionā
+- Skriptu un piedāvājuma veidnes
+- KPI panelis (konversijas, atkārtotie klienti)
+- Prioritārs atbalsts
 
-Paredzets:
-- 6-20 pasutijumi menesi
+Paredzēts:
+- 6-20 pasūtījumi mēnesī
 
 ## 3) Scale
-- Setup maksa: 1490 EUR
-- Menesha maksa: 299 EUR
+- Iestatīšanas maksa: 1490 EUR
+- Mēneša maksa: 299 EUR
 - Platformas komisija: 7%
 
 Ietilpst:
 - Viss no Growth
-- Multi-regiona darbs
-- White-label brandinga opcija
-- Menesha biznesa review ar izaugsmes planu
-- Automatizeta lead sadale komandai
+- Multireģiona darbs
+- White-label zīmola opcija
+- Mēneša biznesa apskats ar izaugsmes plānu
+- Automatizēta lead sadale komandai
 
-Paredzets:
-- 20+ pasutijumi menesi
+Paredzēts:
+- 20+ pasūtījumi mēnesī
 
 ## Papildpakalpojumi
-- Reklamas menedzments: no 180 EUR/men
-- AI operatora asistents: no 90 EUR/men
-- Juridisko dokumentu pakete: 120 EUR/gada
+- Reklāmas menedžments: no 180 EUR/mēn
+- AI operatora asistents: no 90 EUR/mēn
+- Juridisko dokumentu pakete: 120 EUR/gadā

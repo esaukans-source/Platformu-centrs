@@ -108,7 +108,7 @@
       bomMixCompact: "Maisīšanas mezgls (kompakts, līdz ~40m²)",
       bomMixStandard: "Maisīšanas mezgls (standarta)",
       bomActuator: "Servopiedziņa kolektoram",
-      bomEdgeTape: "Malu lenta",
+      bomEdgeTape: "Malu lente",
       bomInsulation: "Siltumizolācijas slānis UFH",
       bomPipeRoll: "UFH caurules rullis 200m",
       bomClipPack: "UFH skavu paka (200 gab)",

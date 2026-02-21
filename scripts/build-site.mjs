@@ -33,6 +33,15 @@ function routeToFile(urlPath) {
   return path.join(ROOT, cleaned.slice(1), "index.html");
 }
 
+function xmlEscape(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 async function writePage(urlPath, html) {
   const filePath = routeToFile(urlPath);
   await fs.mkdir(path.dirname(filePath), { recursive: true });
@@ -42,6 +51,90 @@ async function writePage(urlPath, html) {
 async function readJson(filePath) {
   const raw = await fs.readFile(path.join(ROOT, filePath), "utf8");
   return JSON.parse(raw);
+}
+
+async function writeRobots() {
+  const body = [
+    "User-agent: *",
+    "Allow: /",
+    "Disallow: /maintenance.html",
+    "",
+    "Sitemap: https://www.30sek24.com/sitemap.xml",
+    ""
+  ].join("\n");
+  await fs.writeFile(path.join(ROOT, "robots.txt"), body, "utf8");
+}
+
+async function writeLlms() {
+  const body = [
+    "# 30Sek",
+    "",
+    "> Multi-language contractor platform for heating, construction, finishing, and urgent works across Europe.",
+    "",
+    "## Canonical",
+    "- https://www.30sek24.com/",
+    "",
+    "## Core Pages",
+    "- https://www.30sek24.com/pakalpojumi",
+    "- https://www.30sek24.com/kalkulators",
+    "- https://www.30sek24.com/pieteikt-darbu",
+    "- https://www.30sek24.com/platformu-centrs",
+    "",
+    "## Service Categories",
+    "- Engineering systems (heating, plumbing, electrical)",
+    "- Construction and structures (foundations, roofing, carpentry, machinery)",
+    "- Finishing and interiors (finishing, design, restoration, furniture works)",
+    "- Outdoor and urgent works (exterior, moving, emergency 24/7)",
+    "",
+    "## Contact",
+    "- e.saukans@gmail.com",
+    ""
+  ].join("\n");
+  await fs.writeFile(path.join(ROOT, "llms.txt"), body, "utf8");
+}
+
+async function collectCanonicalUrls() {
+  const urls = new Set();
+  const root = ROOT;
+  const skipDirs = new Set([".git", "node_modules", "content", "scripts", "templates", "docs", "autopilot"]);
+
+  async function walk(dir) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const abs = path.join(dir, entry.name);
+      const rel = path.relative(root, abs);
+      if (entry.isDirectory()) {
+        if (skipDirs.has(entry.name)) continue;
+        await walk(abs);
+        continue;
+      }
+      if (!entry.isFile()) continue;
+      if (entry.name !== "index.html") continue;
+      if (rel === "maintenance.html") continue;
+      const html = await fs.readFile(abs, "utf8");
+      const match = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i);
+      if (match && match[1]) {
+        urls.add(match[1]);
+      }
+    }
+  }
+
+  await walk(root);
+  return Array.from(urls).sort();
+}
+
+async function writeSitemap() {
+  const urls = await collectCanonicalUrls();
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const nodes = urls
+    .map((url) => `  <url><loc>${xmlEscape(url)}</loc><lastmod>${lastmod}</lastmod></url>`)
+    .join("\n");
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    `${nodes}\n` +
+    `</urlset>\n`;
+  await fs.writeFile(path.join(ROOT, "sitemap.xml"), xml, "utf8");
 }
 
 function labelFor(site, key) {
@@ -134,6 +227,7 @@ async function buildLanguage(site) {
   const servicesBySlug = new Map(site.services.map((service) => [service.slug, service]));
 
   const homeHtml = renderLayout(site, {
+    pageType: "home",
     title:
       site.lang === "lv"
         ? "Meistaru platforma Eiropā"
@@ -152,6 +246,7 @@ async function buildLanguage(site) {
   await writePage(homeRoute(site.lang), homeHtml);
 
   const hubHtml = renderLayout(site, {
+    pageType: "hub",
     title: labelFor(site, "services"),
     description:
       site.lang === "lv"
@@ -181,6 +276,9 @@ async function buildLanguage(site) {
       .filter(Boolean);
 
     const categoryHtml = renderLayout(site, {
+      pageType: "category",
+      category: category,
+      categoryServices: categoryServices,
       title: category.name,
       description: category.description,
       canonicalPath: categoryRoute(site.lang, category.slug),
@@ -205,6 +303,9 @@ async function buildLanguage(site) {
     }
 
     const serviceHtml = renderLayout(site, {
+      pageType: "service",
+      service: service,
+      category: category,
       title: service.name,
       description: service.overview,
       canonicalPath: serviceRoute(site.lang, service.slug),
@@ -233,7 +334,11 @@ async function run() {
     await buildLanguage(site);
   }
 
-  process.stdout.write("Site build completed for lv + en + ru + de + pl.\n");
+  await writeSitemap();
+  await writeRobots();
+  await writeLlms();
+
+  process.stdout.write("Site build completed for lv + en + ru + de + pl. Sitemap, robots, and llms files updated.\n");
 }
 
 run().catch((error) => {

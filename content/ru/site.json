@@ -110,7 +110,10 @@
         "koka-maju-buvnieciba",
         "demontaza",
         "traktortehnika",
-        "sagade"
+        "sagade",
+        "durvju-darbi",
+        "maju-darbi",
+        "smilsstruklas-darbi"
       ]
     },
     {
@@ -122,7 +125,9 @@
         "dizaineri",
         "uzkopsana-pec-remonta",
         "uzfrisinasana-24h",
-        "agenti"
+        "agenti",
+        "restauracija",
+        "mebelu-darbi"
       ]
     },
     {
@@ -402,6 +407,76 @@
         "Follow-up repair planning"
       ],
       "cta": "Request emergency response"
+    },
+    {
+      "slug": "restauracija",
+      "name": "Restoration",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/11125354/pexels-photo-11125354.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Restoration of furniture, wood, and interior elements with a focus on quality renewal.",
+      "bullets": [
+        "Surface restoration and sanding",
+        "Old paint and lacquer removal",
+        "Damage repair and reinforcement",
+        "Finishing and protective coating"
+      ],
+      "cta": "Request restoration work"
+    },
+    {
+      "slug": "durvju-darbi",
+      "name": "Door Works",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/5974326/pexels-photo-5974326.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Door installation, adjustment, and repair for apartments, houses, and commercial spaces.",
+      "bullets": [
+        "New door installation",
+        "Hinge and lock adjustment",
+        "Opening preparation and finishing",
+        "Door hardware replacement"
+      ],
+      "cta": "Request door works"
+    },
+    {
+      "slug": "mebelu-darbi",
+      "name": "Furniture Works",
+      "categorySlug": "apdare-interjers",
+      "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Furniture production, customization, and repair tailored to space and function.",
+      "bullets": [
+        "Custom furniture solutions",
+        "Cabinet and facade restoration",
+        "On-site installation",
+        "Furniture adaptation to existing interiors"
+      ],
+      "cta": "Request furniture works"
+    },
+    {
+      "slug": "maju-darbi",
+      "name": "House Works",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/803975/pexels-photo-803975.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "General house repair and maintenance works for indoor and outdoor areas.",
+      "bullets": [
+        "Small and medium repair jobs",
+        "Structural and node fixes",
+        "Seasonal maintenance works",
+        "Work planning and coordination"
+      ],
+      "cta": "Request house works"
+    },
+    {
+      "slug": "smilsstruklas-darbi",
+      "name": "Sandblasting Works",
+      "categorySlug": "buvnieciba-konstrukcijas",
+      "image": "https://images.pexels.com/photos/2138126/pexels-photo-2138126.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "overview": "Sandblasting for metal, wood, and other surfaces before finishing or restoration.",
+      "bullets": [
+        "Rust and old paint removal",
+        "Surface cleaning before painting",
+        "Facade and structure treatment",
+        "On-site or workshop execution"
+      ],
+      "cta": "Request sandblasting works"
     }
   ]
 }

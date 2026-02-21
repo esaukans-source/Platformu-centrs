@@ -18,6 +18,13 @@ const UI = {
     backToCategories: "Atpakaļ uz kategorijām",
     backToCategory: "Atpakaļ uz kategoriju",
     included: "Kas iekļauts",
+    faqTitle: "Biežākie jautājumi",
+    faqQ1: "Kā notiek darbu process?",
+    faqA1: "Sākam ar objekta informācijas precizēšanu, sagatavojam tāmi un saskaņojam izpildes grafiku.",
+    faqQ2: "Cik ātri var sākt darbus?",
+    faqA2: "Steidzamiem darbiem piesaisti organizējam pēc iespējas ātrāk; precīzs starts atkarīgs no objekta un pieejamības.",
+    faqQ3: "Vai var saņemt izmaksu novērtējumu pirms darbu sākuma?",
+    faqA3: "Jā, pirms starta var saņemt sākotnējo novērtējumu un darba plānu.",
     howItWorksId: "ka-tas-strada"
   },
   en: {
@@ -38,6 +45,13 @@ const UI = {
     backToCategories: "Back to categories",
     backToCategory: "Back to category",
     included: "What is included",
+    faqTitle: "Frequently asked questions",
+    faqQ1: "How does the work process usually happen?",
+    faqA1: "We start by clarifying scope, then prepare an estimate and align execution steps.",
+    faqQ2: "How quickly can the work start?",
+    faqA2: "Urgent requests are prioritized first; start timing depends on scope and team availability.",
+    faqQ3: "Can I get a cost estimate before work starts?",
+    faqA3: "Yes, you can receive an initial estimate and an execution plan before kickoff.",
     howItWorksId: "how-it-works"
   },
   ru: {
@@ -58,6 +72,13 @@ const UI = {
     backToCategories: "Назад к категориям",
     backToCategory: "Назад к категории",
     included: "Что включено",
+    faqTitle: "Часто задаваемые вопросы",
+    faqQ1: "Как обычно проходит процесс работ?",
+    faqA1: "Сначала уточняем объем задачи, затем готовим смету и согласуем этапы выполнения.",
+    faqQ2: "Как быстро можно начать работы?",
+    faqA2: "Срочные заявки обрабатываются в первую очередь; старт зависит от объема и доступности бригады.",
+    faqQ3: "Можно ли получить оценку стоимости до начала?",
+    faqA3: "Да, перед стартом можно получить предварительную смету и план работ.",
     howItWorksId: "how-it-works"
   },
   de: {
@@ -78,6 +99,13 @@ const UI = {
     backToCategories: "Zurueck zu Kategorien",
     backToCategory: "Zurueck zur Kategorie",
     included: "Was ist enthalten",
+    faqTitle: "Haeufige Fragen",
+    faqQ1: "Wie laeuft der Arbeitsprozess normalerweise ab?",
+    faqA1: "Wir klaeren zuerst den Umfang, erstellen danach eine Kostenschaetzung und stimmen die Umsetzungsschritte ab.",
+    faqQ2: "Wie schnell koennen die Arbeiten starten?",
+    faqA2: "Dringende Auftraege priorisieren wir zuerst; der Start haengt vom Umfang und der Verfuegbarkeit ab.",
+    faqQ3: "Kann ich vor dem Start eine Kostenschaetzung erhalten?",
+    faqA3: "Ja, vor dem Start erhalten Sie eine erste Schaetzung und einen Ausfuehrungsplan.",
     howItWorksId: "how-it-works"
   },
   pl: {
@@ -98,6 +126,13 @@ const UI = {
     backToCategories: "Wroc do kategorii",
     backToCategory: "Wroc do kategorii",
     included: "Co obejmuje",
+    faqTitle: "Najczesciej zadawane pytania",
+    faqQ1: "Jak zwykle przebiega proces realizacji?",
+    faqA1: "Najpierw doprecyzowujemy zakres, potem przygotowujemy wycene i uzgadniamy etapy realizacji.",
+    faqQ2: "Jak szybko mozna zaczac prace?",
+    faqA2: "Pilne zgloszenia obslugujemy priorytetowo; termin startu zalezy od zakresu i dostepnosci ekipy.",
+    faqQ3: "Czy moge dostac wycene przed startem prac?",
+    faqA3: "Tak, przed startem otrzymasz wstepna wycene i plan realizacji.",
     howItWorksId: "how-it-works"
   }
 };
@@ -116,10 +151,126 @@ function esc(value) {
     .replace(/'/g, "&#39;");
 }
 
+function escJson(value) {
+  return String(value || "").replace(/</g, "\\u003c");
+}
+
+function absoluteUrl(site, urlPath) {
+  var root = String(site.siteUrl || "").replace(/\/$/, "");
+  var clean = String(urlPath || "/");
+  if (!clean.startsWith("/")) clean = "/" + clean;
+  return root + clean;
+}
+
 function asUrlWithLang(path, lang) {
   const clean = path || (lang === "lv" ? "/" : `/${lang}/`);
   const hasQuery = clean.includes("?");
   return `${clean}${hasQuery ? "&" : "?"}lang=${lang}`;
+}
+
+function serviceFaqEntries(site) {
+  return [
+    { question: t(site, "faqQ1"), answer: t(site, "faqA1") },
+    { question: t(site, "faqQ2"), answer: t(site, "faqA2") },
+    { question: t(site, "faqQ3"), answer: t(site, "faqA3") }
+  ];
+}
+
+function renderAlternateLinks(currentLang, languagePaths, site) {
+  const paths = languagePaths && Object.keys(languagePaths).length
+    ? languagePaths
+    : { [currentLang]: currentLang === "lv" ? "/" : `/${currentLang}/` };
+  const links = SUPPORTED_LANGS
+    .filter((lang) => paths[lang])
+    .map((lang) => `<link rel="alternate" hreflang="${esc(lang)}" href="${esc(absoluteUrl(site, paths[lang]))}" />`);
+  const xDefaultPath = paths.lv || paths[currentLang] || "/";
+  links.push(`<link rel="alternate" hreflang="x-default" href="${esc(absoluteUrl(site, xDefaultPath))}" />`);
+  return links.join("\n  ");
+}
+
+function renderJsonLdBlocks(site, page, canonical) {
+  const blocks = [];
+  const org = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.siteName,
+    url: site.siteUrl,
+    logo: absoluteUrl(site, "/assets/logo-30sek24.svg"),
+    email: "mailto:e.saukans@gmail.com"
+  };
+  blocks.push(org);
+
+  const webSite = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.siteName,
+    url: site.siteUrl,
+    inLanguage: site.lang
+  };
+  blocks.push(webSite);
+
+  if (page.breadcrumb && Array.isArray(page.breadcrumb.items) && page.breadcrumb.items.length) {
+    const items = page.breadcrumb.items.map((item, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: item.label,
+      item: absoluteUrl(site, item.href || page.canonicalPath || "/")
+    }));
+    blocks.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: items
+    });
+  }
+
+  if (page.pageType === "service" && page.service && page.category) {
+    blocks.push({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: page.service.name,
+      description: page.service.overview,
+      serviceType: page.category.name,
+      areaServed: "Europe",
+      provider: {
+        "@type": "Organization",
+        name: site.siteName,
+        url: site.siteUrl
+      },
+      url: canonical,
+      inLanguage: site.lang
+    });
+
+    const faqMain = serviceFaqEntries(site).map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }));
+    blocks.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqMain
+    });
+  }
+
+  if (page.pageType === "category" && Array.isArray(page.categoryServices) && page.categoryServices.length) {
+    blocks.push({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: page.categoryServices.map((service, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        name: service.name,
+        url: absoluteUrl(site, (site.basePath || "") + "/" + service.slug)
+      }))
+    });
+  }
+
+  return blocks
+    .map((json) => `<script type="application/ld+json">${escJson(JSON.stringify(json))}</script>`)
+    .join("\n  ");
 }
 
 function renderLanguagePicker(currentLang, languagePaths) {
@@ -176,6 +327,19 @@ export function renderHomeMain(site) {
   const categoriesHtml = site.categories.map((category) => renderCategoryCard(site, category)).join("");
   const featuredServices = site.services.slice(0, 8).map((service) => renderServiceCard(site, service)).join("");
   const howItWorksId = t(site, "howItWorksId");
+  const platformCenterBlock =
+    site.lang === "lv"
+      ? `<section class="block">
+      <div class="block-head">
+        <h2>Platformu Centrs partneru biznesam</h2>
+      </div>
+      <p>Izvēlies gatavu biznesa struktūru ar cenu plānu, komisijām, līguma ietvaru un 14 dienu onboarding plūsmu.</p>
+      <div class="cta-row">
+        <a href="/platformu-centrs" class="btn">Atvērt partneru modeli</a>
+        <a href="/pieteikt-darbu?pakalpojums=Platformu%20Centrs%20Partneris" class="btn btn-soft">Pieteikties programmai</a>
+      </div>
+    </section>`
+      : "";
   const statsHtml = (site.home.stats || [])
     .map((stat) => `<article class="stat-pill"><strong>${esc(stat.value)}</strong><span>${esc(stat.label)}</span></article>`)
     .join("");
@@ -215,6 +379,7 @@ export function renderHomeMain(site) {
         <a href="${esc((site.basePath || "") + "/apkure")}" class="btn btn-soft">${esc(t(site, "heatingService"))}</a>
       </div>
     </section>
+    ${platformCenterBlock}
 
     <section class="block" id="${esc(howItWorksId)}">
       <h2>${esc(t(site, "howItWorks"))}</h2>
@@ -262,6 +427,10 @@ export function renderCategoryMain(site, category, services) {
 
 export function renderServiceMain(site, service, category) {
   const bulletHtml = (service.bullets || []).map((item) => `<li>${esc(item)}</li>`).join("");
+  const faqItems = serviceFaqEntries(site);
+  const faqHtml = faqItems
+    .map((item) => `<details><summary>${esc(item.question)}</summary><p>${esc(item.answer)}</p></details>`)
+    .join("");
   return `<main>
     <section class="hero hero-premium service-hero">
       <div class="service-hero-copy">
@@ -282,6 +451,11 @@ export function renderServiceMain(site, service, category) {
       <h2>${esc(t(site, "included"))}</h2>
       <ul class="list-tight">${bulletHtml}</ul>
     </section>
+
+    <section class="block" id="faq">
+      <h2>${esc(t(site, "faqTitle"))}</h2>
+      <div class="faq-list">${faqHtml}</div>
+    </section>
   </main>`;
 }
 
@@ -292,6 +466,8 @@ export function renderLayout(site, page) {
   const langPicker = renderLanguagePicker(site.lang, page.languagePaths || {});
   const navHtml = renderNav(site);
   const breadcrumbHtml = renderBreadcrumb(page.breadcrumb);
+  const alternateLinks = renderAlternateLinks(site.lang, page.languagePaths || {}, site);
+  const jsonLd = renderJsonLdBlocks(site, page, canonical);
 
   return `<!doctype html>
 <html lang="${esc(site.lang)}">
@@ -301,7 +477,9 @@ export function renderLayout(site, page) {
   <title>${esc(pageTitle)}</title>
   <meta name="description" content="${esc(description)}" />
   <link rel="canonical" href="${esc(canonical)}" />
+  ${alternateLinks}
   <link rel="stylesheet" href="/assets/styles.css" />
+  ${jsonLd}
 </head>
 <body>
   <header class="site-header">

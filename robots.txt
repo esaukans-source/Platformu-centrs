@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /maintenance.html
+
+Sitemap: https://www.30sek24.com/sitemap.xml

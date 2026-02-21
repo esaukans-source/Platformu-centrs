@@ -1,8 +1,8 @@
-# Platformu Centrs Partneru Bizness
+# Platformu centrs partneru bizness
 
-Sis komplekts ir legalam partneru modelim (nav piramidas shema), kur:
-- partneris pelna no realiem klientu darbiem,
-- Platformu Centrs pelna no platformas, atbalsta un procesa komisijas.
+Šis komplekts ir legālam partneru modelim (nav piramīdas shēma), kur:
+- partneris pelna no reāliem klientu darbiem,
+- Platformu centrs pelna no platformas, atbalsta un procesa komisijas.
 
 ## Saturs
 - `01-cenu-modelis.md`
@@ -12,4 +12,4 @@ Sis komplekts ir legalam partneru modelim (nav piramidas shema), kur:
 - `05-platformu-kabinets.md`
 
 ## Galvenais princips
-Atlidziba tiek maksata tikai par realiem pakalpojumiem un pabeigtiem darijumiem, nevis par jaunu cilveku piesaisti.
+Atlīdzība tiek maksāta tikai par reāliem pakalpojumiem un pabeigtiem darījumiem, nevis par jaunu cilvēku piesaisti.

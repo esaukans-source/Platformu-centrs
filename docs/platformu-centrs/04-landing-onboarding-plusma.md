@@ -1,53 +1,53 @@
-# Landing + Onboarding Plusma
+# Landing + onboarding plūsma
 
-## A) Landing lapas struktura
+## A) Landing lapas struktūra
 1. Hero
-- Virsraksts: "Izvelies gatavu biznesa platformu un strada pec skaidras sistemas"
+- Virsraksts: "Izvēlies gatavu biznesa platformu un strādā pēc skaidras sistēmas"
 - CTA: "Pieteikties partneru programmai"
 
-2. 3 plani
+2. 3 plāni
 - Starter / Growth / Scale
 - Cenas + ko ietver
 
-3. Ka pelna partneris / ka pelna Platformu Centrs
-- Skaidri ienakumu avoti
+3. Kā pelna partneris / kā pelna Platformu centrs
+- Skaidri ienākumu avoti
 
 4. Komisiju tabula
-- Plani un procenti
-- Piemers ar konkretu darijumu
+- Plāni un procenti
+- Piemērs ar konkrētu darījumu
 
-5. Liguma un atbilstibas bloks
-- "Nav piramidas shema"
-- Atlidziba tikai par realiem pakalpojumiem
+5. Līguma un atbilstības bloks
+- "Nav piramīdas shēma"
+- Atlīdzība tikai par reāliem pakalpojumiem
 
 6. FAQ
-- Kada ni sa, kadas izmaksas, kads atbalsts, cik atri starts
+- Kāda niša, kādas izmaksas, kāds atbalsts, cik ātrs starts
 
 7. Final CTA
-- "Sakt 14 dienu ieviesanu"
+- "Sākt 14 dienu ieviešanu"
 
 ## B) Onboarding (14 dienas)
 Day 1-2:
-- Partnera kvalifikacija
-- Liguma saskanosana
+- Partnera kvalifikācija
+- Līguma saskaņošana
 
 Day 3-4:
-- Nis as un regiona iestatijumi
+- Nišas un reģiona iestatījumi
 - CRM pieejas un konti
 
 Day 5-7:
-- Lapas un lead formas aktivacija
-- Skriptu/apkalposanas trenins
+- Lapas un lead formas aktivizācija
+- Skriptu/apkalpošanas treniņš
 
 Day 8-10:
-- Testa lead scenariji
-- KPI baseline
+- Testa lead scenāriji
+- KPI sākuma līmenis
 
 Day 11-14:
 - Go-live
 - Pirmo 10 lead monitorings
 
-## C) Eventi merisanai
+## C) Eventi mērīšanai
 - `partner_landing_view`
 - `plan_selected`
 - `partner_apply_started`

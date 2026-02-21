@@ -21,7 +21,7 @@
       ufhClipPack200: { name: "UFH skavu paka (200 gab)", unit: "paka", materialPrice: 24, laborPrice: 4 },
       balancingValveSet: { name: "Noslēgarmatūra un balansēšanas komplekts", unit: "kompl", materialPrice: 120, laborPrice: 65 },
       airVentDrainSet: { name: "Atgaisotājs + drenāžas mezgls", unit: "kompl", materialPrice: 44, laborPrice: 20 },
-      edgeTape: { name: "Malu lenta", unit: "m", materialPrice: 0.58, laborPrice: 0.18 },
+      edgeTape: { name: "Malu lente", unit: "m", materialPrice: 0.58, laborPrice: 0.18 },
       vaporBarrier: { name: "Hidro/PE plēve UFH", unit: "m²", materialPrice: 0.95, laborPrice: 0.25 },
       fixingKit: { name: "Stiprinājumi un montāžas materiāli", unit: "kompl", materialPrice: 95, laborPrice: 40 },
       insulationLayer: { name: "Siltumizolācijas slānis UFH", unit: "m²", materialPrice: 8.9, laborPrice: 2.4 },

@@ -1,36 +1,36 @@
-# Darba Disciplina un Merki
+# Darba disciplīna un mērķi
 
-## Galvenais merkis
-Palielinat kvalificeto pieteikumu skaitu, vienlaikus samazinot klienta neskaidribu un berzi pieteikuma cela.
+## Galvenais mērķis
+Palielināt kvalificēto pieteikumu skaitu, vienlaikus samazinot klienta neskaidrību un berzi pieteikuma ceļā.
 
-## Darba disciplina (obligata)
-1. Scope fiksacija
-- Definet, kas iet sprinta ieksā un kas neiet.
-- Nekadas "klusas" prasibu izmainas sprinta vidu.
+## Darba disciplīna (obligāta)
+1. Scope fiksācija
+- Definēt, kas iet sprinta iekšā un kas neiet.
+- Nekādas "klusās" prasību izmaiņas sprinta vidū.
 
-2. 2-agentu cikls
-- Agents A: ievies izmainas.
-- Agents B: kritiska parbaude (UX logika, IA, regressijas, SEO, valodas).
-- Bez B "PASS" izmaiņas netiek uzskatitas par gatavam.
+2. 2 aģentu cikls
+- Aģents A: ievies izmaiņas.
+- Aģents B: kritiska pārbaude (UX loģika, IA, regresijas, SEO, valodas).
+- Bez B "PASS" izmaiņas netiek uzskatītas par gatavām.
 
 3. Quality gates
-- IA: lietotajs nonak lidz pieteikumam <= 3 klikski.
-- Konversija: CTA redzams un skaidrs pirmaja ekrana zona.
-- Tehniska drošiba: formas/kalkulatori/valodu sleedzis nav salauzti.
-- SEO: canonical, breadcrumbs un redirecti korekti.
+- IA: lietotājs nonāk līdz pieteikumam <= 3 klikšķi.
+- Konversija: CTA redzams un skaidrs pirmajā ekrāna zonā.
+- Tehniskā drošība: formas/kalkulatori/valodu slēdzis nav salauzti.
+- SEO: canonical, breadcrumbs un redirekti korekti.
 
 4. Testu minimums
 - Home -> kategorija -> serviss -> pieteikt darbu.
-- Valodu parslegsana uz home, kategorijas un servisa lapam.
-- Formu iesniegsana un validacijas kludas.
+- Valodu pārslēgšana uz home, kategorijas un servisa lapām.
+- Formu iesniegšana un validācijas kļūdas.
 - Kalkulatora pamatplūsma (Quick/Engineer + PDF poga).
 
-5. Izlaides kriteriji
-- Nav kritisku regressiju.
+5. Izlaides kritēriji
+- Nav kritisku regresiju.
 - Ir skaidrs changelog.
-- Ir izmērāms pec-izlaides KPI logs (30 dienas).
+- Ir izmērāms pēcizlaides KPI logs (30 dienas).
 
-## Noklusejuma lēmumi
-- Prioritate: konversija (pieteikumi), nevis dekorativa sarezgitiba.
-- Dizains: uzticams premium, nevis agressivs rebrand.
-- Arhitektura: centralizets saturs + sabloni, nevis manuala HTML dublēšana.
+## Noklusējuma lēmumi
+- Prioritāte: konversija (pieteikumi), nevis dekoratīva sarežģītība.
+- Dizains: uzticams premium, nevis agresīvs rebrand.
+- Arhitektūra: centralizēts saturs + šabloni, nevis manuāla HTML dublēšana.

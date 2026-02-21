@@ -1,0 +1,21 @@
+# 30Sek
+
+> Multi-language contractor platform for heating, construction, finishing, and urgent works across Europe.
+
+## Canonical
+- https://www.30sek24.com/
+
+## Core Pages
+- https://www.30sek24.com/pakalpojumi
+- https://www.30sek24.com/kalkulators
+- https://www.30sek24.com/pieteikt-darbu
+- https://www.30sek24.com/platformu-centrs
+
+## Service Categories
+- Engineering systems (heating, plumbing, electrical)
+- Construction and structures (foundations, roofing, carpentry, machinery)
+- Finishing and interiors (finishing, design, restoration, furniture works)
+- Outdoor and urgent works (exterior, moving, emergency 24/7)
+
+## Contact
+- e.saukans@gmail.com

@@ -1,31 +1,31 @@
-# Platformu Kabinets (MVP)
+# Platformu kabinets (MVP)
 
-## Merķis
-Lietotajs registrejas, ieiet kabinetaa un var izveidot neierobezotu skaitu platformu.
+## Mērķis
+Lietotājs reģistrējas, ieiet kabinetā un var izveidot neierobežotu skaitu platformu.
 
 ## Kur atrodas
 - Kabinets: `/platformu-centrs/kabinets`
 - Publiska platformas lapa: `/platformu-centrs/platforma/?id=<platform_id>`
 
-## Ka darbojas
-1. Registracija / login
-- Lauki: vards, e-pasts, parole
-- MVP glabasana: browser localStorage
+## Kā darbojas
+1. Reģistrācija / login
+- Lauki: vārds, e-pasts, parole
+- MVP glabāšana: pārlūka localStorage
 
 2. Platformas izveide
-- Lauki: nosaukums, nisa, regions, plans
-- Rezultats:
-  - unikals platformas ID,
-  - autom atiska dizaina tema,
-  - autom atisks layout variants,
-  - obligata saite uz siltuma kalkulatoru (`/kalkulators`).
+- Lauki: nosaukums, niša, reģions, plāns
+- Rezultāts:
+  - unikāls platformas ID,
+  - automātiska dizaina tēma,
+  - automātisks layout variants,
+  - obligāta saite uz siltuma kalkulatoru (`/kalkulators`).
 
 3. Platformu saraksts
-- Lietotajs redz visas savas platformas kabinetaa
-- Katrai platformai poga `Atvert platformu`
+- Lietotājs redz visas savas platformas kabinetā
+- Katrai platformai poga `Atvērt platformu`
 
 ## Dizaina varianti
-Katras platformas karte un publiskais skats izmanto vienu no temam:
+Katras platformas karte un publiskais skats izmanto vienu no tēmām:
 - forest
 - sand
 - steel
@@ -38,5 +38,5 @@ Un vienu no layout tipiem:
 - stack
 - tiles
 
-## Piezime produkcijai
-Lai pilnvertigi stradatu starp iericem un lietotajiem, vajadzigs backend (DB + auth + API). MVP versija ir browsera limena prototips.
+## Piezīme produkcijai
+Lai pilnvērtīgi strādātu starp ierīcēm un lietotājiem, vajadzīgs backend (DB + auth + API). MVP versija ir pārlūka līmeņa prototips.
