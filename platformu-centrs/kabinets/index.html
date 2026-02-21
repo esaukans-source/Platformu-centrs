@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Platformu Centrs Kabinets | 30Sek</title>
+  <meta name="description" content="Registracija, platformu izveide un parvalde vienuviet." />
+  <link rel="canonical" href="https://www.30sek24.com/platformu-centrs/kabinets" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body data-pc-page="kabinets">
+  <header class="site-header">
+    <div class="container site-header-main">
+      <a href="/" class="logo brand-lockup"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /><span class="logo-wordmark">30Sek</span></a>
+      <nav class="nav nav-primary">
+        <a href="/platformu-centrs">Platformu centrs</a>
+        <a href="/pakalpojumi">Pakalpojumi</a>
+        <a href="/kalkulators">Kalkulatori</a>
+        <a href="/#ka-tas-strada">Ka tas strada</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-nav" href="/platformu-centrs">Atpakal</a>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Breadcrumb" class="breadcrumbs">
+    <div class="container"><a href="/">Sakums</a> / <a href="/platformu-centrs">Platformu centrs</a> / <span>Kabinets</span></div>
+  </nav>
+
+  <main>
+    <section class="hero hero-premium">
+      <p class="hero-kicker">Registracija + platformu veidosana</p>
+      <h1>Izveido cik gribi platformas ar dazadu dizainu</h1>
+      <p class="hero-lead">Katra jauna platforma automatiski sanem savu dizaina variantu un obligatu saiti uz siltuma kalkulatoru.</p>
+    </section>
+
+    <section class="block" id="pc-auth-wrap">
+      <div class="cards pc-auth-grid">
+        <article class="card pc-panel">
+          <h2>Registracija</h2>
+          <form class="lead-form" id="pc-register-form" onsubmit="return false;">
+            <label>Vards
+              <input type="text" name="name" required />
+            </label>
+            <label>E-pasts
+              <input type="email" name="email" required />
+            </label>
+            <label>Parole
+              <input type="password" name="password" required />
+            </label>
+            <button class="btn" type="submit">Registreties</button>
+          </form>
+        </article>
+
+        <article class="card pc-panel">
+          <h2>Ielogoties</h2>
+          <form class="lead-form" id="pc-login-form" onsubmit="return false;">
+            <label>E-pasts
+              <input type="email" name="email" required />
+            </label>
+            <label>Parole
+              <input type="password" name="password" required />
+            </label>
+            <button class="btn" type="submit">Ielogoties</button>
+          </form>
+        </article>
+      </div>
+      <p id="pc-auth-msg" class="form-error"></p>
+      <p class="note">MVP versija: konti glabajas saja parluka localStorage.</p>
+    </section>
+
+    <section class="block" id="pc-app-wrap" hidden>
+      <header class="pc-app-head">
+        <h2>Tavs kabinets: <span id="pc-user-name"></span></h2>
+        <button id="pc-logout-btn" class="btn btn-soft" type="button">Izlogoties</button>
+      </header>
+
+      <div class="cards pc-dashboard-grid">
+        <article class="card pc-panel">
+          <h3>Jauna platforma</h3>
+          <form class="lead-form" id="pc-create-form" onsubmit="return false;">
+            <label>Platformas nosaukums
+              <input type="text" name="platform_name" placeholder="Piem.: Apkure Riga Pro" required />
+            </label>
+            <label>Nisa
+              <select name="niche" required>
+                <option value="">Izvelies nisa</option>
+                <option>Apkure</option>
+                <option>Santehnika</option>
+                <option>Elektriba</option>
+                <option>Apdare</option>
+                <option>Jumti</option>
+                <option>Pamati</option>
+              </select>
+            </label>
+            <label>Regions
+              <input type="text" name="region" placeholder="Riga" required />
+            </label>
+            <label>Plans
+              <select name="plan" required>
+                <option value="starter">Starter</option>
+                <option value="growth">Growth</option>
+                <option value="scale">Scale</option>
+              </select>
+            </label>
+            <button class="btn" type="submit">Izveidot platformu</button>
+          </form>
+          <p id="pc-create-msg" class="form-error"></p>
+        </article>
+
+        <article class="card pc-panel">
+          <h3>Tavs modelis</h3>
+          <ul class="list-tight">
+            <li>Katrai platformai unikals dizains</li>
+            <li>Obligats siltuma kalkulators</li>
+            <li>Skaidra struktura un monetizacijas bloks</li>
+            <li>Neierobezots platformu skaits</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3>Manas platformas</h3>
+      <div class="cards" id="pc-platform-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 30Sek</p>
+      <p><a href="/noteikumi">Noteikumi</a><a href="/privatums">Privatums</a></p>
+      <p class="contact-micro">Sazinai: e.saukans@gmail.com</p>
+    </div>
+  </footer>
+
+  <script src="/assets/platformu-centrs-app.js"></script>
+  <script src="/assets/language-switcher.js"></script>
+</body>
+</html>

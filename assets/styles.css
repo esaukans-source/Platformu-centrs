@@ -1071,6 +1071,34 @@ main {
   gap: 0.7rem;
 }
 
+.pricing-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.pricing-card {
+  border: 1px solid #c7d8d0;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f8f5 100%);
+}
+
+.price-tag {
+  margin: 0 0 0.7rem;
+  font-weight: 700;
+  color: #0f4d45;
+}
+
+.metric-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.legal-block {
+  border-color: #d0c493;
+  background: linear-gradient(180deg, #fffef9 0%, #faf7e9 100%);
+}
+
+.legal-block strong {
+  color: #634e00;
+}
+
 @media (max-width: 980px) {
   .site-header .site-header-main {
     grid-template-columns: 1fr;
@@ -1119,4 +1147,108 @@ main {
   .cta-row {
     width: 100%;
   }
+}
+
+/* Platformu centrs app */
+.pc-auth-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.pc-dashboard-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.pc-panel {
+  border: 1px solid #c6d7cf;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f9f6 100%);
+}
+
+.pc-app-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.pc-platform-card {
+  border-width: 2px;
+}
+
+.pc-public-view.pc-layout-split .metric-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.pc-public-view.pc-layout-stack .metric-grid {
+  grid-template-columns: 1fr;
+}
+
+.pc-public-view.pc-layout-tiles .metric-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.pc-theme-forest {
+  --pc-main: #1f5c47;
+  --pc-soft: #e8f3ee;
+  --pc-line: #8bb9a7;
+}
+
+.pc-theme-sand {
+  --pc-main: #7a5a22;
+  --pc-soft: #f8f1e3;
+  --pc-line: #d9be8d;
+}
+
+.pc-theme-steel {
+  --pc-main: #2f3f55;
+  --pc-soft: #edf2f8;
+  --pc-line: #a9b7ca;
+}
+
+.pc-theme-sunset {
+  --pc-main: #7b3a2a;
+  --pc-soft: #f9e9e4;
+  --pc-line: #daa697;
+}
+
+.pc-theme-ocean {
+  --pc-main: #1d4e67;
+  --pc-soft: #e6f2f8;
+  --pc-line: #8fb9cc;
+}
+
+.pc-theme-graphite {
+  --pc-main: #3e4348;
+  --pc-soft: #eef0f2;
+  --pc-line: #b7bcc2;
+}
+
+.pc-theme-forest,
+.pc-theme-sand,
+.pc-theme-steel,
+.pc-theme-sunset,
+.pc-theme-ocean,
+.pc-theme-graphite {
+  border-color: var(--pc-line);
+  background: linear-gradient(180deg, #ffffff 0%, var(--pc-soft) 100%);
+}
+
+.pc-theme-forest h3,
+.pc-theme-sand h3,
+.pc-theme-steel h3,
+.pc-theme-sunset h3,
+.pc-theme-ocean h3,
+.pc-theme-graphite h3 {
+  color: var(--pc-main);
+}
+
+.pc-theme-forest .btn,
+.pc-theme-sand .btn,
+.pc-theme-steel .btn,
+.pc-theme-sunset .btn,
+.pc-theme-ocean .btn,
+.pc-theme-graphite .btn {
+  background: var(--pc-main);
+  border-color: var(--pc-main);
 }
