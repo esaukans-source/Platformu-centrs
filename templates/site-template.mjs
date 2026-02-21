@@ -18,6 +18,7 @@ const UI = {
     backToCategories: "Atpakaļ uz kategorijām",
     backToCategory: "Atpakaļ uz kategoriju",
     included: "Kas iekļauts",
+    relatedServices: "Saistītie pakalpojumi",
     faqTitle: "Biežākie jautājumi",
     faqQ1: "Kā notiek darbu process?",
     faqA1: "Sākam ar objekta informācijas precizēšanu, sagatavojam tāmi un saskaņojam izpildes grafiku.",
@@ -45,6 +46,7 @@ const UI = {
     backToCategories: "Back to categories",
     backToCategory: "Back to category",
     included: "What is included",
+    relatedServices: "Related services",
     faqTitle: "Frequently asked questions",
     faqQ1: "How does the work process usually happen?",
     faqA1: "We start by clarifying scope, then prepare an estimate and align execution steps.",
@@ -72,6 +74,7 @@ const UI = {
     backToCategories: "Назад к категориям",
     backToCategory: "Назад к категории",
     included: "Что включено",
+    relatedServices: "Похожие услуги",
     faqTitle: "Часто задаваемые вопросы",
     faqQ1: "Как обычно проходит процесс работ?",
     faqA1: "Сначала уточняем объем задачи, затем готовим смету и согласуем этапы выполнения.",
@@ -99,6 +102,7 @@ const UI = {
     backToCategories: "Zurueck zu Kategorien",
     backToCategory: "Zurueck zur Kategorie",
     included: "Was ist enthalten",
+    relatedServices: "Aehnliche Leistungen",
     faqTitle: "Haeufige Fragen",
     faqQ1: "Wie laeuft der Arbeitsprozess normalerweise ab?",
     faqA1: "Wir klaeren zuerst den Umfang, erstellen danach eine Kostenschaetzung und stimmen die Umsetzungsschritte ab.",
@@ -126,6 +130,7 @@ const UI = {
     backToCategories: "Wroc do kategorii",
     backToCategory: "Wroc do kategorii",
     included: "Co obejmuje",
+    relatedServices: "Powiazane uslugi",
     faqTitle: "Najczesciej zadawane pytania",
     faqQ1: "Jak zwykle przebiega proces realizacji?",
     faqA1: "Najpierw doprecyzowujemy zakres, potem przygotowujemy wycene i uzgadniamy etapy realizacji.",
@@ -214,6 +219,15 @@ function serviceFaqEntries(site) {
   ];
 }
 
+function serviceHowToSteps(site) {
+  return (site.home && Array.isArray(site.home.howItWorks) ? site.home.howItWorks : [])
+    .map((step) => ({
+      title: step.title,
+      text: step.text
+    }))
+    .filter((step) => step.title && step.text);
+}
+
 function renderAlternateLinks(currentLang, languagePaths, site) {
   const paths = languagePaths && Object.keys(languagePaths).length
     ? languagePaths
@@ -224,6 +238,13 @@ function renderAlternateLinks(currentLang, languagePaths, site) {
   const xDefaultPath = paths.lv || paths[currentLang] || "/";
   links.push(`<link rel="alternate" hreflang="x-default" href="${esc(absoluteUrl(site, xDefaultPath))}" />`);
   return links.join("\n  ");
+}
+
+function renderOgLocaleAlternates(currentLang, languagePaths) {
+  const locales = SUPPORTED_LANGS
+    .filter((lang) => lang !== currentLang && languagePaths[lang])
+    .map((lang) => langToOgLocale(lang));
+  return locales.map((locale) => `<meta property="og:locale:alternate" content="${esc(locale)}" />`).join("\n  ");
 }
 
 function renderJsonLdBlocks(site, page, canonical) {
@@ -305,6 +326,25 @@ function renderJsonLdBlocks(site, page, canonical) {
       "@type": "FAQPage",
       mainEntity: faqMain
     });
+
+    const howToSteps = serviceHowToSteps(site)
+      .map((step) => ({
+        "@type": "HowToStep",
+        name: step.title,
+        text: step.text,
+        url: `${canonical}#${t(site, "howItWorksId")}`
+      }));
+    if (howToSteps.length) {
+      blocks.push({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: `${page.service.name} - ${t(site, "howItWorks")}`,
+        description: page.service.overview,
+        totalTime: "P7D",
+        inLanguage: site.lang,
+        step: howToSteps
+      });
+    }
   }
 
   if (page.pageType === "category" && Array.isArray(page.categoryServices) && page.categoryServices.length) {
@@ -483,6 +523,29 @@ export function renderServiceMain(site, service, category) {
   const faqHtml = faqItems
     .map((item) => `<details><summary>${esc(item.question)}</summary><p>${esc(item.answer)}</p></details>`)
     .join("");
+  const howToSteps = serviceHowToSteps(site);
+  const processHtml = howToSteps
+    .map((step) => `<article class="process-card"><h3>${esc(step.title)}</h3><p>${esc(step.text)}</p></article>`)
+    .join("");
+  const processSection = howToSteps.length
+    ? `<section class="block" id="${esc(t(site, "howItWorksId"))}">
+      <h2>${esc(t(site, "howItWorks"))}</h2>
+      <div class="process-grid">${processHtml}</div>
+    </section>`
+    : "";
+  const relatedServices = (site.services || [])
+    .filter((item) => item.categorySlug === service.categorySlug && item.slug !== service.slug)
+    .slice(0, 4);
+  const relatedServicesHtml = relatedServices.map((item) => renderServiceCard(site, item)).join("");
+  const relatedSection = relatedServices.length
+    ? `<section class="block">
+      <div class="block-head">
+        <h2>${esc(t(site, "relatedServices"))}</h2>
+        <a href="${esc((site.basePath || "") + "/pakalpojumi/" + category.slug)}" class="text-link">${esc(t(site, "viewAll"))}</a>
+      </div>
+      <div class="cards service-grid">${relatedServicesHtml}</div>
+    </section>`
+    : "";
   return `<main>
     <section class="hero hero-premium service-hero">
       <div class="service-hero-copy">
@@ -503,11 +566,13 @@ export function renderServiceMain(site, service, category) {
       <h2>${esc(t(site, "included"))}</h2>
       <ul class="list-tight">${bulletHtml}</ul>
     </section>
+    ${processSection}
 
     <section class="block" id="faq">
       <h2>${esc(t(site, "faqTitle"))}</h2>
       <div class="faq-list">${faqHtml}</div>
     </section>
+    ${relatedSection}
   </main>`;
 }
 
@@ -518,7 +583,9 @@ export function renderLayout(site, page) {
   const langPicker = renderLanguagePicker(site.lang, page.languagePaths || {});
   const navHtml = renderNav(site);
   const breadcrumbHtml = renderBreadcrumb(page.breadcrumb);
-  const alternateLinks = renderAlternateLinks(site.lang, page.languagePaths || {}, site);
+  const languagePaths = page.languagePaths || {};
+  const alternateLinks = renderAlternateLinks(site.lang, languagePaths, site);
+  const ogLocaleAlternates = renderOgLocaleAlternates(site.lang, languagePaths);
   const jsonLd = renderJsonLdBlocks(site, page, canonical);
   const ogImage = resolveOgImage(site, page);
   const ogLocale = langToOgLocale(site.lang);
@@ -535,6 +602,7 @@ export function renderLayout(site, page) {
   ${alternateLinks}
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
   <meta property="og:locale" content="${esc(ogLocale)}" />
+  ${ogLocaleAlternates}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="${esc(site.siteName)}" />
   <meta property="og:title" content="${esc(pageTitle)}" />
