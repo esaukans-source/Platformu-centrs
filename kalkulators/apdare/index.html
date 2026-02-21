@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iekšējās Apdares Kalkulators | 30Sek</title>
+  <meta name="description" content="Iekšējās apdares kalkulators pa telpām: sienu laukums, materiāli, darba stundas, izmaksu kopsavilkums un atlikumu prognoze." />
+  <link rel="canonical" href="https://www.30sek24.com/kalkulators/apdare" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo"><img src="/assets/logo-30sek24.svg" alt="30Sek logo" class="logo-img" /></a>
+      <nav class="nav">
+        <a href="/">Sākums</a>
+        <a href="/kalkulators">Kalkulators</a>
+        <a href="/apdare">Iekšējā apdare</a>
+        <a href="/noteikumi">Noteikumi</a>
+        <a href="/privatums">Privātums</a>
+        <a href="/pieteikt-darbu" class="btn">Iesniegt pieteikumu</a>
+        <label class="lang-picker" aria-label="Valoda">
+          <select aria-label="Valodas izvēle">
+            <option value="/kalkulators/apdare?lang=lv" data-lang="lv" selected>LV</option>
+            <option value="/en/kalkulators?lang=en#interior" data-lang="en">EN</option>
+            <option value="/ru/kalkulators?lang=ru#interior" data-lang="ru">RU</option>
+            <option value="/de/kalkulators?lang=de#interior" data-lang="de">DE</option>
+            <option value="/pl/kalkulators?lang=pl#interior" data-lang="pl">PL</option>
+          </select>
+        </label>
+      </nav>
+    </div>
+  </header>
+
+  <nav aria-label="Breadcrumb" class="breadcrumbs">
+    <div class="container"><a href="/">Sākums</a> / <a href="/kalkulators">Kalkulators</a> / <span>Iekšējā apdare</span></div>
+  </nav>
+
+  <main id="interior-calculator-root">
+    <section class="hero calc-hero">
+      <h1>Iekšējās apdares kalkulators <span class="spec-badge">B03</span></h1>
+      <p>Vienas telpas tāme no izmēriem: ģeometrija, materiālu BOM, darba stundas, atlikuma prognoze un izmaksu kopsumma.</p>
+      <p class="note">Piemērots ātram piedāvājumam pirms detalizētas uzmērīšanas objektā.</p>
+      <p class="note">Spec režīms: raksti man korekcijas pēc bloku kodiem (piem., `B04`, `B07/T01`).</p>
+    </section>
+
+    <section class="block" id="B04">
+      <h2>1) Ievades dati <span class="spec-badge">B04</span></h2>
+      <form class="lead-form calc-grid" data-interior-form onsubmit="return false;">
+        <label>Telpas platība (m²)
+          <input type="number" data-v="area" min="1" step="0.1" value="18" />
+        </label>
+        <label>Griestu augstums (m)
+          <input type="number" data-v="height" min="2" step="0.01" value="2.65" />
+        </label>
+        <label>Istabas forma
+          <select data-v="shape">
+            <option value="square">Kvadrāts</option>
+            <option value="rect15">Taisnstūris 1:1.5</option>
+            <option value="rect2">Taisnstūris 1:2</option>
+            <option value="irregular">Neregulāra</option>
+          </select>
+        </label>
+        <label>Atvērumu laukums (m²)
+          <input type="number" data-v="openings" min="0" step="0.1" value="2.6" />
+        </label>
+        <label>Durvju platums (m)
+          <input type="number" data-v="doorWidth" min="0" max="4" step="0.01" value="0.9" />
+        </label>
+        <label>Darbu pakete
+          <select data-v="workPackage">
+            <option value="cosmetic">Kosmētiskais (krāsošana)</option>
+            <option value="standard" selected>Standarta (špaktele + krāsa)</option>
+            <option value="full">Pilnais (sienas + griesti + grīda)</option>
+          </select>
+        </label>
+        <label>Sarežģītība
+          <select data-v="complexity">
+            <option value="simple">Vienkārša</option>
+            <option value="medium" selected>Vidēja</option>
+            <option value="complex">Sarežģīta</option>
+          </select>
+        </label>
+        <label>Materiālu klase
+          <select data-v="materialClass">
+            <option value="economy">Ekonomiskā</option>
+            <option value="standard" selected>Standarta</option>
+            <option value="premium">Premium</option>
+          </select>
+        </label>
+        <label>Materiālu rezerve (%)
+          <input type="number" data-v="wastePercent" min="0" max="30" step="1" value="10" />
+        </label>
+        <label>Pieskaitāmās izmaksas (%)
+          <input type="number" data-v="overheadPercent" min="0" max="40" step="1" value="8" />
+        </label>
+        <label>Darba koeficients
+          <input type="number" data-v="laborFactor" min="0.6" max="2.5" step="0.05" value="1" />
+        </label>
+        <label>Materiālu koeficients
+          <input type="number" data-v="materialFactor" min="0.6" max="2.5" step="0.05" value="1" />
+        </label>
+        <label>
+          <input type="checkbox" data-v="includeCeiling" checked />
+          Iekļaut griestus aprēķinā
+        </label>
+        <label>
+          <input type="checkbox" data-v="includeDemolition" />
+          Iekļaut vecās apdares demontāžu
+        </label>
+        <div class="cta-row">
+          <button type="button" class="btn" data-action="calculate">Aprēķināt</button>
+          <button type="button" class="btn btn-soft" data-action="reset">Atjaunot noklusējumu</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="block" id="B05">
+      <h2>2) Rezultāts <span class="spec-badge">B05-B09</span></h2>
+      <div class="results-stack">
+        <article class="result-card status-panel" id="B05-status">
+          <h3>Statuss <span class="spec-badge">B05</span></h3>
+          <div class="status-strip" data-status-strip></div>
+          <div class="missing-data-box" data-missing-box hidden></div>
+        </article>
+
+        <article class="result-card" id="B06-geometry">
+          <h3>Ģeometrija <span class="spec-badge">B06</span></h3>
+          <div class="sys-grid" data-geometry-summary></div>
+        </article>
+
+        <article class="result-card" id="B07-bom">
+          <h3>Materiālu saraksts (BOM) <span class="spec-badge">B07</span> <span class="spec-badge">T01</span></h3>
+          <div class="table-wrap">
+            <table class="result-table" data-bom-table>
+              <thead>
+                <tr>
+                  <th>Pozīcija</th>
+                  <th>Nepieciešams</th>
+                  <th>Jāpērk</th>
+                  <th>Prognozētais atlikums</th>
+                  <th>Materiāli (EUR)</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="result-card" id="B08-labor">
+          <h3>Darba stundas <span class="spec-badge">B08</span> <span class="spec-badge">T02</span></h3>
+          <div class="table-wrap">
+            <table class="result-table" data-labor-table>
+              <thead>
+                <tr>
+                  <th>Darbs</th>
+                  <th>Stundas</th>
+                  <th>Likme (EUR/h)</th>
+                  <th>Darbs (EUR)</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="result-card" id="B09-summary">
+          <h3>Kopsavilkums <span class="spec-badge">B09</span></h3>
+          <div class="totals" data-total-summary></div>
+          <p class="note">Aprēķins ir orientējošs. Precīzai tāmei papildus vajadzīga uzmērīšana un materiālu izvēle pēc ražotāja.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 30Sek</p>
+      <p><a href="/noteikumi">Noteikumi</a><a href="/privatums">Privātums</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/interior-calculator.js"></script>
+  <script src="/assets/language-switcher.js"></script>
+</body>
+</html>

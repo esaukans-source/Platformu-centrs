@@ -1372,7 +1372,7 @@
           }
         }
         return (
-          "<tr>" +
+          '<tr data-room-id="' + escapeHtml(r.room.id) + '" data-room-index="' + escapeHtml(r.roomIndex) + '">' +
           "<td>" + escapeHtml(r.room.name) + "</td>" +
           "<td>" + r.load.totalW + "</td>" +
           "<td>" + r.load.wpm2 + "</td>" +
@@ -1422,7 +1422,7 @@
     var rows = result.bom.rows
       .map(function (r) {
         return (
-          "<tr>" +
+          '<tr data-bom-id="' + escapeHtml(r.id) + '" data-row-index="' + escapeHtml(r.rowIndex) + '">' +
           "<td>" + escapeHtml(displayBomName(r)) + "</td>" +
           "<td>" + r.qty + " " + escapeHtml(displayUnit(r.unit)) + "</td>" +
           "<td>" + money(r.materialUnit) + "</td>" +

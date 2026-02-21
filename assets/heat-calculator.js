@@ -298,6 +298,28 @@
     };
   }
 
+  function ensureRoomIdentity(room, index, seenIds) {
+    var safeRoom = {};
+    var src = room || {};
+    Object.keys(src).forEach(function (key) {
+      safeRoom[key] = src[key];
+    });
+    var rawId = src && src.id != null ? String(src.id).trim() : "";
+    var baseId = rawId || "room_" + (index + 1);
+    var finalId = baseId;
+    if (seenIds && seenIds[finalId]) {
+      var suffix = seenIds[finalId] + 1;
+      while (seenIds[baseId + "_" + suffix]) {
+        suffix += 1;
+      }
+      finalId = baseId + "_" + suffix;
+      seenIds[baseId] = suffix;
+    }
+    if (seenIds) seenIds[finalId] = 1;
+    safeRoom.id = finalId;
+    return safeRoom;
+  }
+
   function systemResult(project, rooms, constants) {
     var totalW = 0;
     var totalUfhW = 0;
@@ -407,6 +429,39 @@
     };
   }
 
+  function normalizeBomRows(rows) {
+    var seen = {};
+    return rows.map(function (row, idx) {
+      var safe = row || {};
+      var fallbackId = "row_" + (idx + 1);
+      var rawId = safe.id != null ? String(safe.id).trim() : "";
+      var baseId = rawId || fallbackId;
+
+      if (seen[baseId]) {
+        seen[baseId] += 1;
+        baseId = baseId + "_" + seen[baseId];
+      } else {
+        seen[baseId] = 1;
+      }
+
+      var qty = Math.max(0, num(safe.qty, 0));
+      var materialUnit = num(safe.materialUnit, 0);
+      var laborUnit = num(safe.laborUnit, 0);
+
+      return {
+        id: baseId,
+        rowIndex: idx,
+        name: safe.name || baseId,
+        unit: safe.unit || "gab",
+        qty: round(qty, 3),
+        materialUnit: materialUnit,
+        laborUnit: laborUnit,
+        materialTotal: round(qty * materialUnit, 2),
+        laborTotal: round(qty * laborUnit, 2),
+      };
+    });
+  }
+
   function buildBom(project, roomResults, system, catalog, constants) {
     var c = catalog.components;
     var rows = [];
@@ -475,6 +530,8 @@
     rows.push(lineItem("fixing", c.fixingKit.name, c.fixingKit.unit, 1, c.fixingKit.materialPrice, c.fixingKit.laborPrice));
     rows.push(lineItem("source_conn", c.sourceConnectionSet.name, c.sourceConnectionSet.unit, 1, c.sourceConnectionSet.materialPrice, c.sourceConnectionSet.laborPrice));
 
+    rows = normalizeBomRows(rows);
+
     var materialFactor = Math.max(0.2, num(project.materialFactor, 1));
     var laborFactor = Math.max(0.2, num(project.laborFactor, 1));
 
@@ -508,8 +565,12 @@
     var constants = window.HeatConstants;
     var catalog = window.HeatCatalog;
 
-    var roomResults = rooms.map(function (room) {
-      return roomResult(room, project, mode, catalog, constants);
+    var seenRoomIds = {};
+    var roomResults = rooms.map(function (room, index) {
+      var safeRoom = ensureRoomIdentity(room, index, seenRoomIds);
+      var result = roomResult(safeRoom, project, mode, catalog, constants);
+      result.roomIndex = index;
+      return result;
     });
 
     var system = systemResult(project, roomResults, constants);
