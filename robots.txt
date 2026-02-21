@@ -2,4 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /maintenance.html
 
+Host: https://www.30sek24.com
+
 Sitemap: https://www.30sek24.com/sitemap.xml

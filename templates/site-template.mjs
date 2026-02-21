@@ -168,6 +168,44 @@ function asUrlWithLang(path, lang) {
   return `${clean}${hasQuery ? "&" : "?"}lang=${lang}`;
 }
 
+function langToOgLocale(lang) {
+  const map = {
+    lv: "lv_LV",
+    en: "en_US",
+    ru: "ru_RU",
+    de: "de_DE",
+    pl: "pl_PL"
+  };
+  return map[lang] || "en_US";
+}
+
+function toAbsoluteMediaUrl(site, rawUrl) {
+  const value = String(rawUrl || "").trim();
+  if (!value) {
+    return absoluteUrl(site, "/assets/logo-30sek24.svg");
+  }
+  if (/^https?:\/\//i.test(value)) {
+    return value;
+  }
+  return absoluteUrl(site, value.startsWith("/") ? value : `/${value}`);
+}
+
+function resolveOgImage(site, page) {
+  if (page.pageType === "service" && page.service && page.service.image) {
+    return toAbsoluteMediaUrl(site, page.service.image);
+  }
+  if (page.pageType === "category" && Array.isArray(page.categoryServices)) {
+    const withImage = page.categoryServices.find((service) => service && service.image);
+    if (withImage) {
+      return toAbsoluteMediaUrl(site, withImage.image);
+    }
+  }
+  if (Array.isArray(site.services) && site.services[0] && site.services[0].image) {
+    return toAbsoluteMediaUrl(site, site.services[0].image);
+  }
+  return absoluteUrl(site, "/assets/logo-30sek24.svg");
+}
+
 function serviceFaqEntries(site) {
   return [
     { question: t(site, "faqQ1"), answer: t(site, "faqA1") },
@@ -208,6 +246,20 @@ function renderJsonLdBlocks(site, page, canonical) {
     inLanguage: site.lang
   };
   blocks.push(webSite);
+
+  blocks.push({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.title || site.title || site.siteName,
+    description: page.description || site.description,
+    url: canonical,
+    inLanguage: site.lang,
+    isPartOf: {
+      "@type": "WebSite",
+      name: site.siteName,
+      url: site.siteUrl
+    }
+  });
 
   if (page.breadcrumb && Array.isArray(page.breadcrumb.items) && page.breadcrumb.items.length) {
     const items = page.breadcrumb.items.map((item, idx) => ({
@@ -468,6 +520,8 @@ export function renderLayout(site, page) {
   const breadcrumbHtml = renderBreadcrumb(page.breadcrumb);
   const alternateLinks = renderAlternateLinks(site.lang, page.languagePaths || {}, site);
   const jsonLd = renderJsonLdBlocks(site, page, canonical);
+  const ogImage = resolveOgImage(site, page);
+  const ogLocale = langToOgLocale(site.lang);
 
   return `<!doctype html>
 <html lang="${esc(site.lang)}">
@@ -476,8 +530,22 @@ export function renderLayout(site, page) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${esc(pageTitle)}</title>
   <meta name="description" content="${esc(description)}" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="${esc(canonical)}" />
   ${alternateLinks}
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+  <meta property="og:locale" content="${esc(ogLocale)}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="${esc(site.siteName)}" />
+  <meta property="og:title" content="${esc(pageTitle)}" />
+  <meta property="og:description" content="${esc(description)}" />
+  <meta property="og:url" content="${esc(canonical)}" />
+  <meta property="og:image" content="${esc(ogImage)}" />
+  <meta property="og:image:alt" content="${esc(page.title || site.siteName)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${esc(pageTitle)}" />
+  <meta name="twitter:description" content="${esc(description)}" />
+  <meta name="twitter:image" content="${esc(ogImage)}" />
   <link rel="stylesheet" href="/assets/styles.css" />
   ${jsonLd}
 </head>

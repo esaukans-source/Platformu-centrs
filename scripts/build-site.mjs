@@ -59,6 +59,8 @@ async function writeRobots() {
     "Allow: /",
     "Disallow: /maintenance.html",
     "",
+    "Host: https://www.30sek24.com",
+    "",
     "Sitemap: https://www.30sek24.com/sitemap.xml",
     ""
   ].join("\n");
@@ -123,11 +125,57 @@ async function collectCanonicalUrls() {
   return Array.from(urls).sort();
 }
 
+function splitRouteParts(canonicalUrl) {
+  let pathname = "/";
+  try {
+    pathname = new URL(canonicalUrl).pathname || "/";
+  } catch (_error) {
+    pathname = "/";
+  }
+  const cleaned = pathname.replace(/^\/+|\/+$/g, "");
+  if (!cleaned) {
+    return [];
+  }
+  const parts = cleaned.split("/");
+  const hasLangPrefix = new Set(["en", "ru", "de", "pl"]).has(parts[0]);
+  return hasLangPrefix ? parts.slice(1) : parts;
+}
+
+function sitemapPriority(canonicalUrl) {
+  const parts = splitRouteParts(canonicalUrl);
+  if (parts.length === 0) return "1.0";
+  if (parts.length === 1 && parts[0] === "pakalpojumi") return "0.9";
+  if (parts.length === 2 && parts[0] === "pakalpojumi") return "0.8";
+  if (parts.length === 1) return "0.7";
+  if (parts.length === 2) return "0.6";
+  return "0.5";
+}
+
+function sitemapChangefreq(canonicalUrl) {
+  const parts = splitRouteParts(canonicalUrl);
+  if (parts.length === 0) return "weekly";
+  if (parts.length === 1 && parts[0] === "pakalpojumi") return "weekly";
+  if (parts.length === 2 && parts[0] === "pakalpojumi") return "weekly";
+  if (parts.length === 1) return "weekly";
+  return "monthly";
+}
+
 async function writeSitemap() {
   const urls = await collectCanonicalUrls();
   const lastmod = new Date().toISOString().slice(0, 10);
   const nodes = urls
-    .map((url) => `  <url><loc>${xmlEscape(url)}</loc><lastmod>${lastmod}</lastmod></url>`)
+    .map((url) => {
+      const changefreq = sitemapChangefreq(url);
+      const priority = sitemapPriority(url);
+      return (
+        `  <url>` +
+        `<loc>${xmlEscape(url)}</loc>` +
+        `<lastmod>${lastmod}</lastmod>` +
+        `<changefreq>${changefreq}</changefreq>` +
+        `<priority>${priority}</priority>` +
+        `</url>`
+      );
+    })
     .join("\n");
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
