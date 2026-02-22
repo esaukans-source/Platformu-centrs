@@ -71,10 +71,10 @@
   }
 
   function resolveCalculator(platform) {
-    var fallback = calculatorByNiche(platform && platform.niche);
+    var fromNiche = calculatorByNiche(platform && platform.niche);
     return {
-      url: (platform && platform.calculatorUrl) || fallback.url,
-      label: (platform && platform.calculatorLabel) || fallback.label,
+      url: fromNiche.url,
+      label: fromNiche.label,
     };
   }
 
