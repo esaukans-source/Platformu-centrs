@@ -26,6 +26,10 @@ const UI = {
     faqA2: "Steidzamiem darbiem piesaisti organizējam pēc iespējas ātrāk; precīzs starts atkarīgs no objekta un pieejamības.",
     faqQ3: "Vai var saņemt izmaksu novērtējumu pirms darbu sākuma?",
     faqA3: "Jā, pirms starta var saņemt sākotnējo novērtējumu un darba plānu.",
+    interiorCalculatorTitle: "Iekšējās apdares kalkulators",
+    interiorCalculatorLeadCategory: "Šeit vari ātri sarēķināt aptuvenās apdares izmaksas pēc telpas platības un darbu paketes.",
+    interiorCalculatorLeadService: "Pirms pieteikuma iemet aptuveno tāmi, lai saproti budžeta robežas un darbu apjomu.",
+    interiorCalculatorCta: "Aprēķināt aptuveno cenu",
     howItWorksId: "ka-tas-strada"
   },
   en: {
@@ -54,6 +58,10 @@ const UI = {
     faqA2: "Urgent requests are prioritized first; start timing depends on scope and team availability.",
     faqQ3: "Can I get a cost estimate before work starts?",
     faqA3: "Yes, you can receive an initial estimate and an execution plan before kickoff.",
+    interiorCalculatorTitle: "Interior finishing calculator",
+    interiorCalculatorLeadCategory: "Quickly estimate approximate finishing costs by room area and work package.",
+    interiorCalculatorLeadService: "Before submitting a request, calculate an approximate estimate to understand budget range and scope.",
+    interiorCalculatorCta: "Calculate approximate cost",
     howItWorksId: "how-it-works"
   },
   ru: {
@@ -82,6 +90,10 @@ const UI = {
     faqA2: "Срочные заявки обрабатываются в первую очередь; старт зависит от объема и доступности бригады.",
     faqQ3: "Можно ли получить оценку стоимости до начала?",
     faqA3: "Да, перед стартом можно получить предварительную смету и план работ.",
+    interiorCalculatorTitle: "Калькулятор внутренней отделки",
+    interiorCalculatorLeadCategory: "Быстро посчитайте примерную стоимость отделки по площади помещения и пакету работ.",
+    interiorCalculatorLeadService: "Перед заявкой сделайте примерный расчет, чтобы понять бюджет и объем работ.",
+    interiorCalculatorCta: "Рассчитать примерную стоимость",
     howItWorksId: "how-it-works"
   },
   de: {
@@ -110,6 +122,10 @@ const UI = {
     faqA2: "Dringende Auftraege priorisieren wir zuerst; der Start haengt vom Umfang und der Verfuegbarkeit ab.",
     faqQ3: "Kann ich vor dem Start eine Kostenschaetzung erhalten?",
     faqA3: "Ja, vor dem Start erhalten Sie eine erste Schaetzung und einen Ausfuehrungsplan.",
+    interiorCalculatorTitle: "Innenausbau-Rechner",
+    interiorCalculatorLeadCategory: "Schaetzen Sie schnell ungefaehre Ausbaukosten nach Raumflaeche und Leistungspaket.",
+    interiorCalculatorLeadService: "Berechnen Sie vor der Anfrage eine ungefaehre Summe, um Budget und Umfang besser einzuordnen.",
+    interiorCalculatorCta: "Ungefaehre Kosten berechnen",
     howItWorksId: "how-it-works"
   },
   pl: {
@@ -138,6 +154,10 @@ const UI = {
     faqA2: "Pilne zgloszenia obslugujemy priorytetowo; termin startu zalezy od zakresu i dostepnosci ekipy.",
     faqQ3: "Czy moge dostac wycene przed startem prac?",
     faqA3: "Tak, przed startem otrzymasz wstepna wycene i plan realizacji.",
+    interiorCalculatorTitle: "Kalkulator wykonczenia wnetrz",
+    interiorCalculatorLeadCategory: "Szybko oszacuj przyblizony koszt wykonczenia wedlug powierzchni i pakietu prac.",
+    interiorCalculatorLeadService: "Przed zgloszeniem sprawdz orientacyjny koszt, aby lepiej zaplanowac budzet i zakres.",
+    interiorCalculatorCta: "Oblicz przyblizony koszt",
     howItWorksId: "how-it-works"
   }
 };
@@ -415,6 +435,17 @@ function renderCategoryCard(site, category) {
   return `<a class="card category-card" href="${esc(base + "/pakalpojumi/" + category.slug)}"><p class="category-card-kicker">${esc(t(site, "category"))}</p><h3>${esc(category.name)}</h3><p>${esc(category.description)}</p></a>`;
 }
 
+function renderInteriorCalculatorTeaser(site, leadKey) {
+  const calcPath = (site.basePath || "") + "/kalkulators/apdare";
+  return `<section class="block calculator-teaser">
+      <h2>${esc(t(site, "interiorCalculatorTitle"))}</h2>
+      <p>${esc(t(site, leadKey))}</p>
+      <div class="cta-row">
+        <a href="${esc(calcPath)}" class="btn">${esc(t(site, "interiorCalculatorCta"))}</a>
+      </div>
+    </section>`;
+}
+
 export function renderHomeMain(site) {
   const categoriesHtml = site.categories.map((category) => renderCategoryCard(site, category)).join("");
   const featuredServices = site.services.slice(0, 8).map((service) => renderServiceCard(site, service)).join("");
@@ -501,6 +532,9 @@ export function renderHubMain(site) {
 
 export function renderCategoryMain(site, category, services) {
   const serviceCards = services.map((service) => renderServiceCard(site, service)).join("");
+  const interiorTeaser = category.slug === "apdare-interjers"
+    ? renderInteriorCalculatorTeaser(site, "interiorCalculatorLeadCategory")
+    : "";
   return `<main>
     <section class="hero hero-premium compact-hero">
       <p class="hero-kicker">${esc(t(site, "categoryKicker"))}</p>
@@ -514,6 +548,7 @@ export function renderCategoryMain(site, category, services) {
     <section class="block">
       <div class="cards service-grid">${serviceCards}</div>
     </section>
+    ${interiorTeaser}
   </main>`;
 }
 
@@ -546,6 +581,9 @@ export function renderServiceMain(site, service, category) {
       <div class="cards service-grid">${relatedServicesHtml}</div>
     </section>`
     : "";
+  const interiorTeaser = service.slug === "apdare"
+    ? renderInteriorCalculatorTeaser(site, "interiorCalculatorLeadService")
+    : "";
   return `<main>
     <section class="hero hero-premium service-hero">
       <div class="service-hero-copy">
@@ -566,6 +604,7 @@ export function renderServiceMain(site, service, category) {
       <h2>${esc(t(site, "included"))}</h2>
       <ul class="list-tight">${bulletHtml}</ul>
     </section>
+    ${interiorTeaser}
     ${processSection}
 
     <section class="block" id="faq">
