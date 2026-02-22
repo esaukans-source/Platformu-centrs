@@ -1252,3 +1252,163 @@ main {
   background: var(--pc-main);
   border-color: var(--pc-main);
 }
+
+.pc-platform-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.pc-platform-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -30% -55% -30%;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 68%);
+  pointer-events: none;
+}
+
+#pc-editor-wrap .lead-form {
+  max-width: none;
+}
+
+.pc-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.75rem;
+}
+
+.pc-editor-grid label {
+  display: grid;
+  gap: 0.32rem;
+}
+
+.pc-editor-grid .pc-editor-span {
+  grid-column: 1 / -1;
+}
+
+.pc-ads-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.8rem;
+}
+
+.pc-ads-editor-grid .card {
+  margin-top: 0;
+}
+
+.pc-ads-editor-grid h5 {
+  margin: 0 0 0.55rem;
+}
+
+.pc-public-view {
+  --pc-main: #1f5c47;
+  --pc-soft: #e8f3ee;
+  --pc-line: #8bb9a7;
+}
+
+.pc-public-view .hero,
+.pc-public-view .block,
+.pc-public-view .card {
+  border-color: var(--pc-line);
+  background: linear-gradient(180deg, #ffffff 0%, var(--pc-soft) 100%);
+}
+
+.pc-public-view .hero h1,
+.pc-public-view .block h2,
+.pc-public-view .card h3 {
+  color: var(--pc-main);
+}
+
+.pc-public-view .btn {
+  background: var(--pc-main);
+  border-color: var(--pc-main);
+}
+
+.pc-public-view .btn-soft {
+  color: var(--pc-main);
+  border-color: var(--pc-line);
+  background: #ffffff;
+}
+
+.pc-hero-media {
+  margin-top: 1rem;
+  border: 1px solid var(--pc-line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.pc-hero-media img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.pc-ad-card {
+  border-width: 2px;
+}
+
+.pc-ad-card .card-thumb {
+  height: 160px;
+}
+
+@media (max-width: 760px) {
+  .pc-editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pc-ads-editor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Siltuma kalkulatora formas izlīdzinājums */
+#heat-calculator-root .lead-form {
+  max-width: none;
+}
+
+#heat-calculator-root .calc-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start;
+}
+
+#heat-calculator-root .room-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: start;
+}
+
+#heat-calculator-root .lead-form label,
+#heat-calculator-root .room-grid label,
+#heat-calculator-root .label-head,
+#heat-calculator-root .label-text {
+  min-width: 0;
+}
+
+#heat-calculator-root .lead-form input,
+#heat-calculator-root .lead-form select,
+#heat-calculator-root .lead-form textarea,
+#heat-calculator-root .room-grid input,
+#heat-calculator-root .room-grid select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+#heat-calculator-root .label-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#heat-calculator-root .label-text {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  #heat-calculator-root .calc-grid,
+  #heat-calculator-root .room-grid {
+    grid-template-columns: 1fr;
+  }
+}

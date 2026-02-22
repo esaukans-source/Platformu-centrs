@@ -122,6 +122,101 @@
 
       <h3>Manas platformas</h3>
       <div class="cards" id="pc-platform-list"></div>
+
+      <section class="block" id="pc-editor-wrap" hidden>
+        <h3>Rediģēt platformu</h3>
+        <form class="lead-form" id="pc-edit-form" onsubmit="return false;">
+          <input type="hidden" name="platform_id" />
+          <div class="pc-editor-grid">
+            <label>Publiskais virsraksts
+              <input type="text" name="hero_title" placeholder="Piem.: Apkure Rīga Pro" required />
+            </label>
+            <label>Hero bilde (URL)
+              <input type="url" name="hero_image" placeholder="https://..." />
+            </label>
+            <label>Dizaina režģis
+              <select name="layout">
+                <option value="split">Split</option>
+                <option value="stack">Stack</option>
+                <option value="tiles">Tiles</option>
+              </select>
+            </label>
+            <label>Primārā krāsa
+              <input type="color" name="primary_color" value="#1f5c47" />
+            </label>
+            <label>Fona krāsa
+              <input type="color" name="soft_color" value="#e8f3ee" />
+            </label>
+            <label>Līniju krāsa
+              <input type="color" name="line_color" value="#8bb9a7" />
+            </label>
+            <label class="pc-editor-span">Hero apraksts
+              <textarea name="hero_lead" rows="3" placeholder="Īss apraksts par platformu"></textarea>
+            </label>
+            <label class="pc-editor-span">Par platformu
+              <textarea name="about_text" rows="3" placeholder="Kas šajā platformā tiek piedāvāts un kā strādā process"></textarea>
+            </label>
+            <label class="pc-editor-span">Struktūras punkti (jauna rinda = jauns punkts)
+              <textarea name="structure_lines" rows="5" placeholder="Piedāvājums&#10;Lead kvalifikācija&#10;Tāmes izveide"></textarea>
+            </label>
+          </div>
+
+          <h4>Partneru reklāmas bloki</h4>
+          <div class="pc-ads-editor-grid">
+            <article class="card">
+              <h5>Reklāma #1</h5>
+              <label>Virsraksts
+                <input type="text" name="ad1_title" placeholder="Partnera nosaukums" />
+              </label>
+              <label>Apraksts
+                <textarea name="ad1_text" rows="2" placeholder="Īss reklāmas teksts"></textarea>
+              </label>
+              <label>Bilde (URL)
+                <input type="url" name="ad1_image" placeholder="https://..." />
+              </label>
+              <label>Saite
+                <input type="url" name="ad1_link" placeholder="https://..." />
+              </label>
+            </article>
+            <article class="card">
+              <h5>Reklāma #2</h5>
+              <label>Virsraksts
+                <input type="text" name="ad2_title" placeholder="Partnera nosaukums" />
+              </label>
+              <label>Apraksts
+                <textarea name="ad2_text" rows="2" placeholder="Īss reklāmas teksts"></textarea>
+              </label>
+              <label>Bilde (URL)
+                <input type="url" name="ad2_image" placeholder="https://..." />
+              </label>
+              <label>Saite
+                <input type="url" name="ad2_link" placeholder="https://..." />
+              </label>
+            </article>
+            <article class="card">
+              <h5>Reklāma #3</h5>
+              <label>Virsraksts
+                <input type="text" name="ad3_title" placeholder="Partnera nosaukums" />
+              </label>
+              <label>Apraksts
+                <textarea name="ad3_text" rows="2" placeholder="Īss reklāmas teksts"></textarea>
+              </label>
+              <label>Bilde (URL)
+                <input type="url" name="ad3_image" placeholder="https://..." />
+              </label>
+              <label>Saite
+                <input type="url" name="ad3_link" placeholder="https://..." />
+              </label>
+            </article>
+          </div>
+
+          <div class="cta-row">
+            <button class="btn" type="submit">Saglabāt izmaiņas</button>
+            <button class="btn btn-soft" type="button" id="pc-edit-cancel">Aizvērt rediģēšanu</button>
+          </div>
+        </form>
+        <p id="pc-edit-msg" class="form-error"></p>
+      </section>
     </section>
   </main>
 

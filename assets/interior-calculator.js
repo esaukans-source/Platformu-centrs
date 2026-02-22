@@ -21,6 +21,12 @@
     irregular: 1.1,
   };
 
+  var SHAPE_ASPECT_RATIO = {
+    square: 1,
+    rect15: 1.5,
+    rect2: 2,
+  };
+
   var COMPLEXITY_FACTOR = {
     simple: 1,
     medium: 1.12,
@@ -137,15 +143,18 @@
     };
   }
 
-  function validateInput(input) {
+  function validateInput(input, geometry) {
     var critical = [];
     var warnings = [];
 
     if (!(input.area > 0)) critical.push("Norādi telpas platību lielāku par 0 m².");
     if (!(input.height > 0)) critical.push("Norādi griestu augstumu.");
     if (input.height > 0 && (input.height < 2.1 || input.height > 3.4)) warnings.push("Griestu augstums ir ārpus tipiskā diapazona (2.1-3.4 m).");
-    if (input.openings > input.area * 0.6) critical.push("Atvērumu laukums ir pārāk liels attiecībā pret telpas platību.");
-    if (input.openings > input.area * 0.35 && input.openings <= input.area * 0.6) warnings.push("Atvērumu laukums ir liels, pārbaudi ievadi.");
+    if (geometry && geometry.grossWallArea > 0) {
+      var openingsShare = input.openings / geometry.grossWallArea;
+      if (openingsShare > 0.65) critical.push("Atvērumu laukums ir pārāk liels attiecībā pret sienu bruto laukumu.");
+      else if (openingsShare > 0.4) warnings.push("Atvērumu laukums ir liels pret sienu bruto laukumu, pārbaudi ievadi.");
+    }
     if (input.doorWidth > 2) warnings.push("Durvju platums izskatās netipisks, pārbaudi ievadi.");
     if (input.wastePercent > 20) warnings.push("Materiālu rezerve virs 20% palielina atlikuma risku.");
     if (input.overheadPercent > 20) warnings.push("Pieskaitāmās izmaksas virs 20% var būt grūtāk pamatot klientam.");
@@ -156,16 +165,30 @@
     };
   }
 
+  function calculatePerimeterFromArea(area, shape) {
+    var safeArea = Math.max(0, area);
+    var ratio = SHAPE_ASPECT_RATIO[shape];
+    if (ratio) {
+      var width = Math.sqrt(safeArea / ratio);
+      var length = Math.sqrt(safeArea * ratio);
+      return 2 * (width + length);
+    }
+    return 4 * Math.sqrt(safeArea) * (SHAPE_FACTOR[shape] || 1);
+  }
+
   function calculateGeometry(input) {
-    var basePerimeter = 4 * Math.sqrt(input.area);
-    var perimeter = basePerimeter * (SHAPE_FACTOR[input.shape] || 1);
-    var wallArea = Math.max(0, perimeter * input.height - input.openings);
+    var perimeter = calculatePerimeterFromArea(input.area, input.shape);
+    var grossWallArea = Math.max(0, perimeter * input.height);
+    var openingsUsed = Math.max(0, Math.min(input.openings, grossWallArea));
+    var wallArea = Math.max(0, grossWallArea - openingsUsed);
     var ceilingArea = input.area;
     var paintArea = wallArea + (input.includeCeiling ? ceilingArea : 0);
     var skirtingM = Math.max(0, perimeter - input.doorWidth);
 
     return {
       perimeter: round(perimeter, 2),
+      grossWallArea: round(grossWallArea, 2),
+      openingsUsed: round(openingsUsed, 2),
       wallArea: round(wallArea, 2),
       ceilingArea: round(ceilingArea, 2),
       paintArea: round(paintArea, 2),
@@ -328,13 +351,21 @@
     });
 
     var ratio = input.area > 0 ? geometry.wallArea / input.area : 0;
+    var grossRatio = input.area > 0 ? geometry.grossWallArea / input.area : 0;
+    var expectedMin = grossRatio * 0.55;
+    var expectedRangeMin = grossRatio * 0.4;
     var ratioState = "review";
-    if (ratio >= 2.1 && ratio <= 3.8) ratioState = "ok";
-    else if (ratio >= 1.7 && ratio <= 4.6) ratioState = "range";
+    if (ratio >= expectedMin && ratio <= grossRatio) ratioState = "ok";
+    else if (ratio >= expectedRangeMin && ratio <= grossRatio) ratioState = "range";
     statuses.push({
       title: "Sienu/platības attiecība",
       state: ratioState,
-      note: "Attiecība " + fmt(ratio, 2) + " (tipiski 2.1-3.8).",
+      note:
+        "Neto " +
+        fmt(ratio, 2) +
+        ", bruto " +
+        fmt(grossRatio, 2) +
+        " (formula: perimetrs × augstums - atvērumi).",
     });
 
     var wasteState = "review";
@@ -422,7 +453,13 @@
       "<p><strong>Perimetrs:</strong> " +
       fmt(geometry.perimeter, 2) +
       " m</p>" +
-      "<p><strong>Sienu laukums:</strong> " +
+      "<p><strong>Sienu laukums (bruto):</strong> " +
+      fmt(geometry.grossWallArea, 2) +
+      " m²</p>" +
+      "<p><strong>Atvērumi:</strong> " +
+      fmt(geometry.openingsUsed, 2) +
+      " m²</p>" +
+      "<p><strong>Sienu laukums (neto):</strong> " +
       fmt(geometry.wallArea, 2) +
       " m²</p>" +
       "<p><strong>Griestu laukums:</strong> " +
@@ -537,8 +574,8 @@
 
   function calculate() {
     var input = collectInput();
-    var missing = validateInput(input);
     var geometry = calculateGeometry(input);
+    var missing = validateInput(input, geometry);
     var materials = calculateMaterials(input, geometry);
     var labor = calculateLabor(input, geometry);
     var statuses = buildStatuses(input, geometry, materials, missing);

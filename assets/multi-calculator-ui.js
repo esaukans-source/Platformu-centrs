@@ -690,9 +690,18 @@
       var pack = form.querySelector('[data-i="pack"]').value;
       var includeCeiling = !!form.querySelector('[data-i="ceiling"]').checked;
 
-      var coeff = shape === "rect2" ? 4.24 : shape === "irregular" ? 4.66 : shape === "square" ? 4 : 4.08;
-      var perimeter = coeff * Math.sqrt(area);
-      var wallArea = Math.max(0, perimeter * height - openings);
+      var shapeRatio = shape === "square" ? 1 : shape === "rect15" ? 1.5 : shape === "rect2" ? 2 : 0;
+      var perimeter;
+      if (shapeRatio > 0) {
+        var width = Math.sqrt(area / shapeRatio);
+        var length = Math.sqrt(area * shapeRatio);
+        perimeter = 2 * (width + length);
+      } else {
+        perimeter = 4 * Math.sqrt(area) * 1.12;
+      }
+      var grossWallArea = perimeter * height;
+      var openingsUsed = Math.max(0, Math.min(openings, grossWallArea));
+      var wallArea = Math.max(0, grossWallArea - openingsUsed);
       var ceilingArea = includeCeiling ? area : 0;
       var paintArea = wallArea + ceilingArea;
 
@@ -723,6 +732,7 @@
         '<h3>' + t("interiorResultTitle") + '</h3>' +
         '<div class="sys-grid">' +
         '<p><strong>' + t("perimeter") + ':</strong> ' + round(perimeter, 1) + ' ' + t("unitM") + '</p>' +
+        '<p><strong>' + t("openings") + ':</strong> ' + round(openingsUsed, 1) + ' ' + t("unitM2") + '</p>' +
         '<p><strong>' + t("wallArea") + ':</strong> ' + round(wallArea, 1) + ' ' + t("unitM2") + '</p>' +
         '<p><strong>' + t("paintArea") + ':</strong> ' + round(paintArea, 1) + ' ' + t("unitM2") + '</p>' +
         '<p><strong>' + t("primer") + ':</strong> ' + primerL + ' ' + t("unitL") + '</p>' +
