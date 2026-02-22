@@ -1,0 +1,630 @@
+{
+  "name": "30Sek 90 dienu izaugsmes autopilots",
+  "version": "1.0.0",
+  "durationDays": 90,
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Pamati un mērījumi",
+      "objective": "Sakārtot analītiku, atribūciju un vadības paneli, lai katru lēmumu var pieņemt uz datiem.",
+      "weeklyOutputTargets": {
+        "videos": 7,
+        "partners_outreach": 5
+      },
+      "tasks": [
+        {
+          "id": "w1-analytics-taxonomy",
+          "type": "manual",
+          "title": "Sakārtot GA4 + GSC + CRM notikumu taksonomiju",
+          "definitionOfDone": [
+            "Ir vienots event nosaukumu standarts visām valodām",
+            "Formas iesniegšana, kalkulatoru izmantošana un CTA klikšķi tiek mērīti"
+          ],
+          "kpi": [
+            "100% galveno eventu mērījums bez dublēšanās"
+          ]
+        },
+        {
+          "id": "w1-dashboard",
+          "type": "manual",
+          "title": "Izveidot vadības paneli iknedēļas KPI",
+          "definitionOfDone": [
+            "Panelī redzami sessions, leads, paid clients, conversion rate",
+            "Dati ir salīdzināmi pa kanāliem un valodām"
+          ],
+          "kpi": [
+            "KPI panelis atjaunojas katru dienu"
+          ]
+        },
+        {
+          "id": "w1-autopilot-runbook",
+          "type": "hybrid",
+          "title": "Palaist ikdienas autopilota runbook",
+          "definitionOfDone": [
+            "Katru dienu iziet build, kalkulatoru gate un GEO pārbaude",
+            "Ir saglabāta dienas atskaite autopilot/reports"
+          ],
+          "kpi": [
+            "0 kritiskas kļūdas ikdienas izpildē"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "title": "Tehniskais SEO/GEO audits",
+      "objective": "Noņemt indeksācijas un tehniskos šķēršļus, kas bremzē organisko izaugsmi.",
+      "weeklyOutputTargets": {
+        "videos": 7,
+        "partners_outreach": 8
+      },
+      "tasks": [
+        {
+          "id": "w2-indexability",
+          "type": "manual",
+          "title": "Pārbaudīt indeksāciju, canonical, hreflang, robots un sitemap",
+          "definitionOfDone": [
+            "Nav pretrunu starp canonical un hreflang",
+            "Sitemap satur tikai kanoniskās lapas"
+          ],
+          "kpi": [
+            "Tehnisko kļūdu samazinājums vismaz par 80%"
+          ]
+        },
+        {
+          "id": "w2-cwv",
+          "type": "manual",
+          "title": "Uzlabot Core Web Vitals kritiskajām lapām",
+          "definitionOfDone": [
+            "Top lapās samazināts LCP un CLS",
+            "Mobilā veiktspēja nav zem minimālās robežas"
+          ],
+          "kpi": [
+            "CWV pass rate pieaug katru nedēļu"
+          ]
+        },
+        {
+          "id": "w2-checklist",
+          "type": "manual",
+          "title": "Ievies tehnisko kvalitātes checklist pirms publicēšanas",
+          "definitionOfDone": [
+            "Checklist ir dokumentēts un lietots katru dienu",
+            "Katrai izmaiņai ir pārbaudes ieraksts"
+          ],
+          "kpi": [
+            "0 regressijas pēc publicēšanas"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "title": "Pieprasījuma karte",
+      "objective": "Sadalīt pieprasījumu pa klasteriem (pakalpojums, pilsēta, valoda, intents) un noteikt prioritātes.",
+      "weeklyOutputTargets": {
+        "videos": 7,
+        "partners_outreach": 10
+      },
+      "tasks": [
+        {
+          "id": "w3-keyword-clusters",
+          "type": "manual",
+          "title": "Izveidot pieprasījuma klasterus pa valstīm un valodām",
+          "definitionOfDone": [
+            "Ir vismaz 200 klasteri ar skaidru intentu",
+            "Katram klasterim ir prioritātes līmenis"
+          ],
+          "kpi": [
+            "200+ validēti klasteri"
+          ]
+        },
+        {
+          "id": "w3-content-mapping",
+          "type": "manual",
+          "title": "Piesaistīt klasterus konkrētiem lapu šabloniem",
+          "definitionOfDone": [
+            "Katram augstā nodoma klasterim ir mērķa lapas tips",
+            "Ir saturs, CTA un konversijas notikumi"
+          ],
+          "kpi": [
+            "Prioritārie klasteri nosegti 100%"
+          ]
+        },
+        {
+          "id": "w3-roadmap",
+          "type": "manual",
+          "title": "Sakārtot publicēšanas backlogu nākamajām 6 nedēļām",
+          "definitionOfDone": [
+            "Ir secīgs publicēšanas saraksts",
+            "Katram vienumam ir atbildīgais un termiņš"
+          ],
+          "kpi": [
+            "6 nedēļu backlog gatavs izpildei"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "title": "Šabloni un produkta saturs",
+      "objective": "Nostiprināt lapu šablonus, lai publicēšana būtu ātra un kvalitatīva.",
+      "weeklyOutputTargets": {
+        "landing_pages": 40,
+        "videos": 7,
+        "partners_outreach": 12
+      },
+      "tasks": [
+        {
+          "id": "w4-service-template",
+          "type": "manual",
+          "title": "Pilnveidot pakalpojuma lapas šablonu (cena, process, FAQ, HowTo)",
+          "definitionOfDone": [
+            "Šablons ietver pilnu konversijas ceļu",
+            "Ir strukturētie dati un iekšējā linkošana"
+          ],
+          "kpi": [
+            "Pakalpojuma lapu bounce rate samazinās"
+          ]
+        },
+        {
+          "id": "w4-city-template",
+          "type": "manual",
+          "title": "Izveidot pilsētu/reģionu landing šablonu",
+          "definitionOfDone": [
+            "Šablons atbalsta daudzvalodu variantus",
+            "Ir vietējie signāli un CTA"
+          ],
+          "kpi": [
+            "Top pilsētām gatavs publicēšanas komplekts"
+          ]
+        },
+        {
+          "id": "w4-calculator-template",
+          "type": "hybrid",
+          "title": "Savienot kalkulatoru rezultātus ar lead plūsmu",
+          "definitionOfDone": [
+            "Kalkulatora rezultātā lietotājs nonāk pieteikuma plūsmā",
+            "Mērās kalkulatora -> pieteikums konversija"
+          ],
+          "kpi": [
+            "Kalkulatoru konversijas mērījums aktivizēts"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "title": "Publicēšanas vilnis #1",
+      "objective": "Publicēt pirmo lielo klasteri ar augsta nodoma lapām.",
+      "weeklyOutputTargets": {
+        "landing_pages": 100,
+        "videos": 7,
+        "partners_outreach": 15
+      },
+      "tasks": [
+        {
+          "id": "w5-publish-100",
+          "type": "manual",
+          "title": "Publicēt pirmās 100 landing lapas",
+          "definitionOfDone": [
+            "Visas lapas atbilst šablonam",
+            "Lapas ir iekļautas iekšējā linkošanā"
+          ],
+          "kpi": [
+            "Organiskais trafiks sāk augt nedēļu pret nedēļu"
+          ]
+        },
+        {
+          "id": "w5-cta-testing",
+          "type": "manual",
+          "title": "A/B testēt 2-3 galvenos CTA variantus",
+          "definitionOfDone": [
+            "Ir mērījums par katru CTA variantu",
+            "Uzvarētājs ieviests šablonos"
+          ],
+          "kpi": [
+            "CTA CTR pieaug vismaz par 10%"
+          ]
+        },
+        {
+          "id": "w5-index-watch",
+          "type": "hybrid",
+          "title": "Sekot indeksācijas tempam un novērst kļūdas",
+          "definitionOfDone": [
+            "Top lapas nonāk index",
+            "404/redirect problēmas novērstas tajā pašā dienā"
+          ],
+          "kpi": [
+            "Indeksācijas coverage stabils pieaugums"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "title": "Publicēšanas vilnis #2",
+      "objective": "Skalēt saturu un kalkulatoru plūsmu uz nākamo līmeni.",
+      "weeklyOutputTargets": {
+        "landing_pages": 150,
+        "videos": 7,
+        "partners_outreach": 18
+      },
+      "tasks": [
+        {
+          "id": "w6-publish-150",
+          "type": "manual",
+          "title": "Publicēt vēl 150 lapas ar augstāko pieprasījumu",
+          "definitionOfDone": [
+            "Lapas aptver top pieprasījuma klasterus",
+            "Katrai lapai ir skaidrs conversion CTA"
+          ],
+          "kpi": [
+            "Mēneša sessions run-rate sasniedz 10k+ no organiskā"
+          ]
+        },
+        {
+          "id": "w6-calculator-expansion",
+          "type": "hybrid",
+          "title": "Pievienot/uzlabot kalkulatoru landing virsrakstus un ievadplūsmu",
+          "definitionOfDone": [
+            "Kalkulatori piesaista mērķa pieprasījumu",
+            "Ir skaidrs ceļš no kalkulatora uz pieteikumu"
+          ],
+          "kpi": [
+            "Kalkulatoru sesijas un lead share pieaug"
+          ]
+        },
+        {
+          "id": "w6-content-qc",
+          "type": "manual",
+          "title": "Veikt kvalitātes kontroli publicētajām lapām",
+          "definitionOfDone": [
+            "Nav dublikātu un plāna satura",
+            "Visām lapām korekta valoda un diakritika"
+          ],
+          "kpi": [
+            "Satura kvalitātes kļūdas samazinās līdz minimumam"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "title": "Iekšējā linkošana un schema slānis",
+      "objective": "Uzlabot lapu savstarpējo savienojumu un semantisko signālu kvalitāti.",
+      "weeklyOutputTargets": {
+        "landing_pages": 80,
+        "videos": 7,
+        "partners_outreach": 20
+      },
+      "tasks": [
+        {
+          "id": "w7-link-graph",
+          "type": "manual",
+          "title": "Sakārtot iekšējo linkošanu pa klasteriem",
+          "definitionOfDone": [
+            "Katra pakalpojuma lapa linko uz kategoriju un saistītajiem pakalpojumiem",
+            "Katra kategorija linko uz prioritārajām pilsētu lapām"
+          ],
+          "kpi": [
+            "Vidējais page depth samazinās"
+          ]
+        },
+        {
+          "id": "w7-schema-coverage",
+          "type": "hybrid",
+          "title": "Nostiprināt Service, FAQ, HowTo un ItemList schema pārklājumu",
+          "definitionOfDone": [
+            "Schema ir korekti ģenerēta visās valodās",
+            "Nav JSON-LD sintakses kļūdu"
+          ],
+          "kpi": [
+            "Structured data coverage 100% mērķa lapām"
+          ]
+        },
+        {
+          "id": "w7-snippet-optimization",
+          "type": "manual",
+          "title": "Uzlabot title/meta aprakstus pēc CTR datiem",
+          "definitionOfDone": [
+            "Top lapām ieviesti jauni virsraksti",
+            "Aprakstos skaidra vērtība un CTA"
+          ],
+          "kpi": [
+            "SERP CTR pieaug vismaz par 10%"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "title": "Case study un cenu intents",
+      "objective": "Pievienot uzticības slāni un cenu orientierus, kas ceļ konversiju.",
+      "weeklyOutputTargets": {
+        "landing_pages": 60,
+        "case_studies": 10,
+        "videos": 7,
+        "partners_outreach": 22
+      },
+      "tasks": [
+        {
+          "id": "w8-case-studies",
+          "type": "manual",
+          "title": "Publicēt 10 case studies ar reāliem scenārijiem",
+          "definitionOfDone": [
+            "Katram case ir problēma, risinājums, termiņš, aptuvenais budžets",
+            "Case lapas linkotas no pakalpojuma lapām"
+          ],
+          "kpi": [
+            "Konversijas lapās ar case pieaug"
+          ]
+        },
+        {
+          "id": "w8-price-intent-pages",
+          "type": "manual",
+          "title": "Publicēt cenu orientiera lapas top pakalpojumiem",
+          "definitionOfDone": [
+            "Lietotājam ir skaidrs cenu diapazons",
+            "No cenu lapām ir tiešs pieteikuma ceļš"
+          ],
+          "kpi": [
+            "Lead quality uzlabojas"
+          ]
+        },
+        {
+          "id": "w8-proof-signals",
+          "type": "manual",
+          "title": "Ievietot sociālos pierādījumus un uzticības blokus",
+          "definitionOfDone": [
+            "Ir atsauksmju un rezultātu bloki",
+            "Uzsvērta darba procesa caurspīdība"
+          ],
+          "kpi": [
+            "Pieteikumu konversija +20% pret baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "title": "Video un sociālais dzinējs",
+      "objective": "Veidot stabilu branded pieprasījumu un satiksmi no video/social kanāliem.",
+      "weeklyOutputTargets": {
+        "videos": 14,
+        "landing_pages": 40,
+        "partners_outreach": 25
+      },
+      "tasks": [
+        {
+          "id": "w9-video-production",
+          "type": "manual",
+          "title": "Publicēt short-form video katru dienu",
+          "definitionOfDone": [
+            "Katram video ir skaidrs CTA uz konkrētu lapu/kalkulatoru",
+            "Video tiek pielāgots katram kanālam"
+          ],
+          "kpi": [
+            "Social sessions run-rate sasniedz 50k/mēn"
+          ]
+        },
+        {
+          "id": "w9-creative-angles",
+          "type": "manual",
+          "title": "Notestēt 5 radošos leņķus (cena, process, kļūdas, pirms/pēc, steidzamie darbi)",
+          "definitionOfDone": [
+            "Ir skaidri uzvarētāji pēc CTR un retention",
+            "Uzvarētāji tiek mērogoti nākamajās nedēļās"
+          ],
+          "kpi": [
+            "Video CTR uzlabojas nedēļu pret nedēļu"
+          ]
+        },
+        {
+          "id": "w9-creator-loop",
+          "type": "manual",
+          "title": "Ievies regulāru satura ražošanas ciklu",
+          "definitionOfDone": [
+            "Ir publicēšanas kalendārs un atbildīgie",
+            "Saturam ir atkārtoti izmantojamas šablonu struktūras"
+          ],
+          "kpi": [
+            "Stabila publicēšana bez pārrāvumiem"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "title": "Partneru un referral programma",
+      "objective": "Palielināt ieteikumu satiksmi un iegūt stabilus partneru lead avotus.",
+      "weeklyOutputTargets": {
+        "partners_outreach": 40,
+        "videos": 10,
+        "landing_pages": 30
+      },
+      "tasks": [
+        {
+          "id": "w10-partner-program",
+          "type": "manual",
+          "title": "Palaist partneru programmu ar skaidriem noteikumiem",
+          "definitionOfDone": [
+            "Ir partnera piedāvājuma lapa un pieteikuma plūsma",
+            "Ir komisiju/atlīdzības modelis un SLA"
+          ],
+          "kpi": [
+            "100 partneru pieteikumi nedēļas laikā"
+          ]
+        },
+        {
+          "id": "w10-referral-pages",
+          "type": "manual",
+          "title": "Izveidot referral landing lapas partneru segmentiem",
+          "definitionOfDone": [
+            "Katrai partneru grupai sava lapa un UTM",
+            "Partneru trafiks mērāms atsevišķi"
+          ],
+          "kpi": [
+            "30+ referral domēni vai avoti"
+          ]
+        },
+        {
+          "id": "w10-contact-ops",
+          "type": "hybrid",
+          "title": "Automatizēt partneru atbildes un follow-up secību",
+          "definitionOfDone": [
+            "Leadi nonāk vienotā tabulā",
+            "Atbildes tiek nosūtītas laicīgi"
+          ],
+          "kpi": [
+            "Atbildes laiks partneru pieteikumiem < 30 min"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "title": "CRO sprints",
+      "objective": "Pacelt lead konversiju ar formas, CTA un uzticības elementu optimizāciju.",
+      "weeklyOutputTargets": {
+        "landing_pages": 30,
+        "videos": 10,
+        "partners_outreach": 30
+      },
+      "tasks": [
+        {
+          "id": "w11-form-optimization",
+          "type": "manual",
+          "title": "Optimizēt pieteikuma formas un soli pa solim plūsmu",
+          "definitionOfDone": [
+            "Formas lauki noņemti līdz minimumam bez kvalitātes krituma",
+            "Ir skaidri uzticības signāli pie formas"
+          ],
+          "kpi": [
+            "Lead conversion +25% pret baseline"
+          ]
+        },
+        {
+          "id": "w11-cta-stack",
+          "type": "manual",
+          "title": "Pārlikt CTA blokus pēc augstākās veiktspējas variantiem",
+          "definitionOfDone": [
+            "Top lapās vienots CTA modelis",
+            "CTA ir skaidrs vērtības piedāvājums"
+          ],
+          "kpi": [
+            "CTA click-through pieaugums"
+          ]
+        },
+        {
+          "id": "w11-speed-polish",
+          "type": "hybrid",
+          "title": "Veiktspējas un UX pulēšana mobilajās lapās",
+          "definitionOfDone": [
+            "Kritiskās lapas ielādējas ātri",
+            "Nav lēnu, bloķējošu elementu pirmajā skatā"
+          ],
+          "kpi": [
+            "Mobilā engagement uzlabojas"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "title": "Mērogo uzvarētājus",
+      "objective": "Mērogot tikai to, kas jau statistiski strādā, un apturēt vājās aktivitātes.",
+      "weeklyOutputTargets": {
+        "landing_pages": 80,
+        "videos": 14,
+        "partners_outreach": 35
+      },
+      "tasks": [
+        {
+          "id": "w12-top20",
+          "type": "manual",
+          "title": "Identificēt top 20% lapu/kanālu un dubultot apjomu",
+          "definitionOfDone": [
+            "Ir skaidrs uzvarētāju saraksts",
+            "Katram uzvarētājam palielināts publicēšanas un izplatīšanas apjoms"
+          ],
+          "kpi": [
+            "Sessions run-rate sasniedz 200k+ mēnesī"
+          ]
+        },
+        {
+          "id": "w12-cut-losers",
+          "type": "manual",
+          "title": "Apturēt vai pārtaisīt kanālus un lapas ar zemu ROI",
+          "definitionOfDone": [
+            "Ir saraksts ar apturētajām aktivitātēm",
+            "Resursi pārdalīti uz augstas atdeves virzieniem"
+          ],
+          "kpi": [
+            "Efektivitāte uz vienu izdevumu vienību pieaug"
+          ]
+        },
+        {
+          "id": "w12-ops-stability",
+          "type": "hybrid",
+          "title": "Stabilizēt ikdienas izpildes ritmu bez kvalitātes krituma",
+          "definitionOfDone": [
+            "Autopilota daily run iziet bez kļūdām",
+            "Komanda ievēro vienotu publicēšanas standartu"
+          ],
+          "kpi": [
+            "0 kritiskas publicēšanas avārijas"
+          ]
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "title": "Audits un Q3 mērogošana",
+      "objective": "Noslēgt 90 dienu ciklu ar datu auditu un nākamā mēroga plānu uz 1M/mēnesī.",
+      "weeklyOutputTargets": {
+        "landing_pages": 40,
+        "case_studies": 5,
+        "videos": 10,
+        "partners_outreach": 30
+      },
+      "tasks": [
+        {
+          "id": "w13-full-audit",
+          "type": "manual",
+          "title": "Pilns audits: satiksme, konversija, kvalitāte, kanāli",
+          "definitionOfDone": [
+            "Ir vienots audits ar secinājumiem",
+            "Ir top 10 prioritātes nākamajam ceturksnim"
+          ],
+          "kpi": [
+            "Skaidrs growth modelis uz 1M/mēn"
+          ]
+        },
+        {
+          "id": "w13-q3-plan",
+          "type": "manual",
+          "title": "Sagatavot 6 mēnešu mērogošanas plānu (valstis, valodas, pakalpojumi)",
+          "definitionOfDone": [
+            "Plānam ir nedēļu grafiks un KPI robežas",
+            "Ir atbildīgie un izpildes secība"
+          ],
+          "kpi": [
+            "Q3 backlog pilnībā sagatavots"
+          ]
+        },
+        {
+          "id": "w13-investment-decision",
+          "type": "manual",
+          "title": "Pieņemt investīciju un komandas kapacitātes lēmumus nākamajam ciklam",
+          "definitionOfDone": [
+            "Budžeta sadalījums pa kanāliem apstiprināts",
+            "Atdeves sliekšņi definēti katram kanālam"
+          ],
+          "kpi": [
+            "Nākamā cikla starta gatavība 100%"
+          ]
+        }
+      ]
+    }
+  ]
+}

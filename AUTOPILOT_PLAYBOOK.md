@@ -1,5 +1,13 @@
 # 30Sek Autopilots (Emaili, Zinas, Komentari, Kontrole, Reklama)
 
+## Stratēģijas autopilots (90 dienu izpilde)
+
+Lai plānu vadītu kā operāciju sistēmu, izmanto:
+
+1. Dokumentācija: `autopilot/STRATEGY_AUTOPILOT.md`
+2. Palaišana: `./scripts/strategy-autopilot.sh`
+3. Plāns: `autopilot/strategy-plan.json`
+
 ## 1) Ko automatizet uzreiz
 
 1. `Netlify Forms -> Email` paziņojumi tev uz `e.saukans@gmail.com`.
