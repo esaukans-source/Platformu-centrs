@@ -7,6 +7,7 @@ Lai plānu vadītu kā operāciju sistēmu, izmanto:
 1. Dokumentācija: `autopilot/STRATEGY_AUTOPILOT.md`
 2. Palaišana: `./scripts/strategy-autopilot.sh`
 3. Plāns: `autopilot/strategy-plan.json`
+4. Precīzie KPI: `./scripts/strategy-autopilot.sh goals`
 
 ## 1) Ko automatizet uzreiz
 

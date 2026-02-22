@@ -1,6 +1,6 @@
 {
   "name": "30Sek 90 dienu izaugsmes autopilots",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "durationDays": 90,
   "weeks": [
     {
@@ -48,7 +48,12 @@
             "0 kritiskas kļūdas ikdienas izpildē"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 12000,
+        "leads": 180,
+        "paid_clients": 14
+      }
     },
     {
       "week": 2,
@@ -95,7 +100,12 @@
             "0 regressijas pēc publicēšanas"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 15000,
+        "leads": 220,
+        "paid_clients": 18
+      }
     },
     {
       "week": 3,
@@ -142,7 +152,12 @@
             "6 nedēļu backlog gatavs izpildei"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 18000,
+        "leads": 270,
+        "paid_clients": 22
+      }
     },
     {
       "week": 4,
@@ -190,7 +205,12 @@
             "Kalkulatoru konversijas mērījums aktivizēts"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 22000,
+        "leads": 340,
+        "paid_clients": 28
+      }
     },
     {
       "week": 5,
@@ -238,7 +258,12 @@
             "Indeksācijas coverage stabils pieaugums"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 28000,
+        "leads": 450,
+        "paid_clients": 36
+      }
     },
     {
       "week": 6,
@@ -286,7 +311,12 @@
             "Satura kvalitātes kļūdas samazinās līdz minimumam"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 34000,
+        "leads": 550,
+        "paid_clients": 45
+      }
     },
     {
       "week": 7,
@@ -334,7 +364,12 @@
             "SERP CTR pieaug vismaz par 10%"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 39000,
+        "leads": 640,
+        "paid_clients": 52
+      }
     },
     {
       "week": 8,
@@ -383,7 +418,12 @@
             "Pieteikumu konversija +20% pret baseline"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 46000,
+        "leads": 760,
+        "paid_clients": 62
+      }
     },
     {
       "week": 9,
@@ -431,7 +471,12 @@
             "Stabila publicēšana bez pārrāvumiem"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 53000,
+        "leads": 900,
+        "paid_clients": 74
+      }
     },
     {
       "week": 10,
@@ -479,7 +524,12 @@
             "Atbildes laiks partneru pieteikumiem < 30 min"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 58000,
+        "leads": 980,
+        "paid_clients": 82
+      }
     },
     {
       "week": 11,
@@ -527,7 +577,12 @@
             "Mobilā engagement uzlabojas"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 62000,
+        "leads": 1060,
+        "paid_clients": 90
+      }
     },
     {
       "week": 12,
@@ -575,7 +630,12 @@
             "0 kritiskas publicēšanas avārijas"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 67000,
+        "leads": 1140,
+        "paid_clients": 98
+      }
     },
     {
       "week": 13,
@@ -624,7 +684,72 @@
             "Nākamā cikla starta gatavība 100%"
           ]
         }
-      ]
+      ],
+      "weeklyKpiTargets": {
+        "sessions": 69000,
+        "leads": 1200,
+        "paid_clients": 104
+      }
     }
-  ]
+  ],
+  "northStar": {
+    "monthly_sessions_target": 1000000,
+    "monthly_leads_target": 25000,
+    "monthly_paid_clients_target": 5000,
+    "lead_to_paid_target_pct": 20,
+    "checkpoints": [
+      {
+        "week": 1,
+        "monthly_sessions_run_rate_target": 52000
+      },
+      {
+        "week": 2,
+        "monthly_sessions_run_rate_target": 65000
+      },
+      {
+        "week": 3,
+        "monthly_sessions_run_rate_target": 78000
+      },
+      {
+        "week": 4,
+        "monthly_sessions_run_rate_target": 95000
+      },
+      {
+        "week": 5,
+        "monthly_sessions_run_rate_target": 120000
+      },
+      {
+        "week": 6,
+        "monthly_sessions_run_rate_target": 145000
+      },
+      {
+        "week": 7,
+        "monthly_sessions_run_rate_target": 170000
+      },
+      {
+        "week": 8,
+        "monthly_sessions_run_rate_target": 200000
+      },
+      {
+        "week": 9,
+        "monthly_sessions_run_rate_target": 230000
+      },
+      {
+        "week": 10,
+        "monthly_sessions_run_rate_target": 250000
+      },
+      {
+        "week": 11,
+        "monthly_sessions_run_rate_target": 270000
+      },
+      {
+        "week": 12,
+        "monthly_sessions_run_rate_target": 290000
+      },
+      {
+        "week": 13,
+        "monthly_sessions_run_rate_target": 300000
+      }
+    ]
+  }
 }

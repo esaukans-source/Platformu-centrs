@@ -15,11 +15,11 @@ if [[ $# -gt 0 ]]; then
 fi
 
 case "$COMMAND" in
-  init|status|today|complete|uncomplete|log|run-daily|roadmap|help)
+  init|status|today|complete|uncomplete|log|run-daily|roadmap|goals|help)
     ;;
   *)
     echo "Nezināma komanda: $COMMAND" >&2
-    echo "Lietošana: scripts/strategy-autopilot.sh [init|status|today|complete|uncomplete|log|run-daily|roadmap|help] [args]" >&2
+    echo "Lietošana: scripts/strategy-autopilot.sh [init|status|today|complete|uncomplete|log|run-daily|roadmap|goals|help] [args]" >&2
     exit 2
     ;;
 esac

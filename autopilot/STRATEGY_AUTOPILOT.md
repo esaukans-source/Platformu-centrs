@@ -42,10 +42,11 @@
 2. `status [--date YYYY-MM-DD]`
 3. `today [--date YYYY-MM-DD]`
 4. `roadmap`
-5. `run-daily [--date YYYY-MM-DD] [--strict]`
-6. `complete <task-id>`
-7. `uncomplete <task-id>`
-8. `log [--date YYYY-MM-DD] --metric value ...`
+5. `goals [--date YYYY-MM-DD]` (precīzo KPI mērķu un 1M trajektorijas statuss)
+6. `run-daily [--date YYYY-MM-DD] [--strict]`
+7. `complete <task-id>`
+8. `uncomplete <task-id>`
+9. `log [--date YYYY-MM-DD] --metric value ...`
 
 ## run-daily ko tieši dara
 
@@ -64,6 +65,23 @@
 4. `complete ...` katram pabeigtam uzdevumam
 5. `log --sessions ... --leads ... --paid_clients ...`
 6. `status`
+
+## Precīzie mērķi (kas jālogē katru dienu)
+
+Lai autopilots varētu korekti vērtēt tempu pret 1M mērķi, katru dienu logē vismaz:
+
+1. `sessions`
+2. `leads`
+3. `paid_clients`
+4. `videos`
+5. `partners_outreach`
+
+Piemērs:
+
+```bash
+./scripts/strategy-autopilot.sh log --sessions 2100 --leads 38 --paid_clients 4 --videos 1 --partners_outreach 1
+./scripts/strategy-autopilot.sh goals
+```
 
 ## Cron režīms (automātiska ikdienas palaišana)
 

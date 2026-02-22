@@ -12,7 +12,7 @@ const REPO_ROOT = path.resolve(__dirname, "..");
 const PLAN_PATH = path.join(REPO_ROOT, "autopilot", "strategy-plan.json");
 const STATE_PATH = path.join(REPO_ROOT, "autopilot", "strategy-state.json");
 const REPORTS_DIR = path.join(REPO_ROOT, "autopilot", "reports");
-const AUTOPILOT_VERSION = "1.0.0";
+const AUTOPILOT_VERSION = "1.1.0";
 
 const RUNBOOK = [
   {
@@ -202,6 +202,94 @@ function renderTargetLines(targets, metrics) {
   return lines;
 }
 
+function numberFormat(value) {
+  const n = Number(value || 0);
+  if (!Number.isFinite(n)) return "0";
+  return new Intl.NumberFormat("lv-LV", {
+    maximumFractionDigits: n % 1 === 0 ? 0 : 2
+  }).format(n);
+}
+
+function evaluateTargetStatus(current, target, expectedToDate, dayInWeek) {
+  const safeTarget = Number(target || 0);
+  const safeCurrent = Number(current || 0);
+  if (!Number.isFinite(safeTarget) || safeTarget <= 0) {
+    return "NA";
+  }
+  const effectiveExpected = dayInWeek >= 7 ? safeTarget : Math.max(0, Number(expectedToDate || 0));
+  if (safeCurrent >= effectiveExpected) {
+    return "ON_TRACK";
+  }
+  if (safeCurrent >= effectiveExpected * 0.8) {
+    return "AT_RISK";
+  }
+  return "OFF_TRACK";
+}
+
+function renderKpiGoalLines(targets, metrics, context) {
+  if (!targets || !Object.keys(targets).length) {
+    return ["- Nav definēti precīzie KPI mērķi šai nedēļai."];
+  }
+  const lines = [];
+  const dayInWeek = Math.min(7, Math.max(1, Number(context.dayInWeek || 1)));
+  for (const [key, targetValue] of Object.entries(targets)) {
+    const current = Number(metrics[key] || 0);
+    const target = Number(targetValue || 0);
+    if (!Number.isFinite(target) || target <= 0) {
+      continue;
+    }
+    const expectedToDate = dayInWeek >= 7 ? target : (target * dayInWeek) / 7;
+    const status = evaluateTargetStatus(current, target, expectedToDate, dayInWeek);
+    const progressPct = Math.min(100, Math.round((current / target) * 100));
+    lines.push(
+      `- ${key}: ${numberFormat(current)}/${numberFormat(target)} (${progressPct}%), ` +
+      `tempo mērķis šodienai ${numberFormat(expectedToDate)} -> ${status}`
+    );
+  }
+  return lines.length ? lines : ["- Nav definēti precīzie KPI mērķi šai nedēļai."];
+}
+
+function monthlyRunRateFromWeekly(weeklyValue) {
+  const safe = Number(weeklyValue || 0);
+  if (!Number.isFinite(safe) || safe <= 0) return 0;
+  return Math.round(safe * 4.345);
+}
+
+function renderNorthStarLine(plan, context, weekMetrics) {
+  const northStar = plan.northStar || {};
+  const monthlySessionsTarget = Number(northStar.monthly_sessions_target || 0);
+  if (!monthlySessionsTarget) {
+    return "- North-star mērķis nav definēts.";
+  }
+
+  const dayInWeek = Math.min(7, Math.max(1, Number(context.dayInWeek || 1)));
+  const currentWeeklySessions = Number(weekMetrics.sessions || 0);
+  const projectedWeeklySessions = dayInWeek > 0 ? (currentWeeklySessions / dayInWeek) * 7 : currentWeeklySessions;
+  const projectedMonthlyRunRate = monthlyRunRateFromWeekly(projectedWeeklySessions);
+  const gap = Math.max(0, monthlySessionsTarget - projectedMonthlyRunRate);
+
+  const checkpoints = Array.isArray(northStar.checkpoints) ? northStar.checkpoints : [];
+  const checkpoint = checkpoints.find((item) => Number(item.week) === Number(context.weekNumber));
+  let checkpointText = "";
+  if (checkpoint && Number(checkpoint.monthly_sessions_run_rate_target || 0) > 0) {
+    const cpTarget = Number(checkpoint.monthly_sessions_run_rate_target);
+    const cpStatus = evaluateTargetStatus(
+      projectedMonthlyRunRate,
+      cpTarget,
+      cpTarget,
+      7
+    );
+    checkpointText =
+      ` | checkpoint W${context.weekNumber}: ${numberFormat(cpTarget)} -> ${cpStatus}`;
+  }
+
+  return (
+    `- 1M trajektorija: prognozētais mēneša run-rate ${numberFormat(projectedMonthlyRunRate)} ` +
+    `pret mērķi ${numberFormat(monthlySessionsTarget)} (gap ${numberFormat(gap)})` +
+    `${checkpointText}`
+  );
+}
+
 function commandResultToString(step) {
   const status = step.ok ? "OK" : step.required === false ? "WARN" : "FAIL";
   const code = typeof step.code === "number" ? step.code : "-";
@@ -288,6 +376,7 @@ Lietošana:
   node autopilot/strategy-autopilot.mjs log [--date YYYY-MM-DD] --sessions 1200 --leads 35 --paid_clients 4
   node autopilot/strategy-autopilot.mjs run-daily [--date YYYY-MM-DD] [--strict]
   node autopilot/strategy-autopilot.mjs roadmap
+  node autopilot/strategy-autopilot.mjs goals [--date YYYY-MM-DD]
 `);
 }
 
@@ -331,6 +420,8 @@ function cmdStatus(args) {
   const weekTasks = tasks.filter((task) => task.week === context.weekNumber);
   const weekMetrics = getWeekMetrics(state, context.weekNumber);
   const targetLines = renderTargetLines(context.week.weeklyOutputTargets, weekMetrics);
+  const kpiGoalLines = renderKpiGoalLines(context.week.weeklyKpiTargets, weekMetrics, context);
+  const northStarLine = renderNorthStarLine(plan, context, weekMetrics);
   const lastRun = (state.dailyRuns || [])
     .slice()
     .sort((a, b) => String(a.date).localeCompare(String(b.date)))
@@ -356,6 +447,14 @@ function cmdStatus(args) {
   for (const line of targetLines) {
     console.log(line);
   }
+  console.log("");
+  console.log("Precīzie KPI mērķi (tempo pret šodienu):");
+  for (const line of kpiGoalLines) {
+    console.log(line);
+  }
+  console.log("");
+  console.log("Trajektorija:");
+  console.log(northStarLine);
 }
 
 function cmdToday(args) {
@@ -368,6 +467,8 @@ function cmdToday(args) {
   const pending = weekTasks.filter((task) => !isTaskDone(state, task.id));
   const weekMetrics = getWeekMetrics(state, context.weekNumber);
   const targetLines = renderTargetLines(context.week.weeklyOutputTargets, weekMetrics);
+  const kpiGoalLines = renderKpiGoalLines(context.week.weeklyKpiTargets, weekMetrics, context);
+  const northStarLine = renderNorthStarLine(plan, context, weekMetrics);
 
   console.log(`Šodien: ${dateIso} | Nedēļa ${context.weekNumber} (${context.week.title}) | Diena ${context.dayInWeek}/7`);
   console.log(`Mērķis: ${context.week.objective}`);
@@ -392,6 +493,14 @@ function cmdToday(args) {
   for (const line of targetLines) {
     console.log(line);
   }
+  console.log("");
+  console.log("Precīzie KPI mērķi (tempo pret šodienu):");
+  for (const line of kpiGoalLines) {
+    console.log(line);
+  }
+  console.log("");
+  console.log("Trajektorija:");
+  console.log(northStarLine);
 }
 
 function findTask(plan, taskId) {
@@ -645,6 +754,27 @@ function cmdRoadmap() {
   }
 }
 
+function cmdGoals(args) {
+  const plan = loadPlan();
+  const state = loadState();
+  const dateIso = parseDateFlag(args) || todayIsoLocal();
+  const context = getWeekContext(state, plan, dateIso);
+  const weekMetrics = getWeekMetrics(state, context.weekNumber);
+  const kpiGoalLines = renderKpiGoalLines(context.week.weeklyKpiTargets, weekMetrics, context);
+  const northStarLine = renderNorthStarLine(plan, context, weekMetrics);
+
+  console.log(`Precīzie mērķi (${dateIso})`);
+  console.log(`- Nedēļa ${context.weekNumber}: ${context.week.title}`);
+  console.log("");
+  console.log("Šīs nedēļas KPI mērķi:");
+  for (const line of kpiGoalLines) {
+    console.log(line);
+  }
+  console.log("");
+  console.log("1M trajektorija:");
+  console.log(northStarLine);
+}
+
 function main() {
   const [command, ...args] = process.argv.slice(2);
   if (!command || command === "help" || command === "--help" || command === "-h") {
@@ -676,6 +806,9 @@ function main() {
       return;
     case "roadmap":
       cmdRoadmap();
+      return;
+    case "goals":
+      cmdGoals(args);
       return;
     default:
       throw new Error(`Nezināma komanda: ${command}`);
