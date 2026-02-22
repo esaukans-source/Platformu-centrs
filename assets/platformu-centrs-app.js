@@ -26,6 +26,58 @@
     return list[Math.floor(Math.random() * list.length)];
   }
 
+  function normalizeNiche(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/[ā]/g, "a")
+      .replace(/[č]/g, "c")
+      .replace(/[ē]/g, "e")
+      .replace(/[ģ]/g, "g")
+      .replace(/[ī]/g, "i")
+      .replace(/[ķ]/g, "k")
+      .replace(/[ļ]/g, "l")
+      .replace(/[ņ]/g, "n")
+      .replace(/[š]/g, "s")
+      .replace(/[ū]/g, "u")
+      .replace(/[ž]/g, "z")
+      .trim();
+  }
+
+  function calculatorByNiche(niche) {
+    var value = normalizeNiche(niche);
+    var interiorTokens = [
+      "apdare",
+      "iekseja apdare",
+      "interjera apdare",
+      "interior",
+      "interior finishing",
+      "innenausbau",
+      "wykonczenie wnetrz",
+      "vnutrennyaya otdelka",
+    ];
+    var isInterior = interiorTokens.some(function (token) {
+      return value.indexOf(token) !== -1;
+    });
+    if (isInterior) {
+      return {
+        url: "/kalkulators/apdare",
+        label: "Iekšējās apdares kalkulators",
+      };
+    }
+    return {
+      url: "/kalkulators",
+      label: "Siltuma kalkulators",
+    };
+  }
+
+  function resolveCalculator(platform) {
+    var fallback = calculatorByNiche(platform && platform.niche);
+    return {
+      url: (platform && platform.calculatorUrl) || fallback.url,
+      label: (platform && platform.calculatorLabel) || fallback.label,
+    };
+  }
+
   function safeGet(key, fallback) {
     try {
       var raw = localStorage.getItem(key);
@@ -143,6 +195,7 @@
       return { ok: false, error: "Nosaukums, niša un reģions ir obligāti." };
     }
 
+    var calculator = calculatorByNiche(niche);
     var platform = {
       id: toId("pf"),
       slug: slugify(name) || toId("platform"),
@@ -154,11 +207,12 @@
       plan: plan,
       theme: randOf(THEMES),
       layout: randOf(LAYOUTS),
-      calculatorUrl: "/kalkulators",
+      calculatorUrl: calculator.url,
+      calculatorLabel: calculator.label,
       structure: [
         "Nišas piedāvājums un mērķa klienta profils",
         "Lead uztveršana un kvalifikācija",
-        "Tāmes sagatavošana ar kalkulatoru",
+        "Tāmes sagatavošana ar atbilstošo kalkulatoru",
         "Izpildes komandas piesaiste",
         "Darījuma aizvēršana un atkārtotie klienti",
       ],
@@ -202,6 +256,7 @@
 
   function renderCard(platform) {
     var publicUrl = "/platformu-centrs/platforma/?id=" + encodeURIComponent(platform.id);
+    var calculator = resolveCalculator(platform);
     return (
       '<article class="card pc-platform-card pc-theme-' + platform.theme + '">' +
       '<p class="category-card-kicker">' + platform.niche + " / " + platform.region + "</p>" +
@@ -210,7 +265,7 @@
       '<p class="note">Dizains: ' + platform.theme + " | Layout: " + platform.layout + "</p>" +
       '<div class="cta-row">' +
       '<a class="btn" href="' + publicUrl + '">Atvērt platformu</a>' +
-      '<a class="btn btn-soft" href="' + platform.calculatorUrl + '">Siltuma kalkulators</a>' +
+      '<a class="btn btn-soft" href="' + calculator.url + '">' + calculator.label + "</a>" +
       "</div>" +
       "</article>"
     );
@@ -358,8 +413,12 @@
     setText(qs("#pc-v-owner"), platform.ownerName);
     setText(qs("#pc-v-theme"), platform.theme + " / " + platform.layout);
 
+    var calculator = resolveCalculator(platform);
     var calcA = qs("#pc-v-calc");
-    if (calcA) calcA.setAttribute("href", platform.calculatorUrl || "/kalkulators");
+    if (calcA) {
+      calcA.setAttribute("href", calculator.url);
+      calcA.textContent = "Atvērt " + calculator.label.toLowerCase();
+    }
 
     var list = qs("#pc-v-structure");
     if (list) {

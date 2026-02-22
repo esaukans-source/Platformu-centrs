@@ -19,6 +19,12 @@
       available[module.getAttribute("data-calc-category")] = true;
     });
 
+    function interiorPath() {
+      var lang = String(document.documentElement.lang || "lv").toLowerCase().slice(0, 2);
+      if (lang === "lv") return "/kalkulators/apdare";
+      return "/" + lang + "/kalkulators/apdare";
+    }
+
     function applyCategory(category, updateHash) {
       var target = available[category] ? category : "heating";
 
@@ -49,10 +55,20 @@
     });
 
     window.addEventListener("hashchange", function () {
-      applyCategory(normalizeCategory(window.location.hash), false);
+      var hashCategory = normalizeCategory(window.location.hash);
+      if (hashCategory === "interior" && !available.interior) {
+        window.location.replace(interiorPath() + window.location.search);
+        return;
+      }
+      applyCategory(hashCategory, false);
     });
 
-    applyCategory(normalizeCategory(window.location.hash), false);
+    var initialCategory = normalizeCategory(window.location.hash);
+    if (initialCategory === "interior" && !available.interior) {
+      window.location.replace(interiorPath() + window.location.search);
+      return;
+    }
+    applyCategory(initialCategory, false);
   }
 
   document.addEventListener("DOMContentLoaded", init);
