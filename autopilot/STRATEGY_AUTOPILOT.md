@@ -64,3 +64,40 @@
 4. `complete ...` katram pabeigtam uzdevumam
 5. `log --sessions ... --leads ... --paid_clients ...`
 6. `status`
+
+## Cron režīms (automātiska ikdienas palaišana)
+
+Instalēšana (katru dienu `06:30`):
+
+```bash
+./scripts/install-strategy-autopilot-cron.sh install
+```
+
+Instalēšana ar citu grafiku (piem., `08:15`):
+
+```bash
+./scripts/install-strategy-autopilot-cron.sh install "15 8 * * *"
+```
+
+Statuss:
+
+```bash
+./scripts/install-strategy-autopilot-cron.sh status
+```
+
+Palaist vienreiz uzreiz:
+
+```bash
+./scripts/install-strategy-autopilot-cron.sh once
+```
+
+Noņemt cron:
+
+```bash
+./scripts/install-strategy-autopilot-cron.sh uninstall
+```
+
+Logi:
+
+1. `autopilot/logs/cron-launcher.log`
+2. `autopilot/logs/strategy-autopilot-YYYY-MM-DD.log`
